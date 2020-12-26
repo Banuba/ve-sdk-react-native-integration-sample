@@ -1,6 +1,6 @@
 # Banuba AI Video Editor SDK. Integration sample for React Native.
 Banuba [Video Editor SDK](https://www.banuba.com/video-editor-sdk) allows you to add a fully-functional video editor with Tiktok-like features, AR filters and effects in your app.   
-The following sample brifly demonstrates how you can integrate our SDK into your React Native project.  
+The following sample brifly demonstrates how you can integrate our SDK into your [React Native](https://reactnative.dev/) project.  
 
 # Android  
 1. Make sure variable **ANDROID_SDK_ROOT** is in your environment.
