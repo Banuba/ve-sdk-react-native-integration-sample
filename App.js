@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+const { VideoEditorModule } = NativeModules;
 import { StyleSheet,
    Text,
     Button,
@@ -20,7 +21,7 @@ export default function App() {
         if (Platform.OS === 'android') {
           NativeModules.ActivityStarter.navigateToVideoEditor()
         } else {
-          Alert.alert('Video Editor sample integration for iOS is in progress... ')
+          VideoEditorModule.openVideoEditor();
         }
         }
       }

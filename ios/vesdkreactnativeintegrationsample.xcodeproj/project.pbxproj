@@ -12,6 +12,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63485D4B259A27A900A9897F /* VideoEditorModule.swift */; };
+		63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */; };
+		8A26A81F259B69A5001CFF3C /* luts in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81D259B69A5001CFF3C /* luts */; };
+		8A26A820259B69A5001CFF3C /* bundleEffects in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81E259B69A5001CFF3C /* bundleEffects */; };
 		96905EF65AED1B983A6B3ABC /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-vesdkreactnativeintegrationsample.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 /* End PBXBuildFile section */
@@ -26,8 +30,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = vesdkreactnativeintegrationsample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = vesdkreactnativeintegrationsample/main.m; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-vesdkreactnativeintegrationsample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vesdkreactnativeintegrationsample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vesdkreactnativeintegrationsample-Bridging-Header.h"; sourceTree = "<group>"; };
+		63485D4B259A27A900A9897F /* VideoEditorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditorModule.swift; sourceTree = "<group>"; };
+		63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditorModuleBridge.m; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-vesdkreactnativeintegrationsample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.debug.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-vesdkreactnativeintegrationsample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.release.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.release.xcconfig"; sourceTree = "<group>"; };
+		8A26A81D259B69A5001CFF3C /* luts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = luts; path = vesdkreactnativeintegrationsample/luts; sourceTree = "<group>"; };
+		8A26A81E259B69A5001CFF3C /* bundleEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bundleEffects; path = vesdkreactnativeintegrationsample/bundleEffects; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = vesdkreactnativeintegrationsample/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -49,15 +58,20 @@
 		13B07FAE1A68108700A75B9A /* vesdkreactnativeintegrationsample */ = {
 			isa = PBXGroup;
 			children = (
+				8A26A81E259B69A5001CFF3C /* bundleEffects */,
+				8A26A81D259B69A5001CFF3C /* luts */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				63485D4B259A27A900A9897F /* VideoEditorModule.swift */,
+				63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
+				63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */,
 			);
 			name = vesdkreactnativeintegrationsample;
 			sourceTree = "<group>";
@@ -133,6 +147,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
+				198D2E96DBB25B774303CE1B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,7 +167,7 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -182,7 +197,9 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				8A26A81F259B69A5001CFF3C /* luts in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
+				8A26A820259B69A5001CFF3C /* bundleEffects in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +240,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		198D2E96DBB25B774303CE1B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample-frameworks.sh",
+				"${PODS_ROOT}/BanubaEffectPlayer/BanubaEffectPlayer.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaAudioBrowserSDK/BanubaAudioBrowserSDK.framework/BanubaAudioBrowserSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaMusicEditorSDK/BanubaMusicEditorSDK.framework/BanubaMusicEditorSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaOverlayEditorSDK/BanubaOverlayEditorSDK.framework/BanubaOverlayEditorSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSdk/BanubaSdk.framework/BanubaSdk",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorSDK/BanubaVideoEditorSDK.framework/BanubaVideoEditorSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoEditor/VideoEditor.framework/VideoEditor",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaEffectPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaAudioBrowserSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaMusicEditorSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaOverlayEditorSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaSdk.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoEditor.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
@@ -270,6 +317,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */,
+				63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,7 +352,7 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = vesdkreactnativeintegrationsample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -312,6 +361,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.name.vesdkreactnativeintegrationsample;
 				PRODUCT_NAME = vesdkreactnativeintegrationsample;
+				SWIFT_OBJC_BRIDGING_HEADER = "vesdkreactnativeintegrationsample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -327,7 +377,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = vesdkreactnativeintegrationsample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -336,6 +386,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.name.vesdkreactnativeintegrationsample;
 				PRODUCT_NAME = vesdkreactnativeintegrationsample;
+				SWIFT_OBJC_BRIDGING_HEADER = "vesdkreactnativeintegrationsample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
