@@ -12,12 +12,12 @@ import BanubaOverlayEditorSDK
 
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
-
+  
+  static func requiresMainQueueSetup() -> Bool {
+    return true
+  }
+  
   @objc func openVideoEditor() {
-    guard let presentedVC = RCTPresentedViewController() else {
-      return
-    }
-    
     let config = createVideoEditorConfiguration()
     let videoEditor = BanubaVideoEditor(
       token: "place AR token here",
@@ -26,6 +26,9 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       externalViewControllerFactory: nil
     )
     DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
       videoEditor.presentVideoEditor(from: presentedVC, animated: true, completion: nil)
     }
   }

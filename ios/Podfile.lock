@@ -1,10 +1,11 @@
 PODS:
-  - BanubaAudioBrowserSDK (0.0.13)
+  - BanubaARCloudSDK (0.0.14)
+  - BanubaAudioBrowserSDK (0.0.14)
   - BanubaEffectPlayer (0.0.10)
-  - BanubaMusicEditorSDK (0.0.13.2)
-  - BanubaOverlayEditorSDK (0.0.13.2)
-  - BanubaSDK (0.0.13.2)
-  - BanubaVideoEditorSDK (0.0.13.3)
+  - BanubaMusicEditorSDK (0.0.14)
+  - BanubaOverlayEditorSDK (0.0.14)
+  - BanubaSDK (0.0.14)
+  - BanubaVideoEditorSDK (0.0.14)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
   - EXApplication (2.4.1):
@@ -313,16 +314,17 @@ PODS:
     - UMFontInterface
   - UMSensorsInterface (5.4.0)
   - UMTaskManagerInterface (5.4.0)
-  - VideoEditor (0.0.13.2)
+  - VideoEditor (0.0.14)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - BanubaAudioBrowserSDK (= 0.0.13)
+  - BanubaARCloudSDK (= 0.0.14)
+  - BanubaAudioBrowserSDK (= 0.0.14)
   - BanubaEffectPlayer (= 0.0.10)
-  - BanubaMusicEditorSDK (= 0.0.13.2)
-  - BanubaOverlayEditorSDK (= 0.0.13.2)
-  - BanubaSDK (= 0.0.13.2)
-  - BanubaVideoEditorSDK (= 0.0.13.3)
+  - BanubaMusicEditorSDK (= 0.0.14)
+  - BanubaOverlayEditorSDK (= 0.0.14)
+  - BanubaSDK (= 0.0.14)
+  - BanubaVideoEditorSDK (= 0.0.14)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
@@ -380,11 +382,12 @@ DEPENDENCIES:
   - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
   - UMSensorsInterface (from `../node_modules/unimodules-sensors-interface/ios`)
   - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
-  - VideoEditor (= 0.0.13.2)
+  - VideoEditor (= 0.0.14)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   "git@github.com:Banuba/specs.git":
+    - BanubaARCloudSDK
     - BanubaAudioBrowserSDK
     - BanubaEffectPlayer
     - BanubaMusicEditorSDK
@@ -510,12 +513,13 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BanubaAudioBrowserSDK: 7e3da0066af1b4af8582c91412a531df9a37a270
+  BanubaARCloudSDK: 7f9051edca90539a9675be0ed175e7f996f917cf
+  BanubaAudioBrowserSDK: 1590af6e0dfdc469e19d94bf46f56fcc57bbc24f
   BanubaEffectPlayer: 7c25fffc8b0dc2391759af3823598fa1e9522491
-  BanubaMusicEditorSDK: 582bdecd4162f4cedafee364d2345d2e4a8644d6
-  BanubaOverlayEditorSDK: 2f91192925af77afeefe6e2785a2c5f47927af07
-  BanubaSDK: 9e75422ab8fd0780c9bca7f83ba1ef33e9265edd
-  BanubaVideoEditorSDK: e7227be27ae47b31536aa42a5122d0b9ec227230
+  BanubaMusicEditorSDK: facbca61d46b87ecfae25e22115b12b9f608b981
+  BanubaOverlayEditorSDK: a237f31cadeb5478f82b197bd0106ef50c83c55a
+  BanubaSDK: 37486a3606d03f7087a9a32b96de49200d85f136
+  BanubaVideoEditorSDK: f67cb5622e7f8f31b504c64091d41c4fc682e12c
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: e3c201e7b913d081bbd37bd3c5d0e2cdc21733b4
@@ -572,9 +576,9 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: 172def7895b2cb44a7dd021336e316d5fa8ea958
   UMSensorsInterface: 4df9ec662134de5614ae61acc249d6912db87ca5
   UMTaskManagerInterface: 4c60b43eaf3cb05a164bc9113258a171c18b7bf7
-  VideoEditor: 2d2bfbc9d79eca93ce059ce89ad158e3da58a285
+  VideoEditor: 62e848a658b2177f1e819198a297994ef7388779
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: abc3ce1c6a94ba72f94b2a534e1770d1bd5d35de
+PODFILE CHECKSUM: f1680a5a5dab924e37b435c637dcd869b1a7e1d4
 
 COCOAPODS: 1.10.0
