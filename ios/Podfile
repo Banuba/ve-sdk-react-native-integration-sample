@@ -13,12 +13,13 @@ target 'vesdkreactnativeintegrationsample' do
   use_react_native!(:path => config["reactNativePath"])
   
   pod 'BanubaEffectPlayer', '0.0.10'
-  pod 'BanubaVideoEditorSDK', '0.0.13.3'
-  pod 'BanubaAudioBrowserSDK', '0.0.13'
-  pod 'BanubaMusicEditorSDK', '0.0.13.2'
-  pod 'BanubaOverlayEditorSDK', '0.0.13.2'
-  pod 'BanubaSDK', '0.0.13.2'
-  pod 'VideoEditor', '0.0.13.2'
+  pod 'BanubaVideoEditorSDK', '0.0.14'
+  pod 'BanubaAudioBrowserSDK', '0.0.14'
+  pod 'BanubaMusicEditorSDK', '0.0.14'
+  pod 'BanubaOverlayEditorSDK', '0.0.14'
+  pod 'BanubaSDK', '0.0.14'
+  pod 'VideoEditor', '0.0.14'
+  pod 'BanubaARCloudSDK', '0.0.14'
 
   # Uncomment the code below to enable Flipper.
   #
