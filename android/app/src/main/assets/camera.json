@@ -16,5 +16,6 @@
   "supportsMuteMic": true,
   "switchFacingOnDoubleTap": true,
   "showConfig": true,
-  "useFixedFPS30": true
+  "useFixedFPS30": true,
+  "minChunkVideoDuration": 3000
 }

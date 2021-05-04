@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 import expo.modules.updates.UpdatesController;
 
 import static org.koin.android.ext.koin.KoinExtKt.androidContext;
-import static org.koin.core.context.ContextFunctionsKt.startKoin;
+import static org.koin.core.context.GlobalContextExtKt.startKoin;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
@@ -88,7 +88,7 @@ public class MainApplication extends Application implements ReactApplication {
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
     // Init Banuba VE SDK
-    startKoin(new GlobalContext(), koinApplication -> {
+    startKoin(GlobalContext.INSTANCE, koinApplication -> {
             androidContext(koinApplication, this);
             koinApplication.modules(
                     new VideoEditorKoinModule().getModule(),
