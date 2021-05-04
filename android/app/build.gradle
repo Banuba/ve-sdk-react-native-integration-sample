@@ -220,7 +220,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // Banuba Video Editor SDK dependencies
-    def banubaSdkVersion = '1.0.14'
+    def banubaSdkVersion = '1.0.15'
+    implementation "com.banuba.sdk:banuba-token-storage-sdk:$banubaSdkVersion"
     implementation "com.banuba.sdk:camera-sdk:${banubaSdkVersion}"
     implementation "com.banuba.sdk:camera-ui-sdk:${banubaSdkVersion}"
     implementation "com.banuba.sdk:core-sdk:${banubaSdkVersion}"
@@ -231,7 +232,7 @@ dependencies {
     implementation "com.banuba.sdk:ve-ui-sdk:${banubaSdkVersion}"
     implementation "com.banuba.sdk:ve-effects-sdk:${banubaSdkVersion}"
     implementation "com.banuba.sdk:effect-player-adapter:${banubaSdkVersion}"
-    implementation "com.banuba.sdk:ar-cloud-sdk:${banubaSdkVersion}"
+    implementation "com.banuba.sdk:ar-cloud:${banubaSdkVersion}"
 }
 
 // Run this once to be able to run the application with BUCK
