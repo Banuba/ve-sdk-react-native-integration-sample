@@ -23,7 +23,10 @@ buildscript {
 
 allprojects {
     repositories {
-    
+        // use your own username and password to access Banuba repositories
+        def banubaRepoUser = "Banuba"
+        def banubaReposPassword = "\u0038\u0036\u0032\u0037\u0063\u0035\u0031\u0030\u0033\u0034\u0032\u0063\u0061\u0033\u0065\u0061\u0031\u0032\u0034\u0064\u0065\u0066\u0039\u0062\u0034\u0030\u0063\u0063\u0037\u0039\u0038\u0063\u0038\u0038\u0066\u0034\u0031\u0032\u0061\u0038"
+
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
@@ -37,8 +40,17 @@ allprojects {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/Banuba/banuba-ve-sdk")
             credentials {
-                username = "Banuba"
-                password = "\u0038\u0036\u0032\u0037\u0063\u0035\u0031\u0030\u0033\u0034\u0032\u0063\u0061\u0033\u0065\u0061\u0031\u0032\u0034\u0064\u0065\u0066\u0039\u0062\u0034\u0030\u0063\u0063\u0037\u0039\u0038\u0063\u0038\u0038\u0066\u0034\u0031\u0032\u0061\u0038"
+                username = banubaRepoUser
+                password = banubaReposPassword
+            }
+        }
+
+        maven {
+            name = "ARCloudPackages"
+            url = uri("https://github.com/Banuba/banuba-ar")
+            credentials {
+                username = banubaRepoUser
+                password = banubaReposPassword
             }
         }
 
