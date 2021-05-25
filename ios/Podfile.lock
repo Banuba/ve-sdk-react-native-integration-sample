@@ -46,7 +46,7 @@ PODS:
   - EXSQLite (8.5.0):
     - UMCore
     - UMFileSystemInterface
-  - EXUpdates (0.4.2):
+  - EXUpdates (0.4.1):
     - React-Core
     - UMCore
   - FBLazyVector (0.63.4)
@@ -295,7 +295,7 @@ PODS:
     - React-jsi (= 0.63.4)
   - RNGestureHandler (1.8.0):
     - React
-  - RNReanimated (1.13.3):
+  - RNReanimated (1.13.2):
     - React-Core
   - RNScreens (2.15.0):
     - React-Core
@@ -543,7 +543,7 @@ SPEC CHECKSUMS:
   EXSecureStore: 1b571851e6068b30b8ec097be848a04603c03bae
   EXSplashScreen: 8c7c1112ce7611a853486af4737fe2298eda7657
   EXSQLite: bda6a286dded0637bb312ee781239dcca163ff4b
-  EXUpdates: 5124c03b19730078482a27b97fcb4718b06ca6b5
+  EXUpdates: 28368049118dbe4ceaf4422ec72e0ad5f770df1f
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
@@ -569,7 +569,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
-  RNReanimated: 514a11da3a2bcc6c3dfd9de32b38e2b9bf101926
+  RNReanimated: e03f7425cb7a38dcf1b644d680d1bfc91c3337ad
   RNScreens: 2ad555d4d9fa10b91bb765ca07fe9b29d59573f0
   UMAppLoader: 92d044af52626af3d81a69796ad666fc7a9a7d78
   UMBarCodeScannerInterface: 3f6c1b09ef4b867ce752b8c0b3893bcf9cd85f32
@@ -587,6 +587,6 @@ SPEC CHECKSUMS:
   VideoEditor: 83314349244ec8f865f1c25b282b32ebe8802725
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 1b2200ff5cc9a4e7732e8e55d9f93569d0515857
+PODFILE CHECKSUM: 4a63bf167a15424532680f787102dd098de8b444
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.9.3
