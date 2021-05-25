@@ -167,6 +167,7 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 8W9QCBMQCU;
 						LastSwiftMigration = 1230;
 					};
 				};
@@ -351,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8W9QCBMQCU;
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -366,7 +367,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.vesdkreactnativeintegrationsample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banuba.VESDKReactNativeSample;
 				PRODUCT_NAME = vesdkreactnativeintegrationsample;
 				SWIFT_OBJC_BRIDGING_HEADER = "vesdkreactnativeintegrationsample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -382,7 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8W9QCBMQCU;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = vesdkreactnativeintegrationsample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -392,7 +393,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.name.vesdkreactnativeintegrationsample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banuba.VESDKReactNativeSample;
 				PRODUCT_NAME = vesdkreactnativeintegrationsample;
 				SWIFT_OBJC_BRIDGING_HEADER = "vesdkreactnativeintegrationsample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
