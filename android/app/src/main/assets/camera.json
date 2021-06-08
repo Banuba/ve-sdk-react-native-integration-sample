@@ -17,5 +17,5 @@
   "switchFacingOnDoubleTap": true,
   "showConfig": true,
   "useFixedFPS30": true,
-  "minChunkVideoDuration": 3000
+  "minChunkVideoDuration": 1000
 }
