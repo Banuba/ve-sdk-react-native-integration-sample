@@ -5,12 +5,9 @@ import android.net.Uri
 import androidx.core.net.toUri
 import com.banuba.sdk.cameraui.data.CameraRecordingAnimationProvider
 import com.banuba.sdk.cameraui.data.CameraTimerStateProvider
-import com.banuba.sdk.ve.effects.EditorEffects
 import com.banuba.sdk.ve.effects.WatermarkProvider
 import com.banuba.sdk.ve.flow.FlowEditorModule
 import com.banuba.sdk.veui.data.ExportParamsProvider
-import com.vesdkreactnativeintegrationsample.videoeditor.data.TimeEffects
-import com.vesdkreactnativeintegrationsample.videoeditor.data.VisualEffects
 import com.vesdkreactnativeintegrationsample.videoeditor.export.IntegrationAppExportParamsProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppRecordingAnimationProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppWatermarkProvider
@@ -51,23 +48,6 @@ class VideoEditorKoinModule : FlowEditorModule() {
 
     override val watermarkProvider: BeanDefinition<WatermarkProvider> = factory(override = true) {
         IntegrationAppWatermarkProvider()
-    }
-
-    override val editorEffects: BeanDefinition<EditorEffects> = single(override = true) {
-        val visualEffects = listOf(
-            VisualEffects.VHS,
-            VisualEffects.Rave
-        )
-        val timeEffects = listOf(
-            TimeEffects.SlowMo(),
-            TimeEffects.Rapid()
-        )
-
-        EditorEffects(
-            visual = visualEffects,
-            time = timeEffects,
-            equalizer = emptyList()
-        )
     }
 
     /**
