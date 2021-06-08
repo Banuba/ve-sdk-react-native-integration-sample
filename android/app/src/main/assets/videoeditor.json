@@ -23,7 +23,7 @@
     "supportsTrimRecordedVideo": true
   },
   "trimmer": {
-    "minSourceVideoDuration": 2000,
+    "minSourceVideoDuration": 1000,
     "supportsMultiChoice": true,
     "appearanceThreshold": 0
   },

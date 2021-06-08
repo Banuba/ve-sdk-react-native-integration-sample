@@ -1,21 +1,6 @@
 <resources>
     <string name="app_name">ve-sdk-react-native-integration-sample</string>
 
-    <!-- Used for enabling Banuba Face AR. Please contact Banuba https://www.banuba.com/video-editor-sdk to get this token -->
-    <string name="effect_player_token">PUT FACE AR TOKEN HERE</string>
-    <!-- Used for enabling visual and time effects. Pleae contact Banuba https://www.banuba.com/video-editor-sdk to get this token. -->
-    <string name="video_editor_token">ippJfY0xiKGOqWDm0uFnayxK7fK+1u0DuoAruXX1Ka54R5Qjwj4s9ZoGaGaACFfgi0HAL32wzC1slfUqZ6yyxXpxQ+ljiL+/hFpStDMmBWGZBCvG+FlTtd9wa9bU9rC6DjJwNuRfGSe4bszdKxGBEPE5MY5nJW76w/ffFeY6U898IOiOVy5wmsqXERSEbFA9PAeBYLnRpAx13CSFKWeTONMde5dMl3jmnLMlfXkbMXve9gTvL/fnDTyyUDeWHX6YfbmmWHFpP24t</string>
-
-    <!-- Effects -->
-    <!-- Time Effects -->
-    <string name="time_effect_slow_mo">Slow mo</string>
-    <string name="time_effect_rapid">Rapid</string>
-
-    <!-- Visual Effects -->
-    <string name="visual_effect_vhs">VHS</string>
-    <string name="visual_effect_rave">Rave</string>
-
-    <!-- Mask Effect -->
-    <string name="mask_effect_hawaiihairflower">HawaiiHairFlower</string>
-    <string name="mask_effect_asailines">AsaiLines</string>
+    <!-- Please contact Banuba https://www.banuba.com/video-editor-sdk to get this token -->
+    <string name="banuba_token">PEveSQBywLQN+lcoPoRXIDRKfEC8pkAjGbiOTzWJ+0KOrl7Dtx58IGbBBricH+1u4LclaH/vP64BST20B0X1doNpvsKXdu+bEOsmZa+GwmsHkbIreW2Ijy/nzUjIjLPlXBWvZJNeuLUR0lnFViMbVwD43wFcdP1fhML/j5fSv1BufG4ya330O12dfhSNR/9hBLpiRK5gu8fWc8f7gCuaClIkLV/yEr6nWFnEiymLvQuwDe8s38O4NsNKy8YaomP7jjR85rNZhL2Ilft2/p68h/pG5htMhVNO5vH6gMxHgx4bcFvFyOMnKYNO8DWuxasyCBb/QaLw1lJSi+b+IHzVIOBTi4jB8nR8NTAarWjkz1FifEsX01KkgV5KiaNxSgYFDcoOjwqpm2nwutCZfSAaN7YK0fP+SemyAAFatbJLds4uh1hM8SK/nv2TWXtYUZHJVDy00Ih9Me7RE7QBuGRbsqaw/xlE1vSd8VcjSYNDgTzGl3FXFCuWUyo4jLJf9wpgEC5OFoFx/HWyErvm5n3EJtvJfghBYA0RcdZABzS5KFjsC+fr9ESkjjXW5lClzlRTX+s7n2SR+CbYbcDgGShD0m5CP4siMv6hdzJMWoIwhqzxY2V+gYF8XKEbrRGrK0kKLj/h7LoIXVqUiPsZxnt/utOBm5RxwFpXcaUSj/JO5oU+PFctY1E2Uw1TfTa3amfEWO7dJbq15+JEGq4CKawyfrlkPKOKGtY0tAxgbe5POEUa/Mn7f/2dJX9KiVF/7FBvSpRnS7MwlEzfYUzr04PTciw+ot5FpjnB5/KyC6wrxrFHzpm2kSu+s8yUNgzf0YQUM9OMItEOPrqxMAmZHb144k6J+y5Q+QQxHVF9AbZWnlhTQjAHabRRqm6Mg5059ExyCgGlLFFLs/JUMb3Qvy9Tbwg3mrhKqlb+WEGnBQpezAtNaskcHZ5qECgXqfbtclT4zQlLos2q/v995eP6jwsmUTIyyHM3UZ3C5u+W+1V+7Ydp0fvUw6dNc2v1nN6h/qMHQQYhGnbePBohZDzsaPgtPOcJ99QZ/ock+UQ5t5pg8p9NnuLT1Vh9H4AOKR94G+LmavkGmbiw9B3+wJLfEgclc8Rg/TAa0mXflGhob1M=</string>
 </resources>

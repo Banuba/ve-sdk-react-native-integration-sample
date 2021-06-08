@@ -5,7 +5,8 @@ import android.content.Context;
 
 import com.banuba.sdk.arcloud.di.ArCloudKoinModule;
 import com.banuba.sdk.effectplayer.adapter.BanubaEffectPlayerKoinModule;
-import com.banuba.sdk.token.storage.TokenStorageKoinModule;
+import com.banuba.sdk.gallery.di.GalleryKoinModule;
+import com.banuba.sdk.token.storage.di.TokenStorageKoinModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -94,7 +95,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new VideoEditorKoinModule().getModule(),
                     new ArCloudKoinModule().getModule(),
                     new BanubaEffectPlayerKoinModule().getModule(),
-                    new TokenStorageKoinModule().getModule());
+                    new TokenStorageKoinModule().getModule(),
+                    new GalleryKoinModule().getModule());
             return null;
         });
   }
