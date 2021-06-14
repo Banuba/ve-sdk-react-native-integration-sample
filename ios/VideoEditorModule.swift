@@ -20,8 +20,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   @objc func openVideoEditor() {
     let config = createVideoEditorConfiguration()
     let videoEditor = BanubaVideoEditor(
-      token: "Place your Face AR token here",
-      effectsToken: "JKUsDuoT+mERLng/LVBT/SxK7fK+1u0DuoAruXXgIJhuSI0aynki+8gGXUWAC1H3jBDYThexyDBxlvZFZ7/2nzslMbIi26y2xh4P7GI=",
+      token: "Place your video editor token here",
       configuration: config,
       externalViewControllerFactory: nil
     )
