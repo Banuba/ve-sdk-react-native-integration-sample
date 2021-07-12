@@ -104,6 +104,7 @@
         <item name="galleryAlbumTitleTextStyle">@style/CustomGalleryAlbumTitleTextStyle</item>
         <item name="galleryAlbumDescTextStyle">@style/CustomGalleryAlbumDescTextStyle</item>
         <item name="galleryTabLayoutStyle">@style/CustomGalleryTabLayoutStyle</item>
+        <item name="galleryTabTextColors">@color/gallery_tab_color_state_list</item>
 
         <item name="galleryColumnsNumber">wrap_content</item>
         <item name="gallery_bg_color">@color/black</item>
