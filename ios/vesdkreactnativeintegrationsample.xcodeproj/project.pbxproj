@@ -12,6 +12,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		5196245526B7F8EE00434846 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5196245726B7F8EE00434846 /* Localizable.strings */; };
 		63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63485D4B259A27A900A9897F /* VideoEditorModule.swift */; };
 		63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */; };
 		8A26A81F259B69A5001CFF3C /* luts in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81D259B69A5001CFF3C /* luts */; };
@@ -30,6 +31,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = vesdkreactnativeintegrationsample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = vesdkreactnativeintegrationsample/main.m; sourceTree = "<group>"; };
 		13B99D20E16C4634BA58FDF2 /* libPods-vesdkreactnativeintegrationsample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vesdkreactnativeintegrationsample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5196245626B7F8EE00434846 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vesdkreactnativeintegrationsample-Bridging-Header.h"; sourceTree = "<group>"; };
 		63485D4B259A27A900A9897F /* VideoEditorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditorModule.swift; sourceTree = "<group>"; };
 		63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditorModuleBridge.m; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5196245726B7F8EE00434846 /* Localizable.strings */,
 				13B07FAE1A68108700A75B9A /* vesdkreactnativeintegrationsample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -198,6 +201,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				5196245526B7F8EE00434846 /* Localizable.strings in Resources */,
 				8A26A81F259B69A5001CFF3C /* luts in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				8A26A820259B69A5001CFF3C /* bundleEffects in Resources */,
@@ -268,6 +272,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BNBLicenseUtils/BNBLicenseUtils.framework/BNBLicenseUtils",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaARCloudSDK/BanubaARCloudSDK.framework/BanubaARCloudSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaAudioBrowserSDK/BanubaAudioBrowserSDK.framework/BanubaAudioBrowserSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaEffectPlayer/BanubaEffectPlayer.framework/BanubaEffectPlayer",
@@ -284,6 +289,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BNBLicenseUtils.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaARCloudSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaAudioBrowserSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaEffectPlayer.framework",
@@ -346,6 +352,14 @@
 			);
 			name = LaunchScreen.xib;
 			path = vesdkreactnativeintegrationsample;
+			sourceTree = "<group>";
+		};
+		5196245726B7F8EE00434846 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5196245626B7F8EE00434846 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
