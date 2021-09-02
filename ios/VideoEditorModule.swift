@@ -13,13 +13,15 @@ import BanubaOverlayEditorSDK
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
   
+  private var videoEditorSDK: BanubaVideoEditor?
+  
   static func requiresMainQueueSetup() -> Bool {
     return true
   }
   
   @objc func openVideoEditor() {
     let config = createVideoEditorConfiguration()
-    let videoEditor = BanubaVideoEditor(
+    videoEditorSDK = BanubaVideoEditor(
       token: "Place your video editor token here",
       configuration: config,
       externalViewControllerFactory: nil
@@ -28,7 +30,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       guard let presentedVC = RCTPresentedViewController() else {
         return
       }
-      videoEditor.presentVideoEditor(from: presentedVC, animated: true, completion: nil)
+      self.videoEditorSDK?.presentVideoEditor(from: presentedVC, animated: true, completion: nil)
     }
   }
   
