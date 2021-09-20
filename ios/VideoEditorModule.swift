@@ -26,6 +26,10 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       configuration: config,
       externalViewControllerFactory: nil
     )
+    
+    // Set delegate
+    videoEditorSDK?.delegate = self
+    
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
         return
@@ -43,5 +47,19 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   // MARK: - RCTBridgeModule
   static func moduleName() -> String! {
     return "VideoEditorModule"
+  }
+}
+
+// MARK: - BanubaVideoEditorSDKDelegate
+extension VideoEditorModule: BanubaVideoEditorDelegate {
+  func videoEditorDidCancel(_ videoEditor: BanubaVideoEditor) {
+    videoEditor.dismissVideoEditor(animated: true) {
+      // remove strong reference to video editor sdk instance
+      self.videoEditorSDK = nil
+    }
+  }
+  
+  func videoEditorDone(_ videoEditor: BanubaVideoEditor) {
+    // Do export stuff here
   }
 }
