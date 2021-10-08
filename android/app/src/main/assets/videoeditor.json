@@ -5,6 +5,7 @@
     "supportsTimeEffects": true,
     "supportsVisualEffects": true,
     "supportsMusicMixer": true,
+    "supportsTextOnVideo": true,
     "supportsCoverImage": true,
     "banubaColorEffectsAssetsPath": "luts",
     "textOnVideoColorCountOnPage": 6,
@@ -25,11 +26,13 @@
   "trimmer": {
     "minSourceVideoDuration": 1000,
     "supportsMultiChoice": true,
+    "supportsRotation": true,
     "appearanceThreshold": 0
   },
   "slideshow": {
     "maxSelectedImages": 20,
-    "animate": true
+    "animate": true,
+    "animateTakenPhotos": true
   },
   "gallery": {
     "supportsMixMediaData": false,
