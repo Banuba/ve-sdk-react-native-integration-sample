@@ -3,13 +3,11 @@ package com.vesdkreactnativeintegrationsample.videoeditor.di
 import android.content.Context
 import android.net.Uri
 import androidx.core.net.toUri
-import com.banuba.sdk.cameraui.data.CameraRecordingAnimationProvider
 import com.banuba.sdk.cameraui.data.CameraTimerStateProvider
 import com.banuba.sdk.ve.effects.WatermarkProvider
 import com.banuba.sdk.ve.flow.FlowEditorModule
 import com.banuba.sdk.veui.data.ExportParamsProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.export.IntegrationAppExportParamsProvider
-import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppRecordingAnimationProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppWatermarkProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationTimerStateProvider
 import org.koin.core.definition.BeanDefinition
@@ -49,14 +47,6 @@ class VideoEditorKoinModule : FlowEditorModule() {
     override val watermarkProvider: BeanDefinition<WatermarkProvider> = factory(override = true) {
         IntegrationAppWatermarkProvider()
     }
-
-    /**
-     * Provides camera record button animation
-     * */
-    override val cameraRecordingAnimationProvider: BeanDefinition<CameraRecordingAnimationProvider> =
-        factory(override = true) {
-            IntegrationAppRecordingAnimationProvider(context = get())
-        }
 
     override val cameraTimerStateProvider: BeanDefinition<CameraTimerStateProvider> =
             factory(override = true) {

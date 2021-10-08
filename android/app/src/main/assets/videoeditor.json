@@ -5,6 +5,7 @@
     "supportsTimeEffects": true,
     "supportsVisualEffects": true,
     "supportsMusicMixer": true,
+    "supportsTextOnVideo": true,
     "supportsCoverImage": true,
     "banubaColorEffectsAssetsPath": "luts",
     "textOnVideoColorCountOnPage": 6,
