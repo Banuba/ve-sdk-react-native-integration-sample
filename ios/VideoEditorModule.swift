@@ -9,6 +9,7 @@ import React
 import BanubaVideoEditorSDK
 import BanubaMusicEditorSDK
 import BanubaOverlayEditorSDK
+import VideoEditor
 
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
@@ -50,6 +51,54 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   }
 }
 
+// MARK: - Export flow
+extension VideoEditorModule {
+  func exportVideo() {
+    let manager = FileManager.default
+    // File name
+    let firstFileURL = manager.temporaryDirectory.appendingPathComponent("tmp1.mov")
+    if manager.fileExists(atPath: firstFileURL.path) {
+      try? manager.removeItem(at: firstFileURL)
+    }
+    
+    // Video configuration
+    let exportVideoConfigurations: [ExportVideoConfiguration] = [
+      ExportVideoConfiguration(
+        fileURL: firstFileURL,
+        quality: .auto,
+        useHEVCCodecIfPossible: true,
+        watermarkConfiguration: nil
+      )
+    ]
+    
+    // Export Configuration
+    let exportConfiguration = ExportConfiguration(
+      videoConfigurations: exportVideoConfigurations,
+      isCoverEnabled: true,
+      gifSettings: nil
+    )
+    
+    // Export func
+    videoEditorSDK?.export(
+      using: exportConfiguration
+    ) { [weak self] (success, error, coverImage) in
+      // Export Callback
+      DispatchQueue.main.async {
+        if success {
+          // Result urls. You could interact with your own implementation.
+          let urls = exportVideoConfigurations.map { $0.fileURL }
+          // remove strong reference to video editor sdk instance
+          self?.videoEditorSDK = nil
+        } else {
+          // remove strong reference to video editor sdk instance
+          self?.videoEditorSDK = nil
+          print("Error: \(String(describing: error))")
+        }
+      }
+    }
+  }
+}
+
 // MARK: - BanubaVideoEditorSDKDelegate
 extension VideoEditorModule: BanubaVideoEditorDelegate {
   func videoEditorDidCancel(_ videoEditor: BanubaVideoEditor) {
@@ -60,6 +109,8 @@ extension VideoEditorModule: BanubaVideoEditorDelegate {
   }
   
   func videoEditorDone(_ videoEditor: BanubaVideoEditor) {
-    // Do export stuff here
+    videoEditor.dismissVideoEditor(animated: true) {
+      self.exportVideo()
+    }
   }
 }
