@@ -20,6 +20,9 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     return true
   }
   
+  // Result urls callback
+  var exportCallback: RCTResponseSenderBlock?
+  
   @objc func openVideoEditor() {
     let config = createVideoEditorConfiguration()
     videoEditorSDK = BanubaVideoEditor(
@@ -87,6 +90,7 @@ extension VideoEditorModule {
         if success {
           // Result urls. You could interact with your own implementation.
           let urls = exportVideoConfigurations.map { $0.fileURL }
+          self?.exportCallback?(urls)
           // remove strong reference to video editor sdk instance
           self?.videoEditorSDK = nil
         } else {

@@ -10,5 +10,6 @@
 @interface RCT_EXTERN_MODULE(VideoEditorModule, NSObject)
 
 RCT_EXTERN_METHOD(openVideoEditor)
+RCT_EXTERN_METHOD(exportCallback)
 
 @end
