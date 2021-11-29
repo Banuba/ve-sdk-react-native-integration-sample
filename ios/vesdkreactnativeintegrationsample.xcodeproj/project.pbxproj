@@ -279,13 +279,14 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaLicenseServicingSDK/BanubaLicenseServicingSDK.framework/BanubaLicenseServicingSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaMusicEditorSDK/BanubaMusicEditorSDK.framework/BanubaMusicEditorSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaOverlayEditorSDK/BanubaOverlayEditorSDK.framework/BanubaOverlayEditorSDK",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSDK/BanubaSdk.framework/BanubaSdk",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSdk/BanubaSdk.framework/BanubaSdk",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSDKServicing/BanubaSDKServicing.framework/BanubaSDKServicing",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSDKSimple/BanubaSdkSimple.framework/BanubaSdkSimple",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaSdkSimple/BanubaSdkSimple.framework/BanubaSdkSimple",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaUtilities/BanubaUtilities.framework/BanubaUtilities",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorEffectsSDK/BanubaVideoEditorEffectsSDK.framework/BanubaVideoEditorEffectsSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorGallerySDK/BanubaVideoEditorGallerySDK.framework/BanubaVideoEditorGallerySDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorSDK/BanubaVideoEditorSDK.framework/BanubaVideoEditorSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorTrimSDK/BanubaVideoEditorTrimSDK.framework/BanubaVideoEditorTrimSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoEditor/VideoEditor.framework/VideoEditor",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -304,6 +305,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorEffectsSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorGallerySDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorTrimSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoEditor.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
