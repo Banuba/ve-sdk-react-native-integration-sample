@@ -8,7 +8,7 @@ The following sample brifly demonstrates how you can integrate our SDK into your
 3. Run command **npm run android** to launch the sample on device or **cd android && ./gradlew clean && cd .. && npm run android** to clean and re-run the sample.
 
 # iOS  
-1. Install cocoapods dependencies using commands **pod init**(if needed) and **pod install** in the ios folder.
+1. Install node and cocoapods dependencies using `npm ci && cd ios && pod install`.
 1. Put [Banuba Face AR token](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/b3b66dde43750a95df8c84e35b1226c5a557d6fe/ios/VideoEditorModule.swift#L23).
 1. Run command **npm run ios** to launch the sample on device.
 
