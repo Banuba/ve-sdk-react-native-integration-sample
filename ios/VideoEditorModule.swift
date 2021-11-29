@@ -20,10 +20,12 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     return true
   }
   
-  // Result urls callback
-  var exportCallback: RCTResponseSenderBlock?
+  private var currentResolve: RCTPromiseResolveBlock?
   
-  @objc func openVideoEditor() {
+  // Export callback
+  @objc func openVideoEditor(_ resolve: @escaping RCTPromiseResolveBlock) {
+    self.currentResolve = resolve
+    
     let config = createVideoEditorConfiguration()
     videoEditorSDK = BanubaVideoEditor(
       token: "Place your video editor token here",
@@ -89,8 +91,7 @@ extension VideoEditorModule {
       DispatchQueue.main.async {
         if success {
           // Result urls. You could interact with your own implementation.
-          let urls = exportVideoConfigurations.map { $0.fileURL }
-          self?.exportCallback?(urls)
+          self.currentResolve!(["videoUri": firstFileURL.absoluteString])
           // remove strong reference to video editor sdk instance
           self?.videoEditorSDK = nil
         } else {
@@ -106,15 +107,16 @@ extension VideoEditorModule {
 // MARK: - BanubaVideoEditorSDKDelegate
 extension VideoEditorModule: BanubaVideoEditorDelegate {
   func videoEditorDidCancel(_ videoEditor: BanubaVideoEditor) {
-    videoEditor.dismissVideoEditor(animated: true) {
+    videoEditor.dismissVideoEditor(animated: true) { [weak self] in
       // remove strong reference to video editor sdk instance
-      self.videoEditorSDK = nil
+      self?.videoEditorSDK = nil
+      self?.currentResolve!(NSNull())
     }
   }
   
   func videoEditorDone(_ videoEditor: BanubaVideoEditor) {
-    videoEditor.dismissVideoEditor(animated: true) {
-      self.exportVideo()
+    videoEditor.dismissVideoEditor(animated: true) { [weak self] in
+      self?.exportVideo()
     }
   }
 }
