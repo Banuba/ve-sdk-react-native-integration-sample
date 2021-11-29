@@ -7,11 +7,11 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ReactShadowNode
 import com.facebook.react.uimanager.ViewManager
 
-class ActivityStarterReactPackage : ReactPackage {
+class VideoEditorReactPackage : ReactPackage {
 
     override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
         val modules = mutableListOf<NativeModule>()
-        modules.add(ActivityStarterModule(reactContext))
+        modules.add(VideoEditorModule(reactContext))
         return modules
     }
 
