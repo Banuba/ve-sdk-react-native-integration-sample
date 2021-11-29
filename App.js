@@ -1,6 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 const { VideoEditorModule } = NativeModules;
+
+const openEditor = (): Promise<{ videoUri: string } | null> => {
+  return VideoEditorModule.openVideoEditor();
+};
+
+export const openVideoEditor = async (): Promise<string | null> => {
+  const response = await openEditor();
+
+  if (!response) {
+    return null;
+  }
+
+  return response?.videoUri;
+};
+
 import { StyleSheet,
    Text,
     Button,
@@ -21,11 +36,8 @@ export default function App() {
         if (Platform.OS === 'android') {
           NativeModules.ActivityStarter.navigateToVideoEditor()
         } else {
-          VideoEditorModule.openVideoEditor(
-              (url) => {
-                console.log(`url ${url} returned`);
-              }
-          );
+            const videoUri = openVideoEditor();
+            console.log(videoUri)
         }
         }
       }
