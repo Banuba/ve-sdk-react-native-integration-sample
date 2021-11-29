@@ -21,7 +21,11 @@ export default function App() {
         if (Platform.OS === 'android') {
           NativeModules.ActivityStarter.navigateToVideoEditor()
         } else {
-          VideoEditorModule.openVideoEditor();
+          VideoEditorModule.openVideoEditor(
+              (url) => {
+                console.log(`url ${url} returned`);
+              }
+          );
         }
         }
       }
