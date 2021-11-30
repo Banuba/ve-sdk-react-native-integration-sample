@@ -7,6 +7,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.banuba.sdk.arcloud.di.ArCloudKoinModule;
+import com.banuba.sdk.audiobrowser.di.AudioBrowserKoinModule;
 import com.banuba.sdk.effectplayer.adapter.BanubaEffectPlayerKoinModule;
 import com.banuba.sdk.export.di.VeExportKoinModule;
 import com.banuba.sdk.gallery.di.GalleryKoinModule;
@@ -99,11 +100,13 @@ public class MainApplication extends Application implements ReactApplication {
             koinApplication.modules(
                     new VeSdkKoinModule().getModule(),
                     new VeExportKoinModule().getModule(),
-                    new VideoEditorKoinModule().getModule(),
+                    new AudioBrowserKoinModule().getModule(), // use this module only if you bought it
                     new ArCloudKoinModule().getModule(),
-                    new BanubaEffectPlayerKoinModule().getModule(),
                     new TokenStorageKoinModule().getModule(),
-                    new GalleryKoinModule().getModule());
+                    new VideoEditorKoinModule().getModule(),
+                    new GalleryKoinModule().getModule(),
+                    new BanubaEffectPlayerKoinModule().getModule()
+            );
             return null;
         });
     }

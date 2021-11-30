@@ -3,10 +3,18 @@ package com.vesdkreactnativeintegrationsample.videoeditor.di
 import android.content.Context
 import android.net.Uri
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
+import com.banuba.sdk.audiobrowser.domain.AudioBrowserMusicProvider
+import com.banuba.sdk.cameraui.data.CameraTimerActionProvider
 import com.banuba.sdk.cameraui.data.CameraTimerStateProvider
+import com.banuba.sdk.cameraui.domain.HandsFreeTimerActionProvider
+import com.banuba.sdk.core.data.TrackData
+import com.banuba.sdk.core.domain.DraftConfig
+import com.banuba.sdk.core.ui.ContentFeatureProvider
 import com.banuba.sdk.export.data.ExportParamsProvider
 import com.banuba.sdk.ve.effects.WatermarkProvider
 import com.banuba.sdk.ve.flow.FlowEditorModule
+import com.banuba.sdk.veui.domain.CoverProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.export.IntegrationAppExportParamsProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppWatermarkProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationTimerStateProvider
@@ -44,6 +52,11 @@ class VideoEditorKoinModule : FlowEditorModule() {
             ?.build() ?: throw NullPointerException("exportDir should't be null!")
     }
 
+    override val musicTrackProvider: BeanDefinition<ContentFeatureProvider<TrackData, Fragment>> =
+        single(named("musicTrackProvider"), override = true) {
+            AudioBrowserMusicProvider()
+        }
+
     val watermarkProvider: BeanDefinition<WatermarkProvider> = factory(override = true) {
         IntegrationAppWatermarkProvider()
     }
@@ -52,4 +65,17 @@ class VideoEditorKoinModule : FlowEditorModule() {
             factory(override = true) {
                 IntegrationTimerStateProvider()
             }
+
+    override val cameraTimerActionProvider: BeanDefinition<CameraTimerActionProvider> =
+        single(override = true) {
+            HandsFreeTimerActionProvider()
+        }
+
+    override val coverProvider: BeanDefinition<CoverProvider> = single(override = true) {
+        CoverProvider.EXTENDED
+    }
+
+    override val draftConfig: BeanDefinition<DraftConfig> = factory(override = true) {
+        DraftConfig.ENABLED_ASK_TO_SAVE
+    }
 }
