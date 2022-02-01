@@ -287,6 +287,7 @@
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorGallerySDK/BanubaVideoEditorGallerySDK.framework/BanubaVideoEditorGallerySDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorSDK/BanubaVideoEditorSDK.framework/BanubaVideoEditorSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/BanubaVideoEditorTrimSDK/BanubaVideoEditorTrimSDK.framework/BanubaVideoEditorTrimSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VEPlaybackSDK/VEPlaybackSDK.framework/VEPlaybackSDK",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/VideoEditor/VideoEditor.framework/VideoEditor",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -306,6 +307,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorGallerySDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BanubaVideoEditorTrimSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VEPlaybackSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoEditor.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

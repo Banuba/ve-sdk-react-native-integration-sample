@@ -42,7 +42,15 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       guard let presentedVC = RCTPresentedViewController() else {
         return
       }
-      self.videoEditorSDK?.presentVideoEditor(from: presentedVC, animated: true, completion: nil)
+      let config = VideoEditorLaunchConfig(
+        entryPoint: .camera,
+        hostController: presentedVC,
+        animated: true
+      )
+      self.videoEditorSDK?.presentVideoEditor(
+        withLaunchConfiguration: config,
+        completion: nil
+      )
     }
   }
   
