@@ -12,22 +12,23 @@ target 'vesdkreactnativeintegrationsample' do
 
   use_react_native!(:path => config["reactNativePath"])
   
-  pod 'BanubaVideoEditorSDK', '1.20.0'
-  pod 'BanubaMusicEditorSDK', '1.20.0'
-  pod 'BanubaOverlayEditorSDK', '1.20.0'
-  pod 'BanubaSDKSimple', '1.20.0'
-  pod 'BanubaSDKServicing', '1.20.0'
-  pod 'VideoEditor', '1.20.0'
-  pod 'BanubaUtilities', '1.20.0'
-  pod 'BanubaVideoEditorEffectsSDK', '1.20.0'
-  pod 'BanubaLicenseServicingSDK', '1.20.0'
-  pod 'BNBLicenseUtils', '1.20.0'
-  pod 'BanubaARCloudSDK', '1.20.0' #optional
-  pod 'BanubaAudioBrowserSDK', '1.20.0' #optional
-  pod 'BanubaVideoEditorGallerySDK', '1.20.0' #optional
-  pod 'BanubaEffectPlayer', '1.20.0' #optional
-  pod 'BanubaSDK', '1.20.0' #optional
-  pod 'BanubaVideoEditorTrimSDK', '1.20.0'
+  pod 'BanubaVideoEditorSDK', '1.21.0'
+  pod 'BanubaMusicEditorSDK', '1.21.0'
+  pod 'BanubaOverlayEditorSDK', '1.21.0'
+  pod 'BanubaSDKSimple', '1.21.0'
+  pod 'BanubaSDKServicing', '1.21.0'
+  pod 'VideoEditor', '1.21.0'
+  pod 'BanubaUtilities', '1.21.0'
+  pod 'BanubaVideoEditorEffectsSDK', '1.21.0'
+  pod 'BanubaLicenseServicingSDK', '1.21.0'
+  pod 'BNBLicenseUtils', '1.21.0'
+  pod 'BanubaARCloudSDK', '1.21.0' #optional
+  pod 'BanubaAudioBrowserSDK', '1.21.0' #optional
+  pod 'BanubaVideoEditorGallerySDK', '1.21.0' #optional
+  pod 'BanubaEffectPlayer', '1.21.0' #optional
+  pod 'BanubaSDK', '1.21.0' #optional
+  pod 'VEPlaybackSDK', '1.21.0'
+  pod 'BanubaVideoEditorTrimSDK', '1.21.0'
 
   # Uncomment the code below to enable Flipper.
   #
