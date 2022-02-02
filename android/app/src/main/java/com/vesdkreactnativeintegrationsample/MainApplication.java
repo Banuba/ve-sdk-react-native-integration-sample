@@ -11,6 +11,7 @@ import com.banuba.sdk.audiobrowser.di.AudioBrowserKoinModule;
 import com.banuba.sdk.effectplayer.adapter.BanubaEffectPlayerKoinModule;
 import com.banuba.sdk.export.di.VeExportKoinModule;
 import com.banuba.sdk.gallery.di.GalleryKoinModule;
+import com.banuba.sdk.playback.di.VePlaybackSdkKoinModule;
 import com.banuba.sdk.token.storage.di.TokenStorageKoinModule;
 import com.banuba.sdk.ve.di.VeSdkKoinModule;
 import com.facebook.react.PackageList;
@@ -103,6 +104,7 @@ public class MainApplication extends Application implements ReactApplication {
                     new AudioBrowserKoinModule().getModule(), // use this module only if you bought it
                     new ArCloudKoinModule().getModule(),
                     new TokenStorageKoinModule().getModule(),
+                    new VePlaybackSdkKoinModule().getModule(),
                     new VideoEditorKoinModule().getModule(),
                     new GalleryKoinModule().getModule(),
                     new BanubaEffectPlayerKoinModule().getModule()

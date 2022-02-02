@@ -16,5 +16,6 @@
   "switchFacingOnDoubleTap": true,
   "startFrontFacingFirst": true,
   "useFixedFPS30": true,
-  "minChunkVideoDuration": 1000
+  "minChunkVideoDuration": 1000,
+  "supportsAudioRateEqualsVideoSpeed": true
 }
