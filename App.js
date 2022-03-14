@@ -34,7 +34,7 @@ export default function App() {
       <Text>Sample integration of Banuba Video Editor</Text>
       <Button 
       title="Open Video Editor"
-      onPress={() => {
+      onPress={async () => {
         if (Platform.OS === 'android') {
           getAndroidExportResult().then(videoUri => {
             console.log(videoUri)
@@ -42,7 +42,7 @@ export default function App() {
             console.log(e)
           })
         } else {
-            const videoUri = openVideoEditor();
+            const videoUri = await openVideoEditor();
             console.log(videoUri)
         }
       }
