@@ -14,6 +14,7 @@ import com.banuba.sdk.gallery.di.GalleryKoinModule;
 import com.banuba.sdk.playback.di.VePlaybackSdkKoinModule;
 import com.banuba.sdk.token.storage.di.TokenStorageKoinModule;
 import com.banuba.sdk.ve.di.VeSdkKoinModule;
+import com.banuba.sdk.ve.flow.di.VeFlowKoinModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -21,7 +22,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.vesdkreactnativeintegrationsample.generated.BasePackageList;
-import com.vesdkreactnativeintegrationsample.videoeditor.di.VideoEditorKoinModule;
+import com.vesdkreactnativeintegrationsample.videoeditor.di.IntegrationKoinModule;
 
 import org.koin.core.context.GlobalContext;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
@@ -105,7 +106,8 @@ public class MainApplication extends Application implements ReactApplication {
                     new ArCloudKoinModule().getModule(),
                     new TokenStorageKoinModule().getModule(),
                     new VePlaybackSdkKoinModule().getModule(),
-                    new VideoEditorKoinModule().getModule(),
+                    new VeFlowKoinModule().getModule(),
+                    new IntegrationKoinModule().getModule(),
                     new GalleryKoinModule().getModule(),
                     new BanubaEffectPlayerKoinModule().getModule()
             );
