@@ -3,6 +3,7 @@ require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 source 'https://github.com/Banuba/specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '11.0'
 
@@ -19,7 +20,7 @@ target 'vesdkreactnativeintegrationsample' do
   pod 'BanubaSDKServicing', '1.21.0'
   pod 'VideoEditor', '1.21.0'
   pod 'BanubaUtilities', '1.21.0'
-  pod 'BanubaVideoEditorEffectsSDK', '1.21.0'
+  pod 'VEEffectsSDK', '1.21.0'
   pod 'BanubaLicenseServicingSDK', '1.21.0'
   pod 'BNBLicenseUtils', '1.21.0'
   pod 'BanubaARCloudSDK', '1.21.0' #optional

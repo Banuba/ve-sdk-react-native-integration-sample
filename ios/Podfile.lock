@@ -9,7 +9,6 @@ PODS:
   - BanubaSDKServicing (1.21.0)
   - BanubaSDKSimple (1.21.0)
   - BanubaUtilities (1.21.0)
-  - BanubaVideoEditorEffectsSDK (1.21.0)
   - BanubaVideoEditorGallerySDK (1.21.0)
   - BanubaVideoEditorSDK (1.21.0)
   - BanubaVideoEditorTrimSDK (1.21.0)
@@ -322,6 +321,7 @@ PODS:
     - UMFontInterface
   - UMSensorsInterface (5.4.0)
   - UMTaskManagerInterface (5.4.0)
+  - VEEffectsSDK (1.21.0)
   - VEPlaybackSDK (1.21.0)
   - VideoEditor (1.21.0)
   - Yoga (1.14.0)
@@ -337,7 +337,6 @@ DEPENDENCIES:
   - BanubaSDKServicing (= 1.21.0)
   - BanubaSDKSimple (= 1.21.0)
   - BanubaUtilities (= 1.21.0)
-  - BanubaVideoEditorEffectsSDK (= 1.21.0)
   - BanubaVideoEditorGallerySDK (= 1.21.0)
   - BanubaVideoEditorSDK (= 1.21.0)
   - BanubaVideoEditorTrimSDK (= 1.21.0)
@@ -399,6 +398,7 @@ DEPENDENCIES:
   - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
   - UMSensorsInterface (from `../node_modules/unimodules-sensors-interface/ios`)
   - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
+  - VEEffectsSDK (= 1.21.0)
   - VEPlaybackSDK (= 1.21.0)
   - VideoEditor (= 1.21.0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -415,11 +415,11 @@ SPEC REPOS:
     - BanubaSDKServicing
     - BanubaSDKSimple
     - BanubaUtilities
-    - BanubaVideoEditorEffectsSDK
     - BanubaVideoEditorGallerySDK
     - BanubaVideoEditorSDK
     - BanubaVideoEditorTrimSDK
     - BNBLicenseUtils
+    - VEEffectsSDK
     - VEPlaybackSDK
     - VideoEditor
   https://github.com/CocoaPods/Specs.git:
@@ -550,7 +550,6 @@ SPEC CHECKSUMS:
   BanubaSDKServicing: ff456b7fbbc28b364874442a48505c961b0b7096
   BanubaSDKSimple: be31d01633c6f2fffda627775253e1f21febace1
   BanubaUtilities: e72b875a0c8d6d48bc0db09a4dc3ec2091649e7e
-  BanubaVideoEditorEffectsSDK: bd07fb4b59cbb532de25bee1a0cb17cc27148beb
   BanubaVideoEditorGallerySDK: c1c238d7e182ec47fcd520e14a89ac5304fb77c1
   BanubaVideoEditorSDK: d820acabe3c4e5d4f0c0f0eb80c5e5347ab99fec
   BanubaVideoEditorTrimSDK: 0a642103f60f1d13c14e44f33c47d67f82ebc727
@@ -611,10 +610,11 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: 172def7895b2cb44a7dd021336e316d5fa8ea958
   UMSensorsInterface: 4df9ec662134de5614ae61acc249d6912db87ca5
   UMTaskManagerInterface: 4c60b43eaf3cb05a164bc9113258a171c18b7bf7
+  VEEffectsSDK: caf77c9a4f07dcc6e223b30647e8c58d208844fa
   VEPlaybackSDK: 27068d927e416359b1b626e100f478ffe04fb834
   VideoEditor: 34cc5b64f63750e71deb09090c34c2ae5170faa5
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: b803a5af3df79a7bd04a03518255ff1c9caa12f5
+PODFILE CHECKSUM: cbf881513096734f1899ac3c5cac06e7db08b6a3
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
