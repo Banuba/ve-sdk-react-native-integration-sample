@@ -19,6 +19,7 @@
 		8A26A820259B69A5001CFF3C /* bundleEffects in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81E259B69A5001CFF3C /* bundleEffects */; };
 		B209E0399CE2D65BE0565A8A /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE63EE6C334C20D8BFA1A84 /* libPods-vesdkreactnativeintegrationsample.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		CECB70E9B38AD29555D565BB /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BBF632DB54C329BC72B9DEB /* libPods-vesdkreactnativeintegrationsample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vesdkreactnativeintegrationsample-Bridging-Header.h"; sourceTree = "<group>"; };
 		63485D4B259A27A900A9897F /* VideoEditorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditorModule.swift; sourceTree = "<group>"; };
 		63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoEditorModuleBridge.m; sourceTree = "<group>"; };
+		6BBF632DB54C329BC72B9DEB /* libPods-vesdkreactnativeintegrationsample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vesdkreactnativeintegrationsample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A26A81D259B69A5001CFF3C /* luts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = luts; path = vesdkreactnativeintegrationsample/luts; sourceTree = "<group>"; };
 		8A26A81E259B69A5001CFF3C /* bundleEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bundleEffects; path = vesdkreactnativeintegrationsample/bundleEffects; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = vesdkreactnativeintegrationsample/SplashScreen.storyboard; sourceTree = "<group>"; };
