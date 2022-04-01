@@ -10,6 +10,7 @@ import BanubaVideoEditorSDK
 import BanubaMusicEditorSDK
 import BanubaOverlayEditorSDK
 import VideoEditor
+import VEExportSDK
 
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
