@@ -1,6 +1,6 @@
 package com.vesdkreactnativeintegrationsample.videoeditor.impl
 import android.graphics.Bitmap
-import com.banuba.sdk.ve.effects.WatermarkProvider
+import com.banuba.sdk.ve.effects.watermark.WatermarkProvider
 
 class IntegrationAppWatermarkProvider : WatermarkProvider {
 
