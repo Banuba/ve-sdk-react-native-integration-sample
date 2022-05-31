@@ -20,7 +20,7 @@ You can configure all data passed from VideoEditorModule depends on your require
 
 # iOS  
 1. Install node and cocoapods dependencies using `npm ci && cd ios && pod install`.
-1. Put [Banuba Face AR token](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/b3b66dde43750a95df8c84e35b1226c5a557d6fe/ios/VideoEditorModule.swift#L23).
+1. Put [Banuba Face AR token](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L34).
 1. Run command **npm run ios** to launch the sample on device.
 
 # Want to know more about the SDK?  
