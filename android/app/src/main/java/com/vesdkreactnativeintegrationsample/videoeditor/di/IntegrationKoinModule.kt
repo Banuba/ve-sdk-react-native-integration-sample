@@ -12,13 +12,16 @@ import com.banuba.sdk.core.data.OrderProvider
 import com.banuba.sdk.core.data.TrackData
 import com.banuba.sdk.core.domain.AspectRatioProvider
 import com.banuba.sdk.core.domain.DraftConfig
+import com.banuba.sdk.core.HardwareClassProvider
 import com.banuba.sdk.core.ui.ContentFeatureProvider
+import com.banuba.sdk.core.VideoResolution
 import com.banuba.sdk.export.data.ExportFlowManager
 import com.banuba.sdk.export.data.ExportParamsProvider
 import com.banuba.sdk.export.data.ForegroundExportFlowManager
-import com.banuba.sdk.ve.effects.WatermarkProvider
+import com.banuba.sdk.ve.effects.watermark.WatermarkProvider
 import com.banuba.sdk.veui.data.EditorConfig
 import com.banuba.sdk.veui.domain.CoverProvider
+import com.vesdkreactnativeintegrationsample.videoeditor.export.ExportVideoResolutionProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.export.IntegrationAppExportParamsProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppColorFilterOrderProvider
 import com.vesdkreactnativeintegrationsample.videoeditor.impl.IntegrationAppMaskOrderProvider
@@ -119,6 +122,13 @@ class IntegrationKoinModule {
             ObjectEditorConfig(
                 objectEffectDefaultDuration = 2000
             )
+        }
+
+        single<ExportVideoResolutionProvider> {
+            val hardwareClass = get<HardwareClassProvider>().provideHardwareClass()
+            object : ExportVideoResolutionProvider {
+                override var videoResolution: VideoResolution = hardwareClass.optimalResolution
+            }
         }
 
     }
