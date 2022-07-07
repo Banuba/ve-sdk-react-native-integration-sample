@@ -43,9 +43,16 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       guard let presentedVC = RCTPresentedViewController() else {
         return
       }
+      var musicTrackPreset: MediaTrack?
+      
+      // uncomment this if you want to set the music track
+      
+      //musicTrackPreset = self.setupMusicTrackPresent()
+      
       let config = VideoEditorLaunchConfig(
         entryPoint: .camera,
         hostController: presentedVC,
+        musicTrack: musicTrackPreset,
         animated: true
       )
       self.videoEditorSDK?.presentVideoEditor(
@@ -59,6 +66,26 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     let config = VideoEditorConfig()
     // Do customization here
     return config
+  }
+  // MARK: - Create music track
+  private func setupMusicTrackPresent() -> MediaTrack {
+    let documentsUrl = Bundle.main.bundleURL.appendingPathComponent("Music/long")
+    let directoryContents = try? FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
+    let wavFile = directoryContents!.first(where: { $0.pathExtension == "wav" })!
+    let urlAsset = AVURLAsset(url: wavFile)
+    let urlAssetTimeRange = CMTimeRange(start: .zero, duration: urlAsset.duration)
+    let mediaTrackTimeRange = MediaTrackTimeRange(
+      startTime: .zero, playingTimeRange: urlAssetTimeRange
+    )
+    let musicTrackPreset = MediaTrack(
+      id: 1231,
+      url: wavFile,
+      timeRange: mediaTrackTimeRange,
+      isEditable: true,
+      title: "test"
+    )
+    
+    return musicTrackPreset
   }
   
   // MARK: - RCTBridgeModule
