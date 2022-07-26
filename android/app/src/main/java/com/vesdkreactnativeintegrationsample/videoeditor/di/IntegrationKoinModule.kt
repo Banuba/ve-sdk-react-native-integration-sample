@@ -39,7 +39,7 @@ import org.koin.dsl.module
 class IntegrationKoinModule {
 
     val module = module {
-        single<ExportFlowManager>(override = true) {
+        single<ExportFlowManager> {
             ForegroundExportFlowManager(
                 exportDataProvider = get(),
                 sessionParamsProvider = get(),
@@ -56,7 +56,7 @@ class IntegrationKoinModule {
         /**
          * Provides params for export
          * */
-        factory<ExportParamsProvider>(override = true) {
+        factory<ExportParamsProvider> {
             IntegrationAppExportParamsProvider(
                 exportDir = get(named("exportDir")),
                 sizeProvider = get(),
@@ -64,15 +64,15 @@ class IntegrationKoinModule {
             )
         }
 
-        factory<WatermarkProvider>(override = true) {
+        factory<WatermarkProvider> {
             IntegrationAppWatermarkProvider()
         }
 
-        factory<CameraTimerStateProvider>(override = true) {
+        factory<CameraTimerStateProvider> {
             IntegrationTimerStateProvider()
         }
 
-        single<ArEffectsRepositoryProvider>(override = true, createdAtStart = true) {
+        single<ArEffectsRepositoryProvider>(createdAtStart = true) {
             ArEffectsRepositoryProvider(
                 arEffectsRepository = get(named("backendArEffectsRepository")),
                 ioDispatcher = get(named("ioDispatcher"))
@@ -80,45 +80,44 @@ class IntegrationKoinModule {
         }
 
         single<ContentFeatureProvider<TrackData, Fragment>>(
-            named("musicTrackProvider"),
-            override = true
+            named("musicTrackProvider")
         ) {
             AudioBrowserMusicProvider()
         }
 
-        single<CoverProvider>(override = true) {
+        single<CoverProvider> {
             CoverProvider.EXTENDED
         }
 
-        single<CameraTimerActionProvider>(override = true) {
+        single<CameraTimerActionProvider> {
             HandsFreeTimerActionProvider()
         }
 
-        single<OrderProvider>(named("colorFilterOrderProvider"), override = true) {
+        single<OrderProvider>(named("colorFilterOrderProvider")) {
             IntegrationAppColorFilterOrderProvider()
         }
 
-        single<OrderProvider>(named("maskOrderProvider"), override = true) {
+        single<OrderProvider>(named("maskOrderProvider")) {
             IntegrationAppMaskOrderProvider()
         }
 
-        factory<DraftConfig>(override = true) {
+        factory<DraftConfig> {
             DraftConfig.ENABLED_ASK_TO_SAVE
         }
 
-        single<AspectRatioProvider>(override = true) {
+        single<AspectRatioProvider> {
             object : AspectRatioProvider {
                 override fun provide(): AspectRatio = AspectRatio(9.0 / 16)
             }
         }
 
-        single<EditorConfig>(override = true) {
+        single<EditorConfig> {
             EditorConfig(
                 minTotalVideoDurationMs = 1500
             )
         }
 
-        single<ObjectEditorConfig>(override = true) {
+        single<ObjectEditorConfig> {
             ObjectEditorConfig(
                 objectEffectDefaultDuration = 2000
             )
