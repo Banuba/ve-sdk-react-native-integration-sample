@@ -1,7 +1,7 @@
 package com.vesdkreactnativeintegrationsample;
 
 import static org.koin.android.ext.koin.KoinExtKt.androidContext;
-import static org.koin.core.context.GlobalContextExtKt.startKoin;
+import static org.koin.core.context.DefaultContextExtKt.startKoin;
 
 import android.app.Application;
 import android.content.Context;
@@ -15,6 +15,7 @@ import com.banuba.sdk.playback.di.VePlaybackSdkKoinModule;
 import com.banuba.sdk.token.storage.di.TokenStorageKoinModule;
 import com.banuba.sdk.ve.di.VeSdkKoinModule;
 import com.banuba.sdk.ve.flow.di.VeFlowKoinModule;
+import com.banuba.sdk.veui.di.VeUiSdkKoinModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -24,7 +25,6 @@ import com.facebook.soloader.SoLoader;
 import com.vesdkreactnativeintegrationsample.generated.BasePackageList;
 import com.vesdkreactnativeintegrationsample.videoeditor.di.IntegrationKoinModule;
 
-import org.koin.core.context.GlobalContext;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
 
@@ -97,7 +97,7 @@ public class MainApplication extends Application implements ReactApplication {
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
         // Init Banuba VE SDK
-        startKoin(GlobalContext.INSTANCE, koinApplication -> {
+        startKoin(koinApplication -> {
             androidContext(koinApplication, this);
             koinApplication.modules(
                     new VeSdkKoinModule().getModule(),
@@ -106,11 +106,12 @@ public class MainApplication extends Application implements ReactApplication {
                     new ArCloudKoinModule().getModule(),
                     new TokenStorageKoinModule().getModule(),
                     new VePlaybackSdkKoinModule().getModule(),
+                    new VeUiSdkKoinModule().getModule(),
                     new VeFlowKoinModule().getModule(),
                     new IntegrationKoinModule().getModule(),
                     new GalleryKoinModule().getModule(),
                     new BanubaEffectPlayerKoinModule().getModule()
-            );
+            ).allowOverride(true);
             return null;
         });
     }
