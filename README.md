@@ -29,20 +29,20 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 3. Run ```npx install-expo-modules``` to get the latest expo modules.
 
 ### Step 2 - Run sample Android app
-1. Put Banuba token in [resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/res/values/strings.xml#5).
+1. Put Banuba token in [resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/res/values/strings.xml#L6).
 2. Make sure variable **ANDROID_SDK_ROOT** is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
 3. Run command ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE i.e. Intellij, VC, etc.
 4. [Follow further instructions](https://github.com/Banuba/ve-sdk-android-integration-sample) to integrate VE SDK in your app using native Android development.
 
 __Configure export__
 
-Override ```fileName()``` method in [IntegrationAppExportParamsProvider](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/videoeditor/export/IntegrationAppExportParamsProvider.kt#L39)
-to set custom exported video file name.
+Set custom export video file name ```ExportParams.Builder.fileName()``` method.<br>
+Please see [full example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/videoeditor/export/IntegrationAppExportParamsProvider.kt#L39).
 
-VE SDK is launched within ```VideoCreationActivity```. Exported video is returned from the activity into ```onActivityResult``` callback
+VE SDK is launched within ```VideoCreationActivity```. Exported video is returned from the Activity into ```onActivityResult``` callback
 in [VideoEditorModule](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#L25). 
 
-[Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and JS.
+[Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and JS.<br>
 Please see [an example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L39)
 how to get exported video uri as a String value on JS side.
 
