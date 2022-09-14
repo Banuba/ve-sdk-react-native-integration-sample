@@ -23,16 +23,17 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 
 :exclamation: The token **IS REQUIRED** to run sample and an integration in your app.</br>
 
-### Step 1 - Prepare project
+### Prepare project
 1. Complete React Native [Environment setup](https://reactnative.dev/docs/environment-setup)
 2. Install [Expo CLI](https://docs.expo.dev/get-started/installation/)
-3. Run ```npx install-expo-modules``` to get the latest expo modules.
+3. Complete [Running On Device](https://reactnative.dev/docs/running-on-device)
+4. Run ```npx install-expo-modules``` in terminal to get the latest expo modules.
 
-### Step 2 - Run sample Android app
-1. Put Banuba token in [resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/res/values/strings.xml#L6).
-2. Make sure variable **ANDROID_SDK_ROOT** is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
-3. Run command ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE i.e. Intellij, VC, etc.
-4. [Follow further instructions](https://github.com/Banuba/ve-sdk-android-integration-sample) to integrate VE SDK in your app using native Android development.
+### Android
+1. Make sure variable **ANDROID_SDK_ROOT** is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
+2. Set Banuba token in the sample app [resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/res/values/strings.xml#L6).
+3. Run ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE i.e. Intellij, VC, etc.
+4. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate the SDK into your React Native CLI project.
 
 __Configure export__
 
@@ -48,7 +49,7 @@ how to get exported video uri as a String value on JS side.
 
 You can configure all data passed from ```VideoEditorModule``` to JS depends on your requirements.
 
-# Step 3 - Run sample iOS app  
+### iOS  
 1. Install Cocoa Pods dependencies using ```pod install``` in terminal from **ios** directory.
 2. Put Banuba token in [VideoEditorModule initializer](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L34).
 3. Run command ```npm run ios``` in terminal to launch the sample on device or launch the app in IDE i.e. XCode, Intellij, VC, etc..

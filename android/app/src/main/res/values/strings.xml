@@ -3,8 +3,8 @@
 
     <!-- VIDEO EDITOR TOKEN -->
     <!-- Please contact Banuba https://www.banuba.com/video-editor-sdk to get this token -->
-    <string name="banuba_token">PUT VIDEO EDITOR TOKEN HERE</string>
+    <string name="banuba_token">SET BANUBA VE SDK TOKEN</string>
 
     <!-- AUDIO BROWSER MUBERT -->
-    <string name="mubert_api_key">PUT YOUR PERSONAL MUBERT KEY</string>
+    <string name="mubert_api_key">SET MUBERT API KEY</string>
 </resources>

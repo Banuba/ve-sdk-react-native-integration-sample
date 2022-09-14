@@ -23,7 +23,6 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.vesdkreactnativeintegrationsample.generated.BasePackageList;
-import com.vesdkreactnativeintegrationsample.videoeditor.di.IntegrationKoinModule;
 
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
@@ -96,24 +95,8 @@ public class MainApplication extends Application implements ReactApplication {
 
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
-        // Init Banuba VE SDK
-        startKoin(koinApplication -> {
-            androidContext(koinApplication, this);
-            koinApplication.modules(
-                    new VeSdkKoinModule().getModule(),
-                    new VeExportKoinModule().getModule(),
-                    new AudioBrowserKoinModule().getModule(), // use this module only if you bought it
-                    new ArCloudKoinModule().getModule(),
-                    new TokenStorageKoinModule().getModule(),
-                    new VePlaybackSdkKoinModule().getModule(),
-                    new VeUiSdkKoinModule().getModule(),
-                    new VeFlowKoinModule().getModule(),
-                    new IntegrationKoinModule().getModule(),
-                    new GalleryKoinModule().getModule(),
-                    new BanubaEffectPlayerKoinModule().getModule()
-            ).allowOverride(true);
-            return null;
-        });
+        // Initialize Banuba VE UI SDK
+        new BanubaVideoEditorUISDK().initialize(this);
     }
 
     /**
