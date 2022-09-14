@@ -33,21 +33,7 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 1. Make sure variable **ANDROID_SDK_ROOT** is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
 2. Set Banuba token in the sample app [resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/res/values/strings.xml#L6).
 3. Run ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE i.e. Intellij, VC, etc.
-4. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate the SDK into your React Native CLI project.
-
-__Configure export__
-
-Set custom export video file name ```ExportParams.Builder.fileName()``` method.<br>
-Please see [full example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/videoeditor/export/IntegrationAppExportParamsProvider.kt#L39).
-
-VE SDK is launched within ```VideoCreationActivity```. Exported video is returned from the Activity into ```onActivityResult``` callback
-in [VideoEditorModule](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#L25). 
-
-[Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and JS.<br>
-Please see [an example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L39)
-how to get exported video uri as a String value on JS side.
-
-You can configure all data passed from ```VideoEditorModule``` to JS depends on your requirements.
+4. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate the SDK into your React Native Expo project.
 
 ### iOS  
 1. Install Cocoa Pods dependencies using ```pod install``` in terminal from **ios** directory.

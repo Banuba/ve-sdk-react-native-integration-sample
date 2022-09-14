@@ -103,5 +103,5 @@ The following steps help to complete basic integration into your React Native Ex
 
 ## What is next?
 
-We have covered a basic process of integration VE UI SDK into your React Native expo project.
+We have covered a basic process of integration VE UI SDK into your React Native expo project.</br>
 More integration details and customizations you will find in [VE UI SDK Android Integration Sample](https://github.com/Banuba/ve-sdk-android-integration-sample).
