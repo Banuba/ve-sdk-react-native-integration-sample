@@ -31,7 +31,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     
     let config = createVideoEditorConfiguration()
     videoEditorSDK = BanubaVideoEditor(
-      token: "Place your video editor token here",
+      token: /*@START_MENU_TOKEN@*/"SET BANUBA VIDEO EDITOR TOKEN"/*@END_MENU_TOKEN@*/,
       configuration: config,
       externalViewControllerFactory: nil
     )
