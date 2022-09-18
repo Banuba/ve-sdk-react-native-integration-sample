@@ -1,21 +1,10 @@
 package com.vesdkreactnativeintegrationsample;
 
-import static org.koin.android.ext.koin.KoinExtKt.androidContext;
 import static org.koin.core.context.DefaultContextExtKt.startKoin;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.banuba.sdk.arcloud.di.ArCloudKoinModule;
-import com.banuba.sdk.audiobrowser.di.AudioBrowserKoinModule;
-import com.banuba.sdk.effectplayer.adapter.BanubaEffectPlayerKoinModule;
-import com.banuba.sdk.export.di.VeExportKoinModule;
-import com.banuba.sdk.gallery.di.GalleryKoinModule;
-import com.banuba.sdk.playback.di.VePlaybackSdkKoinModule;
-import com.banuba.sdk.token.storage.di.TokenStorageKoinModule;
-import com.banuba.sdk.ve.di.VeSdkKoinModule;
-import com.banuba.sdk.ve.flow.di.VeFlowKoinModule;
-import com.banuba.sdk.veui.di.VeUiSdkKoinModule;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
@@ -96,7 +85,7 @@ public class MainApplication extends Application implements ReactApplication {
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
         // Initialize Banuba VE UI SDK
-        new BanubaVideoEditorUISDK().initialize(this);
+        new BanubaVideoEditorSDK().initialize(this);
     }
 
     /**

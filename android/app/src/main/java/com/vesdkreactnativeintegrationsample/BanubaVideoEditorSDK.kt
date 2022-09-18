@@ -53,7 +53,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-class BanubaVideoEditorUISDK {
+class BanubaVideoEditorSDK {
 
     fun initialize(application: Application) {
         startKoin {

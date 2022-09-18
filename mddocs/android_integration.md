@@ -60,11 +60,11 @@ The following steps help to complete basic integration into your React Native Ex
 [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/build.gradle#L227)</br><br>
 
 3. __Add SDK Initializer class__ </br>
-   Add [BanubaVideoEditorUISDK.kt](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/BanubaVideoEditorUISDK.kt) file.</br>
-   This class helps to initialize and customize VE UI SDK.</br><br>
+   Add [BanubaVideoEditorSDK.kt](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/BanubaVideoEditorSDK.kt) file.</br>
+   This class helps to initialize and customize Video Editor SDK.</br><br>
 
-4. __Initialize the SDK in your application__ </br>
-   Use ```new BanubaVideoEditorUISDK().initialize()``` in your ```Application.onCreate()``` method to initialize the SDK.</br>
+4. __Initialize Video Editor SDK in your application__ </br>
+   Use ```new BanubaVideoEditorSDK().initialize()``` in your ```Application.onCreate()``` method to initialize Video Editor SDK.</br>
    [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/MainApplication.java#L99)</br><br>
 
 5. __Add Video Editor React Package__ </br>
@@ -77,7 +77,7 @@ The following steps help to complete basic integration into your React Native Ex
    [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/AndroidManifest.xml#L62)</br><br>
 
 7. __Add assets and resources__</br>
-    1. [bnb-resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/assets/bnb-resources) to use hardcoded Banuba AR and Lut effects.
+    1. [bnb-resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/assets/bnb-resources) to use built-in Banuba AR and Lut effects.
        Using Banuba AR ```assets/bnb-resources/effects``` requires [Face AR product](https://docs.banuba.com/face-ar-sdk-v1). Please contact Banuba Sales managers to get more AR effects.<br></br>
 
     2. [color](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/color),
@@ -91,22 +91,43 @@ The following steps help to complete basic integration into your React Native Ex
 
     3. [values](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/values) to use colors and themes. Theme ```VideoCreationTheme``` and its styles use resources in **drawable** and **color** directories.<br></br>
 
-8. __Start the SDK__ </br>
-   Use ```startAndroidVideoEditor()``` method defined in ```App.js``` to start Video Editor from React Native on iOS.</br>
-   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/App.js/App.js#L31)</br><br>
-   Technically it invokes ```VideoCreationActivity.startFromCamera(...)``` method to start Video Editor UI SDK from Camera screen.</br>
+8. __Start Video Editor SDK__ </br>
+   Use ```startAndroidVideoEditor()``` method defined in ```App.js``` to start Video Editor from React Native on Android.</br>
+   ```
+   async function startAndroidVideoEditor() {
+         return await VideoEditorModule.openVideoEditor();
+   }
+       
+   <Button
+            title = "Open Video Editor"
+            onPress={async () => {
+                if (Platform.OS === 'android') {
+                    startAndroidVideoEditor().then(videoUri => {
+                        console.log('Banuba Android Video Editor export video completed successfully. Video uri = ' + videoUri)
+                    }).catch(e => {
+                        console.log('Banuba Android Video Editor export video failed = ' + e)
+                    })
+                } else {
+                   ...
+                }
+              }
+            }
+        />
+   ```
+   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L31)</br><br>
+   Technically it invokes ```VideoCreationActivity.startFromCamera(...)``` method to start Video Editor SDK from Camera screen.</br>
    [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#L78)</br><br>
 
-   Since Video Editor UI SDK on Android is launched within ```VideoCreationActivity``` exported video is returned from the Activity into ```onActivityResult``` callback
+   Since Video Editor SDK on Android is launched within ```VideoCreationActivity``` exported video is returned from the Activity into ```onActivityResult``` callback
    in [VideoEditorModule](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#25).</br><br>
 
    [Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and JS.<br>
    Export returns ```videoUri``` path as a String value were exported video stored on JS side.  
-   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/App.js/App.js#L31)<br></br>
+   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L31)<br></br>
 
 9. __Configure export__</br>
    You can set custom export video file name using ```ExportParams.Builder.fileName()``` method.<br>
-   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/BanubaVideoEditorUISDK.kt#L232).<br></br>
+   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/BanubaVideoEditorSDK.kt#L232).<br></br>
 
 ## What is next?
 
