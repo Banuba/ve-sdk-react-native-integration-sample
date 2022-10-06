@@ -76,7 +76,16 @@ The following steps help to complete basic integration into your React Native Ex
    Add ```VideoCreationActivity``` in your AndroidManifest.xml file. The Activity is used to bring together a number of screens in a certain flow.</br>
    [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/AndroidManifest.xml#L62)</br><br>
 
-7. __Add assets and resources__</br>
+7. __Add Network settings__ </br>
+   Add permissions into [AndroidManifest.xml](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/AndroidManifest.xml)
+     ```xml
+       <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+       <uses-permission android:name="android.permission.INTERNET" />
+     ```
+   and use ```android:usesCleartextTraffic="true"``` to allow network traffic for downloading effects from AR Cloud and stickers from [Giphy](https://giphy.com/).</br>
+   Please set up correctly [network security config](https://developer.android.com/training/articles/security-config) and use of ```android:usesCleartextTraffic``` based on this [doc](https://developer.android.com/guide/topics/manifest/application-element).<br></br>
+
+8__Add assets and resources__</br>
     1. [bnb-resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/assets/bnb-resources) to use built-in Banuba AR and Lut effects.
        Using Banuba AR ```assets/bnb-resources/effects``` requires [Face AR product](https://docs.banuba.com/face-ar-sdk-v1). Please contact Banuba Sales managers to get more AR effects.<br></br>
 

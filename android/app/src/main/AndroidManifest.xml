@@ -30,7 +30,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.IntegrationApp">
+        android:theme="@style/Theme.IntegrationApp"
+        android:usesCleartextTraffic="true">
         <meta-data
             android:name="expo.modules.updates.EXPO_UPDATE_URL"
             android:value="YOUR-APP-URL-HERE" />
