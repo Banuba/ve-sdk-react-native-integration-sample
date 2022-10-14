@@ -10,7 +10,7 @@ This sample demonstrates how to run Video Editor SDK with [React Native](https:/
 ## Dependencies
 |              | Version | 
 |--------------|:-------:|
-| npm          | 8.18.0  |
+| node         | 8.18.0  |
 | react native | ~0.63.4 | 
 | expo         | ~40.0.0 |
 | Android      |  6.0+   |
