@@ -29,7 +29,7 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 1. Complete React Native [Environment setup](https://reactnative.dev/docs/environment-setup)
 2. Install [Expo CLI](https://docs.expo.dev/get-started/installation/)
 3. Complete [Running On Device](https://reactnative.dev/docs/running-on-device)
-4. Run ```npx install-expo-modules``` in terminal to get the latest expo modules.
+4. Run ```yarn install``` to install required project dependencies.
 
 ### Android
 1. Make sure variable ```ANDROID_SDK_ROOT``` is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
@@ -38,7 +38,7 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 4. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate Video Editor SDK into your React Native Expo project.
 
 ### iOS  
-1. Install Cocoa Pods dependencies using ```pod install``` in terminal from **ios** directory.
+1. Install Cocoa Pods dependencies. Run ```cd ios``` and ```pod install``` in terminal.
 2. Set Banuba token in [VideoEditorModule initializer](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L34).
 3. Run command ```npm run ios``` in terminal to launch the sample on device or launch the app in IDE i.e. XCode, Intellij, VC, etc..
 4. Follow [iOS Integration Guide](mddocs/ios_integration.md) to integrate Video Editor SDK into your React Native Expo project.
