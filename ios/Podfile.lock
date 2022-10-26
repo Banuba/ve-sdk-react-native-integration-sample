@@ -1,17 +1,17 @@
 PODS:
-  - BanubaARCloudSDK (1.24.1)
-  - BanubaAudioBrowserSDK (1.24.2)
-  - BanubaEffectPlayer (1.24.1)
-  - BanubaLicenseServicingSDK (1.24.1)
-  - BanubaMusicEditorSDK (1.24.1)
-  - BanubaOverlayEditorSDK (1.24.1)
-  - BanubaSDK (1.24.1)
-  - BanubaSDKServicing (1.24.1)
-  - BanubaSDKSimple (1.24.1)
-  - BanubaUtilities (1.24.2)
-  - BanubaVideoEditorGallerySDK (1.24.1)
-  - BanubaVideoEditorSDK (1.24.1)
-  - BanubaVideoEditorTrimSDK (1.24.1)
+  - BanubaARCloudSDK (1.25.0)
+  - BanubaAudioBrowserSDK (1.25.0)
+  - BanubaEffectPlayer (1.25.0)
+  - BanubaLicenseServicingSDK (1.25.0)
+  - BanubaMusicEditorSDK (1.25.0)
+  - BanubaOverlayEditorSDK (1.25.0)
+  - BanubaSDK (1.25.0)
+  - BanubaSDKServicing (1.25.0)
+  - BanubaSDKSimple (1.25.0)
+  - BanubaUtilities (1.25.0)
+  - BanubaVideoEditorGallerySDK (1.25.0)
+  - BanubaVideoEditorSDK (1.25.0)
+  - BanubaVideoEditorTrimSDK (1.25.0)
   - BNBLicenseUtils (1.24.1)
   - boost-for-react-native (1.63.0)
   - DoubleConversion (1.1.6)
@@ -321,26 +321,26 @@ PODS:
     - UMFontInterface
   - UMSensorsInterface (5.4.0)
   - UMTaskManagerInterface (5.4.0)
-  - VEEffectsSDK (1.24.1)
-  - VEExportSDK (1.24.1)
-  - VEPlaybackSDK (1.24.1)
-  - VideoEditor (1.24.1)
+  - VEEffectsSDK (1.25.0)
+  - VEExportSDK (1.25.0)
+  - VEPlaybackSDK (1.25.0)
+  - VideoEditor (1.25.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
-  - BanubaARCloudSDK (= 1.24.1)
-  - BanubaAudioBrowserSDK (= 1.24.2)
-  - BanubaEffectPlayer (= 1.24.1)
-  - BanubaLicenseServicingSDK (= 1.24.1)
-  - BanubaMusicEditorSDK (= 1.24.1)
-  - BanubaOverlayEditorSDK (= 1.24.1)
-  - BanubaSDK (= 1.24.1)
-  - BanubaSDKServicing (= 1.24.1)
-  - BanubaSDKSimple (= 1.24.1)
-  - BanubaUtilities (= 1.24.2)
-  - BanubaVideoEditorGallerySDK (= 1.24.1)
-  - BanubaVideoEditorSDK (= 1.24.1)
-  - BanubaVideoEditorTrimSDK (= 1.24.1)
+  - BanubaARCloudSDK (= 1.25.0)
+  - BanubaAudioBrowserSDK (= 1.25.0)
+  - BanubaEffectPlayer (= 1.25.0)
+  - BanubaLicenseServicingSDK (= 1.25.0)
+  - BanubaMusicEditorSDK (= 1.25.0)
+  - BanubaOverlayEditorSDK (= 1.25.0)
+  - BanubaSDK (= 1.25.0)
+  - BanubaSDKServicing (= 1.25.0)
+  - BanubaSDKSimple (= 1.25.0)
+  - BanubaUtilities (= 1.25.0)
+  - BanubaVideoEditorGallerySDK (= 1.25.0)
+  - BanubaVideoEditorSDK (= 1.25.0)
+  - BanubaVideoEditorTrimSDK (= 1.25.0)
   - BNBLicenseUtils (= 1.24.1)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
@@ -399,10 +399,10 @@ DEPENDENCIES:
   - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
   - UMSensorsInterface (from `../node_modules/unimodules-sensors-interface/ios`)
   - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
-  - VEEffectsSDK (= 1.24.1)
-  - VEExportSDK (= 1.24.1)
-  - VEPlaybackSDK (= 1.24.1)
-  - VideoEditor (= 1.24.1)
+  - VEEffectsSDK (= 1.25.0)
+  - VEExportSDK (= 1.25.0)
+  - VEPlaybackSDK (= 1.25.0)
+  - VideoEditor (= 1.25.0)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -543,19 +543,19 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BanubaARCloudSDK: 4b672f7f64f5d9367b9d5bf184add54aa4c74537
-  BanubaAudioBrowserSDK: 57c944886ec511ef56ceb62988a2aee283284e56
-  BanubaEffectPlayer: 8d63e1b5e7fdefd28a9c8576ddcac5ee42c04025
-  BanubaLicenseServicingSDK: dc0f99491b772ed5d722da97d0473373b86ded6f
-  BanubaMusicEditorSDK: d5ce6eca2cb7031fbd2cffe1d07be804c340442a
-  BanubaOverlayEditorSDK: 3a0930d95d5ad1b99d3e314e6ad4ebfa8c36492c
-  BanubaSDK: cd2957b09241c72e3747ab8338d4d012a0fe14fa
-  BanubaSDKServicing: c9de5c97c1b8ad266c7fb57d1a6ffd4ebd52a115
-  BanubaSDKSimple: e312ca0b84d1e7553a3e8af33a574d48e4c24724
-  BanubaUtilities: c8a57868609ae1f9c9902a6bd33366e680d33a5d
-  BanubaVideoEditorGallerySDK: d9a4b9373ce9a011845b8c45c142e180148bfd6e
-  BanubaVideoEditorSDK: 3c00a05ad19480074031b12f091bddefb0d55d21
-  BanubaVideoEditorTrimSDK: 5fccbde0d4bbb88482d3ad835b57772bfcb14969
+  BanubaARCloudSDK: a66d360d60f27c18fd4ff2f57062c5588d39d026
+  BanubaAudioBrowserSDK: 965964f0f318304faec22c710d2d5f566d83d96f
+  BanubaEffectPlayer: 79fd3d6707cc632213026465df74defdbe097dc5
+  BanubaLicenseServicingSDK: 505c033c00cf1181fadab40288e123301a63fd18
+  BanubaMusicEditorSDK: 28a8d32d15122772d35ba4fc0c826bf0040365b6
+  BanubaOverlayEditorSDK: 7d7edb0fb075f03d73c2a55923e8df8fab69c328
+  BanubaSDK: 8d3c7a9613c302455d94141bfe838a203ac918a1
+  BanubaSDKServicing: eb93276a9ae66684ebcb34c773398a1b036eb0f6
+  BanubaSDKSimple: b68ff49dc2432aee05427f8c1378c4b05e29fa5e
+  BanubaUtilities: c992e8f5fd0ecf1057f981aa4f9eeceaaaff8efd
+  BanubaVideoEditorGallerySDK: dc16684214fffbdf3c5103f22d4cdca8e0d304dc
+  BanubaVideoEditorSDK: 38c6fc17d70fc06e0034501afe8f06d1581a595b
+  BanubaVideoEditorTrimSDK: 17c94ec6053fd56f1d86cd0341c1974ed8f3e8c3
   BNBLicenseUtils: 64827c2b4c6a0d97aa3dc7e3d508057b02354898
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
@@ -613,12 +613,12 @@ SPEC CHECKSUMS:
   UMReactNativeAdapter: 172def7895b2cb44a7dd021336e316d5fa8ea958
   UMSensorsInterface: 4df9ec662134de5614ae61acc249d6912db87ca5
   UMTaskManagerInterface: 4c60b43eaf3cb05a164bc9113258a171c18b7bf7
-  VEEffectsSDK: 55473673265e3f50062b0988e357abbf39a08a60
-  VEExportSDK: 5dff7cbf92aaf9e848ca341ea7dccf9eca257c68
-  VEPlaybackSDK: ec6dd489c028c05b738327c8841d25ba3675883e
-  VideoEditor: f0380d5ba43be94a9099d520830fbc0ccd83e16d
+  VEEffectsSDK: a86e5a34b240a2c95393c07e0233204e478344bd
+  VEExportSDK: c361b6ad4aac0bb87807ab5d228fdaebc48c6316
+  VEPlaybackSDK: 83a730fb93ff18834dbad87a6bc604aa0f0b4845
+  VideoEditor: fe23f3b5a2f82a103d28a7e14bb56109e85117aa
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 490085cad64c84e7d33f2d37f290ef40ae3ab9f3
+PODFILE CHECKSUM: a65029ede9439ca5398380d08f07399dc41b1d5a
 
 COCOAPODS: 1.11.3
