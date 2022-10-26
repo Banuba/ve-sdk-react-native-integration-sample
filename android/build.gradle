@@ -5,8 +5,8 @@ buildscript {
         ext.kotlin_version = '1.6.20'
         buildToolsVersion = "30.0.3"
         minSdkVersion = 23
-        compileSdkVersion = 31
-        targetSdkVersion = 31
+        compileSdkVersion = 33
+        targetSdkVersion = 33
     }
     repositories {
         google()
