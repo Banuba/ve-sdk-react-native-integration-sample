@@ -247,12 +247,16 @@ private class SampleExportParamsProvider(
 // Override list of timer options
 private class SampleTimerStateProvider : CameraTimerStateProvider {
 
+    // Sets 3, 10 seconds timer for recording on Camera
     override val timerStates = listOf(
         TimerEntry(
             durationMs = 0
         ),
         TimerEntry(
             durationMs = 3000
+        ),
+        TimerEntry(
+            durationMs = 10000
         )
     )
 }
