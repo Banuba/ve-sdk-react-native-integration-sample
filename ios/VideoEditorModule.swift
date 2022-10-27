@@ -29,7 +29,10 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentResolve = resolve
     self.currentReject = reject
     
-    let config = createVideoEditorConfiguration()
+    var config = createVideoEditorConfiguration()
+    // Show mute audio button on Camera screen
+    config.featureConfiguration.isMuteCameraAudioEnabled = true
+    
     videoEditorSDK = BanubaVideoEditor(
       token: /*@START_MENU_TOKEN@*/"SET BANUBA VIDEO EDITOR TOKEN"/*@END_MENU_TOKEN@*/,
       configuration: config,
