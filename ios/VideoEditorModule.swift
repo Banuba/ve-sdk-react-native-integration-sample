@@ -12,6 +12,8 @@ import BanubaOverlayEditorSDK
 import VideoEditor
 import VEExportSDK
 
+typealias TimerOptionConfiguration = TimerConfiguration.TimerOptionConfiguration
+
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
   
@@ -29,7 +31,30 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentResolve = resolve
     self.currentReject = reject
     
-    let config = createVideoEditorConfiguration()
+    var config = createVideoEditorConfiguration()
+    // Show mute audio button on Camera screen
+    config.featureConfiguration.isMuteCameraAudioEnabled = true
+    
+    // Sets 3, 10 seconds timer for recording on Camera
+    config.recorderConfiguration.timerConfiguration.options = [
+       TimerOptionConfiguration(
+        button: ImageButtonConfiguration(
+         imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
+        ),
+        startingTimerSeconds: 3,
+        stoppingTimerSeconds: .zero,
+        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "3")
+       ),
+       TimerOptionConfiguration(
+        button: ImageButtonConfiguration(
+         imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
+        ),
+        startingTimerSeconds: 10,
+        stoppingTimerSeconds: .zero,
+        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "10")
+       )
+      ]
+    
     videoEditorSDK = BanubaVideoEditor(
       token: /*@START_MENU_TOKEN@*/"SET BANUBA VIDEO EDITOR TOKEN"/*@END_MENU_TOKEN@*/,
       configuration: config,
