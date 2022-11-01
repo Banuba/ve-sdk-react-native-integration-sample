@@ -112,9 +112,9 @@ The following steps help to complete basic integration into your React Native Ex
             onPress={async () => {
                 if (Platform.OS === 'android') {
                     startAndroidVideoEditor().then(videoUri => {
-                        console.log('Banuba Android Video Editor export video completed successfully. Video uri = ' + videoUri)
+                        // Handle received exported video
                     }).catch(e => {
-                        console.log('Banuba Android Video Editor export video failed = ' + e)
+                        // Handle error 
                     })
                 } else {
                    ...
@@ -123,7 +123,7 @@ The following steps help to complete basic integration into your React Native Ex
             }
         />
    ```
-   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L31)</br><br>
+   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L40)</br><br>
    Technically it invokes ```VideoCreationActivity.startFromCamera(...)``` method to start Video Editor SDK from Camera screen.</br>
    [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#L78)</br><br>
 
@@ -132,7 +132,7 @@ The following steps help to complete basic integration into your React Native Ex
 
    [Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and JS.<br>
    Export returns ```videoUri``` path as a String value were exported video stored on JS side.  
-   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L31)<br></br>
+   [See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L40)<br></br>
 
 9. __Configure export__</br>
    You can set custom export video file name using ```ExportParams.Builder.fileName()``` method.<br>
