@@ -40,7 +40,8 @@ To get access to your trial, please, get in touch with us by [filling a form](ht
 ### iOS  
 1. Install Cocoa Pods dependencies. Run ```cd ios``` and ```pod install``` in terminal.
 2. Set Banuba token in [VideoEditorModule initializer](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L114).
-3. Run command ```npm run ios``` in terminal to launch the sample on device or launch the app in IDE i.e. XCode, Intellij, VC, etc..
-4. Follow [iOS Integration Guide](mddocs/ios_integration.md) to integrate Video Editor SDK into your React Native Expo project.
+3. Click on ```ios/vesdkreactnativeintegrationsample.xcworkspace```. Open **Signing & Capabilities** tab in Target settings and select your Development Team.
+4. Run command ```npm run ios``` in terminal to launch the sample on simulator ```iPhone 11``` or choose device or specific simulator in XCode to launch the sample.
+5. Follow [iOS Integration Guide](mddocs/ios_integration.md) to integrate Video Editor SDK into your React Native Expo project.
 
 
