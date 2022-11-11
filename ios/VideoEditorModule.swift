@@ -181,23 +181,24 @@ extension VideoEditorModule {
     
     // Export func
     videoEditorSDK?.export(
-      using: exportConfiguration
-    ) { [weak self] (success, error, coverImage) in
+      using: exportConfiguration,
+      exportProgress: nil,
+      completion: { success, error, exportCoverImages in
       // Export Callback
       DispatchQueue.main.async {
         if success {
           // Result urls. You could interact with your own implementation.
-          self?.currentResolve!(["videoUri": firstFileURL.absoluteString])
+          self.currentResolve!(["videoUri": firstFileURL.absoluteString])
           // remove strong reference to video editor sdk instance
-          self?.videoEditorSDK = nil
+          self.videoEditorSDK = nil
         } else {
-          self?.currentReject!("", error?.errorMessage, nil)
+          self.currentReject!("", error?.errorMessage, nil)
           // remove strong reference to video editor sdk instance
-          self?.videoEditorSDK = nil
+          self.videoEditorSDK = nil
           print("Error: \(String(describing: error))")
         }
       }
-    }
+    })
   }
 }
 
