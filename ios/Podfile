@@ -12,7 +12,7 @@ target 'vesdkreactnativeintegrationsample' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
-  sdk_version = '1.25.0'
+  sdk_version = '1.25.1'
 
   pod 'BanubaAudioBrowserSDK', sdk_version #optional
   pod 'BanubaUtilities', sdk_version
@@ -20,7 +20,7 @@ target 'vesdkreactnativeintegrationsample' do
   pod 'BanubaVideoEditorSDK', sdk_version
   pod 'BanubaMusicEditorSDK', sdk_version
   pod 'BanubaOverlayEditorSDK', sdk_version
-  pod 'BanubaEffectPlayer', sdk_version #optional
+  pod 'BanubaEffectPlayer', '1.25.0' #optional
   pod 'BanubaSDK', sdk_version #optional
   pod 'BanubaSDKSimple', sdk_version
   pod 'BanubaSDKServicing', sdk_version
