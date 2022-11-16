@@ -7,11 +7,13 @@ import android.net.Uri
 import android.util.Log
 import androidx.core.net.toUri
 import com.banuba.sdk.cameraui.data.PipConfig
+import com.banuba.sdk.core.data.TrackData
 import com.banuba.sdk.export.data.ExportResult
 import com.banuba.sdk.export.utils.EXTRA_EXPORTED_SUCCESS
 import com.banuba.sdk.ve.flow.VideoCreationActivity
 import com.facebook.react.bridge.*
 import java.io.*
+import java.util.*
 
 class VideoEditorModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext) {
@@ -22,7 +24,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
         private const val E_VIDEO_EDITOR_CANCELLED = "E_VIDEO_EDITOR_CANCELLED"
         private const val E_EXPORTED_VIDEO_NOT_FOUND = "E_EXPORTED_VIDEO_NOT_FOUND"
 
-        private const val TAG = "VideoEditorModule"
+        const val TAG = "VideoEditorModule"
     }
 
     private var exportResultPromise: Promise? = null
@@ -113,7 +115,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
             val sampleVideoFileName = "sample_pip_video.mp4"
             val filesStorage: File = hostActivity.applicationContext.filesDir
             val assets: AssetManager = hostActivity.applicationContext.assets
-            val sampleVideoFile = prepareVideoFile(assets, filesStorage, sampleVideoFileName)
+            val sampleVideoFile = prepareFile(assets, filesStorage, sampleVideoFileName)
 
             this.exportResultPromise = inputPromise
             val intent = VideoCreationActivity.startFromCamera(
@@ -134,11 +136,78 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
     }
 
     /**
+     * Applies selected audio on custom Audio Browser in Video Editor SDK.
+     *
+     * This implementation demonstrates how to play audio stored in Android assets in Video Editor SDK.
+     *
+     * Since audio browsing and downloading logic can be implemented using React Native on JS side
+     * you can pass specific audio params in this method to build TrackData
+     * and use it in "AudioBrowserActivity.applyAudioTrack".
+     */
+    @ReactMethod
+    fun applyAudioTrack(inputPromise: Promise) {
+        val hostActivity = currentActivity
+
+        // Check if host Activity is a your specific Android Activity responsible for
+        // passing audio to Video Editor SDK i.e. AudioBrowserActivity.
+        if (hostActivity is AudioBrowserActivity) {
+            // Sample audio file used to demonstrate how to pass and play audio file
+            // in Video Editor SDK
+            val sampleAudioFileName = "sample_audio.mp3"
+            val filesStorage: File = hostActivity.applicationContext.filesDir
+            val assets: AssetManager = hostActivity.applicationContext.assets
+
+            val audioTrack: TrackData? = try {
+                // Video Editor SDK can play ONLY audio file stored on device.
+                // Make sure that you store audio file on a device before trying to play it.
+                val sampleAudioFile = prepareFile(assets, filesStorage, sampleAudioFileName)
+
+                // TrackData is required in Video Editor SDK for playing audio.
+                TrackData(
+                    UUID.randomUUID(),
+                    "Set title",
+                    Uri.fromFile(sampleAudioFile),
+                    "Set artist"
+                )
+            } catch (e: IOException) {
+                Log.w(TAG, "Cannot prepare sample audio file", e)
+                // You can pass null as TrackData to cancel playing last used audio in Video Editor SDK
+                null
+            }
+
+            Log.d(TAG, "Apply audio track = $audioTrack")
+            hostActivity.applyAudioTrack(audioTrack)
+        }
+    }
+
+    @ReactMethod
+    fun discardAudioTrack(inputPromise: Promise) {
+        val hostActivity = currentActivity
+        if (hostActivity is AudioBrowserActivity) {
+            hostActivity.discardAudioTrack()
+            inputPromise.resolve(null)
+        } else {
+            inputPromise.reject(IllegalStateException("Invalid host Activity"))
+        }
+    }
+
+    @ReactMethod
+    fun closeAudioBrowser(inputPromise: Promise) {
+        val hostActivity = currentActivity
+        if (hostActivity is AudioBrowserActivity) {
+            hostActivity.close()
+            inputPromise.resolve(null)
+        } else {
+            inputPromise.reject(IllegalStateException("Invalid host Activity"))
+        }
+    }
+
+    /**
      * Utils methods used to prepare sample video to open Video Editor SDK in PIP.
      * NOT REQUIRED IN YOUR APP.
      */
     @Throws(IOException::class)
-    private fun prepareVideoFile(
+    private fun prepareFile(
         assets: AssetManager,
         filesStorage: File,
         audioFileName: String
