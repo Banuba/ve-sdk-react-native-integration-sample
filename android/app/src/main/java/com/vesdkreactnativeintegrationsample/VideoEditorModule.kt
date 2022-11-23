@@ -14,6 +14,7 @@ import com.banuba.sdk.ve.flow.VideoCreationActivity
 import com.facebook.react.bridge.*
 import java.io.*
 import java.util.*
+import androidx.core.content.FileProvider
 
 class VideoEditorModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext) {
@@ -44,12 +45,20 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         )
                         val exportedVideos = exportResult?.videoList ?: emptyList()
                         val resultUri = exportedVideos.firstOrNull()?.sourceUri
-                        resultUri?.let {
-                            exportResultPromise?.resolve(it.toString())
-                        } ?: exportResultPromise?.reject(
-                            E_EXPORTED_VIDEO_NOT_FOUND,
-                            "Exported video is null"
-                        )
+
+                        if (resultUri == null) {
+                            exportResultPromise?.reject(
+                                E_EXPORTED_VIDEO_NOT_FOUND,
+                                "Exported video is null"
+                            )
+                        } else {
+                            exportResultPromise?.resolve(resultUri.toString())
+                            /*
+                                NOT REQUIRED FOR INTEGRATION
+                                Added for playing exported video file.
+                            */
+                            activity?.let { demoPlayExportedVideo(it, resultUri) }
+                        }
                     }
                     requestCode == Activity.RESULT_CANCELED -> {
                         exportResultPromise?.reject(
@@ -245,5 +254,25 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
             bytes = inStream.read(buffer)
         }
         return size
+    }
+
+    /*
+    NOT REQUIRED FOR INTEGRATION
+    Added for playing exported video file.
+    */
+    private fun demoPlayExportedVideo(
+        activity: Activity,
+        videoUri: Uri
+    ) {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            val uri = FileProvider.getUriForFile(
+                activity.applicationContext,
+                "${activity.packageName}.provider",
+                File(videoUri.encodedPath)
+            )
+            setDataAndType(uri, "video/mp4")
+        }
+        activity.startActivity(intent)
     }
 }

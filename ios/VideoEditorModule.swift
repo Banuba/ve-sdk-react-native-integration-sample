@@ -150,6 +150,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   static func moduleName() -> String! {
     return "VideoEditorModule"
   }
+  
+  /*
+   NOT REQUIRED FOR INTEGRATION
+   Added for playing exported video file.
+   */
+  func demoPlayExportedVideo(videoURL: URL) {
+    
+    guard let controller = RCTPresentedViewController() else {
+      return
+    }
+    
+    let player = AVPlayer(url: videoURL)
+    let vc = AVPlayerViewController()
+    vc.player = player
+    
+    controller.present(vc, animated: true) {
+      vc.player?.play()
+    }
+  }
 }
 
 // MARK: - Export flow
@@ -191,6 +210,12 @@ extension VideoEditorModule {
           self.currentResolve!(["videoUri": firstFileURL.absoluteString])
           // remove strong reference to video editor sdk instance
           self.videoEditorSDK = nil
+          
+          /*
+           NOT REQUIRED FOR INTEGRATION
+           Added for playing exported video file.
+           */
+          self.demoPlayExportedVideo(videoURL: firstFileURL)
         } else {
           self.currentReject!("", error?.errorMessage, nil)
           // remove strong reference to video editor sdk instance

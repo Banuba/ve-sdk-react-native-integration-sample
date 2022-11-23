@@ -1,0 +1,9 @@
+<!--
+NOT REQUIRED FOR INTEGRATION
+Added for playing exported video file.
+-->
+<paths>
+    <external-path
+            name="external_files"
+            path="."/>
+</paths>
