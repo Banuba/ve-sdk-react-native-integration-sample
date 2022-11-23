@@ -1,11 +1,9 @@
 # Banuba Video Editor SDK - React Native Expo-CLI integration sample.
 [Banuba Video Editor SDK](https://www.banuba.com/video-editor-sdk) allows you to quickly add short video functionality and possibly AR filters and effects into your mobile app.
 <br></br>
-:exclamation: <ins>Support for React Native plugin is under development at the moment and scheduled for __end Q4__. Please, reach out to [support team](https://www.banuba.com/faq/kb-tickets/new) to help you with your React Native Expo project.<ins>
+This sample demonstrates how to run Video Editor SDK with [React Native](https://reactnative.dev/) and [Expo-CLI](https://docs.expo.dev/workflow/expo-cli/).  
 
-<ins>Keep in mind that main part of integration and customization should be implemented in **android**, **ios** directories using Native Android and iOS development.<ins>
-
-This sample demonstrates how to run Video Editor SDK with [React Native](https://reactnative.dev/) and [Expo-CLI](https://docs.expo.dev/workflow/expo-cli/).
+<ins>The main part of integration and customization should be implemented in **android**, **ios** directories using Native Android and iOS development.<ins>
 
 ## Dependencies
 |              | Version | 
