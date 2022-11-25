@@ -11,11 +11,18 @@ import BanubaMusicEditorSDK
 import BanubaOverlayEditorSDK
 import VideoEditor
 import VEExportSDK
+import BanubaAudioBrowserSDK
 
 typealias TimerOptionConfiguration = TimerConfiguration.TimerOptionConfiguration
 
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
+  
+  /*
+   true - uses custom audio browser implementation in this sample.
+   false - to keep default implementation.
+   */
+  private let useCustomAudioBrowser = true
   
   private var videoEditorSDK: BanubaVideoEditor?
   
@@ -30,7 +37,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentResolve = resolve
     self.currentReject = reject
     
-    initVideoEditor()
+    initVideoEditor(provideCustomViewFactory())
     
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
@@ -59,7 +66,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentResolve = resolve
     self.currentReject = reject
     
-    initVideoEditor()
+    initVideoEditor(provideCustomViewFactory())
     
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
@@ -85,7 +92,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     }
   }
   
-  private func initVideoEditor() {
+  private func initVideoEditor(_ externalViewControllerFactory: CustomViewFactory?) {
     var config = createVideoEditorConfiguration()
     // Show mute audio button on Camera screen
     config.featureConfiguration.isMuteCameraAudioEnabled = true
@@ -111,9 +118,9 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     ]
     
     videoEditorSDK = BanubaVideoEditor(
-      token: /*@START_MENU_TOKEN@*/"SET BANUBA VIDEO EDITOR TOKEN"/*@END_MENU_TOKEN@*/,
+      token: "DWMLegVdDLNMBKlqhyzUKzRKfEC8pkAjGbiOTzWJzleeskuPuRAuPGvUFLGBAPM/+NZcC1DlKbMHRHu6CQ7TavIWz8zBa+uTKtYrZ6DG2ipeyq4vakC1iC3pygTQhLHnXAihK5FfiYgW0FfCGjsQUwD43wFcdP1fhML/j5fRpl41YGohRkf/MRuFdhaPROFvS7hjdZRrsYHOcdroyGiHNE4VLBOsArDpRAab3TuLr135W6ctyJr/d4BG5skarSSy2Hw4r70djL2Ev+9y7tn1/uI1q1pGkH5C//Drpf1Wgx1QLj796bV7ePsAvD+53uomFBHQQaXxtXwRybHeIDHQIuYTiNeKw1RWcn9Mmz6ziyI8Ig5LhyvkiQEbweU2VhxtTMsf+0jj3m2r/YHCJVBHfbBlsfOxB8WuCwZGsq9KZ8M7g1IAnz+ukPPXekh0Bs+OYUzW1PptBtH0L7QrmUVhhIT7vFUgqI6H2GAVWr1jsRzxkFxnUWDRbWl6yppH4BJnGihZEJZq51mzI7HZzxKkJruCSwJnfDwMZsdRDS++BFnKKOaF+krAkQyHoQHR33x5LZVcgEa71S7kS+vdG3gGl091FfZeQumQTA5qe5MRtoKgGzVbj5ZqbexF/SegNkYRJRjM7LAyYizKw9Ef0GIupLKig98xh0FVfaw4hfUYovMtNkQjaU1hEUZ1b33oLWL0QejeCZyi6fdGDK9Pd6xNNLZjK6OxPMEvphxAcPV3MU4rsZe8YdzWZTh4mlt91FF4HN0mXr82ok3fQGTOhdzTOHwnj9hJpgeRrremHKcH2bEMjcmPniaYg9qUDyWeickAHsW9EcwVNIWifEvvPZA5qzOB/zRR9xEsBFF3CpZ1sQ4QEgkbf796gziwjZNt921uPlPtPhxKmexKCono7kU5R0tj3LNKtE7EHgjxExxa0xZgcNQKPIEtPWVHvufXeVH4zVAPpMip86QQt/nEmgJrGWQqzFAlHsil6+GuwGAoi+9YlM3e2rN3ZEC4qdGt6pc+fFdoSjeLchAlazvIJLVjNeMl8sFep9EjqQsHpIZzrdsN3KGQkRgXZvQYPww9WruyeeEI2/z1qEO+hc2sR2dsMpcnsHZDjCfPnnhBYFt9nvQJQ3PSpHo3gSo66xcvaU2FEO1vNyoXQ7qE59SMjlqOQxU3AOH5mR9HvhjqnKs3yQdI9AsA/3EWqvauqyQnY82eqYuKc6YMy3Nn2Iq0jMXvtMFZb4zJxB/Xgp/2BvBz4KTlWGAObE8nOBUKEbvrymlWW+439+1mipZ9C/phDViEW6FKh+2yEK/z",
       configuration: config,
-      externalViewControllerFactory: nil
+      externalViewControllerFactory: externalViewControllerFactory
     )
     
     // Set delegate
@@ -144,6 +151,21 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     )
     
     return musicTrackPreset
+  }
+  
+  // Custom View Factory is used to provide you custom UI/UX experience in Video Editor SDK
+  // i.e. custom audio browser
+  func provideCustomViewFactory() -> CustomViewFactory? {
+    let factory: CustomViewFactory?
+    
+    if (useCustomAudioBrowser) {
+      factory = CustomViewFactory()
+    } else {
+      BanubaAudioBrowser.setMubertPat("SET MUBERT API KEY")
+      factory = nil
+    }
+    
+    return factory
   }
 
   // MARK: - RCTBridgeModule

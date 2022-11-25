@@ -21,6 +21,8 @@
 		B209E0399CE2D65BE0565A8A /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE63EE6C334C20D8BFA1A84 /* libPods-vesdkreactnativeintegrationsample.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		C26BCE8E2912ECBF0084E274 /* sample_pip_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */; };
+		C2D9D978292E999F00988C03 /* CustomViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9D977292E999F00988C03 /* CustomViewFactory.swift */; };
+		C2D9D97A292EA1AF00988C03 /* AudioBrowserModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D9D979292EA1AF00988C03 /* AudioBrowserModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = vesdkreactnativeintegrationsample/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_pip_video.mp4; path = ../android/app/src/main/assets/sample_pip_video.mp4; sourceTree = "<group>"; };
+		C2D9D977292E999F00988C03 /* CustomViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewFactory.swift; sourceTree = "<group>"; };
+		C2D9D979292EA1AF00988C03 /* AudioBrowserModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBrowserModule.swift; sourceTree = "<group>"; };
 		EB62DC275C3658D1915DA7B9 /* Pods-vesdkreactnativeintegrationsample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.release.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -78,6 +82,8 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */,
+				C2D9D977292E999F00988C03 /* CustomViewFactory.swift */,
+				C2D9D979292EA1AF00988C03 /* AudioBrowserModule.swift */,
 			);
 			name = vesdkreactnativeintegrationsample;
 			sourceTree = "<group>";
@@ -352,6 +358,8 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */,
 				63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */,
+				C2D9D97A292EA1AF00988C03 /* AudioBrowserModule.swift in Sources */,
+				C2D9D978292E999F00988C03 /* CustomViewFactory.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

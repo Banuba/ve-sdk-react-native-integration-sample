@@ -8,3 +8,7 @@ RCT_EXTERN_METHOD(openVideoEditor: (RCTPromiseResolveBlock)resolve rejecter:(RCT
 RCT_EXTERN_METHOD(openVideoEditorPIP: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 
 @end
+
+@interface RCT_EXTERN_MODULE(AudioBrowserModule, NSObject)
+
+@end
