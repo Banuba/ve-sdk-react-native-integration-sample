@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		5111FDD328772B73004C3BBB /* Music in Resources */ = {isa = PBXBuildFile; fileRef = 5111FDD228772B72004C3BBB /* Music */; };
 		5196245526B7F8EE00434846 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5196245726B7F8EE00434846 /* Localizable.strings */; };
@@ -20,17 +18,15 @@
 		8A26A820259B69A5001CFF3C /* bundleEffects in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81E259B69A5001CFF3C /* bundleEffects */; };
 		B209E0399CE2D65BE0565A8A /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE63EE6C334C20D8BFA1A84 /* libPods-vesdkreactnativeintegrationsample.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		C26872D6293B99D9001CEF11 /* ApplDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26872D5293B99D9001CEF11 /* ApplDelegate.swift */; };
 		C26BCE8E2912ECBF0084E274 /* sample_pip_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* vesdkreactnativeintegrationsample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vesdkreactnativeintegrationsample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = vesdkreactnativeintegrationsample/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = vesdkreactnativeintegrationsample/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = vesdkreactnativeintegrationsample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = vesdkreactnativeintegrationsample/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = vesdkreactnativeintegrationsample/main.m; sourceTree = "<group>"; };
 		1CA0EB8181D15F33F116AFEC /* Pods-vesdkreactnativeintegrationsample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.debug.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.debug.xcconfig"; sourceTree = "<group>"; };
 		2EE63EE6C334C20D8BFA1A84 /* libPods-vesdkreactnativeintegrationsample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-vesdkreactnativeintegrationsample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5111FDD228772B72004C3BBB /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Music; sourceTree = "<group>"; };
@@ -42,6 +38,7 @@
 		8A26A81E259B69A5001CFF3C /* bundleEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bundleEffects; path = vesdkreactnativeintegrationsample/bundleEffects; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = vesdkreactnativeintegrationsample/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C26872D5293B99D9001CEF11 /* ApplDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplDelegate.swift; sourceTree = "<group>"; };
 		C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_pip_video.mp4; path = ../android/app/src/main/assets/sample_pip_video.mp4; sourceTree = "<group>"; };
 		EB62DC275C3658D1915DA7B9 /* Pods-vesdkreactnativeintegrationsample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.release.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -68,16 +65,14 @@
 				8A26A81D259B69A5001CFF3C /* luts */,
 				5111FDD228772B72004C3BBB /* Music */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
-				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				63485D4B259A27A900A9897F /* VideoEditorModule.swift */,
 				63485D50259A29CB00A9897F /* VideoEditorModuleBridge.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
-				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
 				63485D41259A144300A9897F /* vesdkreactnativeintegrationsample-Bridging-Header.h */,
+				C26872D5293B99D9001CEF11 /* ApplDelegate.swift */,
 			);
 			name = vesdkreactnativeintegrationsample;
 			sourceTree = "<group>";
@@ -349,10 +344,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */,
+				C26872D6293B99D9001CEF11 /* ApplDelegate.swift in Sources */,
 				63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
