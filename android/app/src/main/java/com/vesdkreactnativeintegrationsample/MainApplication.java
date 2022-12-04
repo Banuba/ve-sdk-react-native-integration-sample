@@ -1,7 +1,5 @@
 package com.vesdkreactnativeintegrationsample;
 
-import static org.koin.core.context.DefaultContextExtKt.startKoin;
-
 import android.app.Application;
 import android.content.Context;
 
@@ -26,10 +24,10 @@ import expo.modules.updates.UpdatesController;
 public class MainApplication extends Application implements ReactApplication {
 
     /**
-     * true - uses custom audio browser implementation in this sample
-     * false - to keep default implementation
+     * true - use custom audio browser implementation in this sample
+     * false - use default implementation
      */
-    public static final boolean USE_CUSTOM_AUDIO_BROWSER = false;
+    public static final boolean USE_CUSTOM_AUDIO_BROWSER = true;
 
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
             new BasePackageList().getPackageList()

@@ -18,6 +18,9 @@
 		8A26A820259B69A5001CFF3C /* bundleEffects in Resources */ = {isa = PBXBuildFile; fileRef = 8A26A81E259B69A5001CFF3C /* bundleEffects */; };
 		B209E0399CE2D65BE0565A8A /* libPods-vesdkreactnativeintegrationsample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EE63EE6C334C20D8BFA1A84 /* libPods-vesdkreactnativeintegrationsample.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		C20B0BB9293CDF0200AF67D1 /* AudioBrowserModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20B0BB8293CDF0200AF67D1 /* AudioBrowserModule.swift */; };
+		C20B0BBB293CDF1100AF67D1 /* CustomViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */; };
+		C20B0BBD293E45DB00AF67D1 /* sample_audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */; };
 		C26872D6293B99D9001CEF11 /* ApplDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26872D5293B99D9001CEF11 /* ApplDelegate.swift */; };
 		C26BCE8E2912ECBF0084E274 /* sample_pip_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */; };
 /* End PBXBuildFile section */
@@ -38,6 +41,9 @@
 		8A26A81E259B69A5001CFF3C /* bundleEffects */ = {isa = PBXFileReference; lastKnownFileType = folder; name = bundleEffects; path = vesdkreactnativeintegrationsample/bundleEffects; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = vesdkreactnativeintegrationsample/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C20B0BB8293CDF0200AF67D1 /* AudioBrowserModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBrowserModule.swift; sourceTree = "<group>"; };
+		C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewControllerFactory.swift; sourceTree = "<group>"; };
+		C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample_audio.mp3; path = ../android/app/src/main/assets/sample_audio.mp3; sourceTree = "<group>"; };
 		C26872D5293B99D9001CEF11 /* ApplDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplDelegate.swift; sourceTree = "<group>"; };
 		C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_pip_video.mp4; path = ../android/app/src/main/assets/sample_pip_video.mp4; sourceTree = "<group>"; };
 		EB62DC275C3658D1915DA7B9 /* Pods-vesdkreactnativeintegrationsample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.release.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 		13B07FAE1A68108700A75B9A /* vesdkreactnativeintegrationsample */ = {
 			isa = PBXGroup;
 			children = (
+				C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */,
+				C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */,
+				C20B0BB8293CDF0200AF67D1 /* AudioBrowserModule.swift */,
 				C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */,
 				8A26A81E259B69A5001CFF3C /* bundleEffects */,
 				8A26A81D259B69A5001CFF3C /* luts */,
@@ -202,6 +211,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				5196245526B7F8EE00434846 /* Localizable.strings in Resources */,
+				C20B0BBD293E45DB00AF67D1 /* sample_audio.mp3 in Resources */,
 				8A26A81F259B69A5001CFF3C /* luts in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
 				5111FDD328772B73004C3BBB /* Music in Resources */,
@@ -347,6 +357,8 @@
 				63485D51259A29CB00A9897F /* VideoEditorModuleBridge.m in Sources */,
 				C26872D6293B99D9001CEF11 /* ApplDelegate.swift in Sources */,
 				63485D4C259A27A900A9897F /* VideoEditorModule.swift in Sources */,
+				C20B0BBB293CDF1100AF67D1 /* CustomViewControllerFactory.swift in Sources */,
+				C20B0BB9293CDF0200AF67D1 /* AudioBrowserModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

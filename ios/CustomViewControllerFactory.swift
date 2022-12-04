@@ -1,19 +1,14 @@
-//
-//  CustomViewFactory.swift
-//  vesdkreactnativeintegrationsample
-//
-//  Created by Gleb Prischepa on 11/23/22.
-//
 
 import BanubaVideoEditorSDK
 import BanubaMusicEditorSDK
 import BanubaUtilities
 import Foundation
 
-class CustomViewFactory: ExternalViewControllerFactory {
+// Factory is used to override visual representation of some video editor features.
+class CustomViewControllerFactory: ExternalViewControllerFactory {
   
-  // Set nil to use BanubaAudioBrowser
-  var musicEditorFactory: MusicEditorExternalViewControllerFactory? = CustomAudioBrowserViewControllerFactory()
+  // Override to use custom audio browser experience. Set nil to use default implementation
+  var musicEditorFactory: MusicEditorExternalViewControllerFactory? = AppDelegate.useCustomAudioBrowser ? CustomAudioBrowserViewControllerFactory() : nil
   
   var countdownTimerViewFactory: CountdownTimerViewFactory?
   
@@ -22,12 +17,13 @@ class CustomViewFactory: ExternalViewControllerFactory {
 
 class CustomAudioBrowserViewControllerFactory: MusicEditorExternalViewControllerFactory {
   
+  var audioBrowserModule: AudioBrowserModule?
+  
   // Audio Browser selection view controller
   func makeTrackSelectionViewController(selectedAudioItem: AudioItem?) -> TrackSelectionViewController? {
-    print("AudioBrowser: make!")
-    let controller = AudioBrowserModule(nibName: nil, bundle: nil)
-    controller.listenCalls()
-    return controller
+    let module = AudioBrowserModule(nibName: nil, bundle: nil)
+    audioBrowserModule = module
+    return module
   }
   
   // Effects selection view controller. Used at Music editor screen
