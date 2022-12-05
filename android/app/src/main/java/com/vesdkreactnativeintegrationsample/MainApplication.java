@@ -27,7 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
      * true - use custom audio browser implementation in this sample
      * false - use default implementation
      */
-    public static final boolean USE_CUSTOM_AUDIO_BROWSER = true;
+    public static final boolean USE_CUSTOM_AUDIO_BROWSER = false;
 
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
             new BasePackageList().getPackageList()
