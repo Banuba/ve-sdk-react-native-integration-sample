@@ -139,6 +139,7 @@ android {
     packagingOptions {
         pickFirst '**/libyuv.so'
         pickFirst '**/libc++_shared.so'
+        pickFirst '**/libbanuba-ve-yuv.so'
     }
 
     kotlinOptions {
