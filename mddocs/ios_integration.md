@@ -11,7 +11,7 @@ The following steps help to complete basic integration into your React Native Ex
 
 <ins>All changes are made in **ios** directory.</ins>
 1. __Set Banuba Video Editor SDK token__  
-   Set the token in [VideoEditorModule](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L186)<br></br>
+   Set the token in [AppDelegate](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/AppDelegate.swift#L20)<br></br>
    To get access to your trial, please, get in touch with us by [filling a form](https://www.banuba.com/video-editor-sdk) on our website. Our sales managers will send you the trial token.<br>
    :exclamation: The token **IS REQUIRED** to run sample and an integration in your app.<br></br>
 

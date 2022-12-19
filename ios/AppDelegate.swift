@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    false - use default default implementation.
    */
   static let useCustomAudioBrowser = false
+  
+  // Banuba client token
+  static let banubaClientToken: String = <#Please set your Banuba Video Editor SDK token here#>
 
   // Specify name of your project module
   private let moduleName = "main"
