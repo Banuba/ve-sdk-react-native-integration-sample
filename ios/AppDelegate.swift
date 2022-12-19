@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    false - use default default implementation.
    */
   static let useCustomAudioBrowser = false
+  
+  // License token is required to start Video Editor SDK
+  static let licenseToken: String = <#Enter your license token#>
 
   // Specify name of your project module
   private let moduleName = "main"
