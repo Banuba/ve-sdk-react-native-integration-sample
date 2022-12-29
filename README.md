@@ -17,8 +17,8 @@ This sample demonstrates how to run Video Editor SDK with [React Native](https:/
 ## Usage
 
 ### Token
-We offer а free 14-days trial for you could thoroughly test and assess Video Editor SDK functionality in your app.
-Before you commit to a license, you are free to test all the features of the SDK for free. The trial period lasts 14 days. To start it, [send us a message](https://www.banuba.com/video-editor-sdk#form).  
+Before you commit to a license, you are free to test all the features of the SDK for free.  
+The trial period lasts 14 days. To start it, [send us a message](https://www.banuba.com/video-editor-sdk#form).  
 We will get back to you with the trial token.
 You can store the token within the app.
 
