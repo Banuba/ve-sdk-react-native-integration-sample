@@ -18,6 +18,10 @@ async function startIosVideoEditorPIP() {
   return await VideoEditorModule.openVideoEditorPIP();
 }
 
+async function startIosVideoEditorTrimmer() {
+  return await VideoEditorModule.openVideoEditorTrimmer();
+}
+
 async function startAndroidVideoEditor() {
   return await VideoEditorModule.openVideoEditor();
 }
@@ -89,6 +93,43 @@ export default function App() {
                 });
             } else {
               startIosVideoEditorPIP()
+                .then((response) => {
+                  const exportedVideoUri = response?.videoUri;
+                  console.log(
+                    "Banuba iOS Video Editor export video completed successfully. Video uri = " +
+                      exportedVideoUri
+                  );
+                })
+                .catch((e) => {
+                  console.log(
+                    "Banuba iOS Video Editor export video failed = " + e
+                  );
+                });
+            }
+          }}
+        />
+      </View>
+
+      <View style={{ marginVertical: 16, width: 240 }}>
+        <Button
+          title="Open Video Editor - Trimmer"
+          color="#FF0000"
+          onPress={async () => {
+            if (Platform.OS === "android") {
+              startAndroidVideoEditorPIP()
+                .then((videoUri) => {
+                  console.log(
+                    "Banuba Android Video Editor export video completed successfully. Video uri = " +
+                      videoUri
+                  );
+                })
+                .catch((e) => {
+                  console.log(
+                    "Banuba Android Video Editor export video failed = " + e
+                  );
+                });
+            } else {
+              startIosVideoEditorTrimmer()
                 .then((response) => {
                   const exportedVideoUri = response?.videoUri;
                   console.log(
