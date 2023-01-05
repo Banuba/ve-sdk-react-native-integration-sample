@@ -30,6 +30,10 @@ async function startAndroidVideoEditorPIP() {
   return await VideoEditorModule.openVideoEditorPIP();
 }
 
+async function startAndroidVideoEditorTrimmer() {
+  return await VideoEditorModule.openVideoEditorTrimmer();
+}
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -116,7 +120,7 @@ export default function App() {
           color="#FF0000"
           onPress={async () => {
             if (Platform.OS === "android") {
-              startAndroidVideoEditorPIP()
+              startAndroidVideoEditorTrimmer()
                 .then((videoUri) => {
                   console.log(
                     "Banuba Android Video Editor export video completed successfully. Video uri = " +
