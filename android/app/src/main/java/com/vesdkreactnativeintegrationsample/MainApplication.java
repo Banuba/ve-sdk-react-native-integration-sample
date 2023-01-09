@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 import expo.modules.updates.UpdatesController;
 
+import com.banuba.sdk.token.storage.license.BanubaVideoEditor;
+
 public class MainApplication extends Application implements ReactApplication {
 
     /**
@@ -88,6 +90,8 @@ public class MainApplication extends Application implements ReactApplication {
         }
 
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+
+        BanubaVideoEditor.INSTANCE.initialize(getString(R.string.banuba_token));
 
         // Initialize Banuba VE UI SDK
         new BanubaVideoEditorSDK().initialize(this);
