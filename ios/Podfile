@@ -20,7 +20,7 @@ target 'vesdkreactnativeintegrationsample' do
   pod 'BanubaVideoEditorSDK', sdk_version
   pod 'BanubaMusicEditorSDK', sdk_version
   pod 'BanubaOverlayEditorSDK', sdk_version
-  pod 'BanubaEffectPlayer', '1.25.0' #optional
+  pod 'BanubaEffectPlayer', sdk_version #optional
   pod 'BanubaSDK', sdk_version #optional
   pod 'BanubaSDKSimple', sdk_version
   pod 'BanubaSDKServicing', sdk_version
@@ -28,7 +28,6 @@ target 'vesdkreactnativeintegrationsample' do
   pod 'BanubaVideoEditorGallerySDK', sdk_version #optional
   pod 'BanubaLicenseServicingSDK', sdk_version
   pod 'BanubaVideoEditorTrimSDK', sdk_version
-  # pod 'BanubaTokenStorageSDK', '1.23.0' #optional
 
   pod 'BNBLicenseUtils', '1.24.1'
 

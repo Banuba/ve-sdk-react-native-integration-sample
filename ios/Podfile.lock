@@ -1,7 +1,7 @@
 PODS:
   - BanubaARCloudSDK (1.26.2)
   - BanubaAudioBrowserSDK (1.26.2)
-  - BanubaEffectPlayer (1.25.0)
+  - BanubaEffectPlayer (1.26.2)
   - BanubaLicenseServicingSDK (1.26.2)
   - BanubaMusicEditorSDK (1.26.2)
   - BanubaOverlayEditorSDK (1.26.2)
@@ -324,7 +324,7 @@ PODS:
 DEPENDENCIES:
   - BanubaARCloudSDK (= 1.26.2)
   - BanubaAudioBrowserSDK (= 1.26.2)
-  - BanubaEffectPlayer (= 1.25.0)
+  - BanubaEffectPlayer (= 1.26.2)
   - BanubaLicenseServicingSDK (= 1.26.2)
   - BanubaMusicEditorSDK (= 1.26.2)
   - BanubaOverlayEditorSDK (= 1.26.2)
@@ -530,7 +530,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BanubaARCloudSDK: f09491eca14e1df03171cd98f94829d00676db77
   BanubaAudioBrowserSDK: c0088cc8099e4127ddf8fe75ce52cb68a43f661f
-  BanubaEffectPlayer: 79fd3d6707cc632213026465df74defdbe097dc5
+  BanubaEffectPlayer: 6d10f41b25cc7d26035a19fdf6f182fa51ecb325
   BanubaLicenseServicingSDK: 3f44b8bd3cb0b5d88ce0e9a01a0e33b2030e2625
   BanubaMusicEditorSDK: 9877d5687157cd4385c1639ff0b2b0ca3439c46d
   BanubaOverlayEditorSDK: ee5160aaad66b4a0c1e7c37f9acbb7b16fd02507
@@ -601,6 +601,6 @@ SPEC CHECKSUMS:
   VideoEditor: 7d38ec083e6efb6fe179e3a10082dad2f514792c
   Yoga: 0276e9f20976c8568e107cfc1163a8629051adc0
 
-PODFILE CHECKSUM: d8f4c0cda14e653b96ab6f001e4db2b3c4ef3ae8
+PODFILE CHECKSUM: e21a683b95d47678deb5e54148e3ea51c6a162a3
 
 COCOAPODS: 1.11.3

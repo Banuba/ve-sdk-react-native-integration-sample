@@ -22,7 +22,7 @@
 		C20B0BBB293CDF1100AF67D1 /* CustomViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */; };
 		C20B0BBD293E45DB00AF67D1 /* sample_audio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */; };
 		C26872D6293B99D9001CEF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26872D5293B99D9001CEF11 /* AppDelegate.swift */; };
-		C26BCE8E2912ECBF0084E274 /* sample_pip_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */; };
+		C26BCE8E2912ECBF0084E274 /* sample_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C26BCE8D2912ECBF0084E274 /* sample_video.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +45,7 @@
 		C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewControllerFactory.swift; sourceTree = "<group>"; };
 		C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sample_audio.mp3; path = ../android/app/src/main/assets/sample_audio.mp3; sourceTree = "<group>"; };
 		C26872D5293B99D9001CEF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_pip_video.mp4; path = ../android/app/src/main/assets/sample_pip_video.mp4; sourceTree = "<group>"; };
+		C26BCE8D2912ECBF0084E274 /* sample_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample_video.mp4; path = ../android/app/src/main/assets/sample_video.mp4; sourceTree = "<group>"; };
 		EB62DC275C3658D1915DA7B9 /* Pods-vesdkreactnativeintegrationsample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vesdkreactnativeintegrationsample.release.xcconfig"; path = "Target Support Files/Pods-vesdkreactnativeintegrationsample/Pods-vesdkreactnativeintegrationsample.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,7 +69,7 @@
 				C20B0BBC293E45DB00AF67D1 /* sample_audio.mp3 */,
 				C20B0BBA293CDF1100AF67D1 /* CustomViewControllerFactory.swift */,
 				C20B0BB8293CDF0200AF67D1 /* AudioBrowserModule.swift */,
-				C26BCE8D2912ECBF0084E274 /* sample_pip_video.mp4 */,
+				C26BCE8D2912ECBF0084E274 /* sample_video.mp4 */,
 				8A26A81E259B69A5001CFF3C /* bundleEffects */,
 				8A26A81D259B69A5001CFF3C /* luts */,
 				5111FDD228772B72004C3BBB /* Music */,
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
-				C26BCE8E2912ECBF0084E274 /* sample_pip_video.mp4 in Resources */,
+				C26BCE8E2912ECBF0084E274 /* sample_video.mp4 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				5196245526B7F8EE00434846 /* Localizable.strings in Resources */,
