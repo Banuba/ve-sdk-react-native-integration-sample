@@ -29,6 +29,8 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   private var currentResolve: RCTPromiseResolveBlock?
   private var currentReject: RCTPromiseRejectBlock?
   
+  private var customAudioTrackUUID: UUID?
+  
   @objc func openVideoEditor(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     self.currentResolve = resolve
     self.currentReject = reject
@@ -73,12 +75,43 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       
       // sample_pip_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
       // Please provide valid video URL to open Video Editor in PIP.
-      let pipVideoURL = Bundle.main.url(forResource: "sample_pip_video", withExtension: "mp4")
+      let pipVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")
       
       let pipLaunchConfig = VideoEditorLaunchConfig(
         entryPoint: .pip,
         hostController: presentedVC,
         pipVideoItem: pipVideoURL,
+        musicTrack: nil,
+        animated: true
+      )
+      
+      self.videoEditorSDK?.presentVideoEditor(
+        withLaunchConfiguration: pipLaunchConfig,
+        completion: nil
+      )
+    }
+  }
+  
+  @objc func openVideoEditorTrimmer(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    self.currentResolve = resolve
+    self.currentReject = reject
+    
+    prepareAudioBrowser()
+    initVideoEditor()
+    
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      
+      // sample_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
+      // Please provide valid video URL to open Video Editor in Trimmer.
+      let trimmerVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
+      
+      let pipLaunchConfig = VideoEditorLaunchConfig(
+        entryPoint: .trimmer,
+        hostController: presentedVC,
+        videoItems: [trimmerVideoURL],
         musicTrack: nil,
         animated: true
       )
@@ -111,11 +144,18 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     let additionTitle = "Awesome artist"
     
     DispatchQueue.main.async {
-      let customAudioTrackId: Int32 = 1000
+      self.customAudioTrackUUID = UUID()
       let audioBrowserModule = self.getAudioBrowserModule()
       
       // Apply audio in Video Editor SDK
-      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(viewController: audioBrowserModule, didSelectFile: audioURL!, isEditable: true, title: trackName, additionalTitle: additionTitle, id: customAudioTrackId)
+      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(
+        viewController: audioBrowserModule,
+        didSelectFile: audioURL!,
+        isEditable: true,
+        title: trackName,
+        additionalTitle: additionTitle,
+        uuid: self.customAudioTrackUUID!
+      )
       
       print("Audio track is applied")
       
@@ -129,11 +169,14 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentReject = reject
     
     DispatchQueue.main.async {
-      let customAudioTrackId: Int32 = 1000
       let audioBrowserModule = self.getAudioBrowserModule()
       
       // Use the same audio track id i.e. customAudioTrackId to discard previously used audio
-      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(viewController: audioBrowserModule, didStopUsingTrackWithId:customAudioTrackId)
+      guard let customAudioTrackUUID = self.customAudioTrackUUID else { return }
+      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(
+        viewController: audioBrowserModule,
+        didStopUsingTrackWith:customAudioTrackUUID
+      )
       
       print("Audio track is discarded")
       
@@ -208,7 +251,8 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       startTime: .zero, playingTimeRange: urlAssetTimeRange
     )
     let musicTrackPreset = MediaTrack(
-      id: 1231,
+      uuid: UUID(),
+      id: nil,
       url: wavFile,
       timeRange: mediaTrackTimeRange,
       isEditable: true,
