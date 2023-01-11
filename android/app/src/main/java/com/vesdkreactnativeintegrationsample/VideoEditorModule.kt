@@ -372,7 +372,8 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
             licenseStateCallback: LicenseStateCallback,
             notInitializedError: () -> Unit
     ) {
-        val videoEditor = (currentActivity?.getApplication() as MainApplication).videoEditorSDK
+        val activity = currentActivity ?: return
+        val videoEditor = (activity.application as MainApplication).videoEditorSDK
         if (videoEditor == null) {
             Log.e(
                     "BanubaVideoEditor",
