@@ -33,6 +33,13 @@ public class MainApplication extends Application implements ReactApplication {
      */
     public static final boolean USE_CUSTOM_AUDIO_BROWSER = false;
 
+    private final String TAG = "ReactnativeVideoEditor";
+
+    private final String LICENSE_TOKEN = SET YOUR LICENSE TOKEN HERE
+    static final String ERR_SDK_NOT_INITIALIZED
+            = "Banuba Video Editor SDK is not initialized: license token is unknown or incorrect.\nPlease check your license token or contact Banuba";
+    static final String ERR_LICENSE_REVOKED = "License is revoked or expired. Please contact Banuba https://www.banuba.com/faq/kb-tickets/new";
+
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
             new BasePackageList().getPackageList()
     );
@@ -82,6 +89,8 @@ public class MainApplication extends Application implements ReactApplication {
         return mReactNativeHost;
     }
 
+    BanubaVideoEditor videoEditorSDK;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -93,21 +102,12 @@ public class MainApplication extends Application implements ReactApplication {
 
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
 
-        BanubaVideoEditor videoEditorSDK = BanubaVideoEditor.Companion.initialize("SET BANUBA VE SDK TOKEN");
+        videoEditorSDK = BanubaVideoEditor.Companion.initialize(LICENSE_TOKEN);
 
         if (videoEditorSDK == null) {
-            Log.e("BanubaVideoEditor", "BanubaVideoEditor initialization error");
+            Log.e(TAG, ERR_SDK_NOT_INITIALIZED);
         } else {
             new BanubaVideoEditorSDK().initialize(this);
-            videoEditorSDK.getLicenseState(new LicenseStateCallback() {
-                public void onLicenseState(boolean isValid) {
-                    if (isValid) {
-                        Log.d("BanubaVideoEditor", "BanubaVideoEditor token is valid");
-                    } else {
-                        Log.d("BanubaVideoEditor", "BanubaVideoEditor token is not valid");
-                    }
-                }
-            });
         }
     }
 
