@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   // License token is required to start Video Editor SDK
   static let licenseToken: String = <#Enter your license token#>
+  
+  // Set your Mubert Api key here
+  static let mubertApiKey = ""
 
   // Specify name of your project module
   private let moduleName = "main"

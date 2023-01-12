@@ -51,7 +51,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       animated: true
     )
     
-    checkLicenseAndStartVideoEditor(with: config, rejecter: reject)
+    checkLicenseAndStart(with: config, rejecter: reject)
   }
   
   @objc func openVideoEditorPIP(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
@@ -77,7 +77,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       animated: true
     )
     
-    checkLicenseAndStartVideoEditor(with: pipLaunchConfig, rejecter: reject)
+    checkLicenseAndStart(with: pipLaunchConfig, rejecter: reject)
   }
   
   @objc func openVideoEditorTrimmer(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
@@ -103,10 +103,10 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       animated: true
     )
     
-    checkLicenseAndStartVideoEditor(with: trimmerLaunchConfig, rejecter: reject)
+    checkLicenseAndStart(with: trimmerLaunchConfig, rejecter: reject)
   }
   
-  func checkLicenseAndStartVideoEditor(with config: VideoEditorLaunchConfig, rejecter reject: @escaping RCTPromiseRejectBlock) {
+  func checkLicenseAndStart(with config: VideoEditorLaunchConfig, rejecter reject: @escaping RCTPromiseRejectBlock) {
     if videoEditorSDK == nil {
       reject(Self.errEditorNotInitialized, nil, nil)
       return
@@ -246,7 +246,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   // Prepares Audio Browser
   private func prepareAudioBrowser() {
     if (!AppDelegate.useCustomAudioBrowser) {
-      BanubaAudioBrowser.setMubertPat("SET MUBERT API KEY")
+      BanubaAudioBrowser.setMubertPat(AppDelegate.mubertApiKey)
     }
   }
   
