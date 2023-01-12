@@ -26,7 +26,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
         private const val E_VIDEO_EDITOR_CANCELLED = "E_VIDEO_EDITOR_CANCELLED"
         private const val E_EXPORTED_VIDEO_NOT_FOUND = "E_EXPORTED_VIDEO_NOT_FOUND"
 
-        const val TAG = "VideoEditorModule"
+        const val TAG = "BanubaVideoEditor"
 
         private const val ERR_VIDEO_EDITOR_NOT_INITIALIZED = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
         private const val ERR_VIDEO_EDITOR_LICENSE_REVOKED = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
@@ -77,7 +77,6 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
 
         override fun onNewIntent(intent: Intent?) {}
     }
-
 
     init {
         reactApplicationContext.addActivityEventListener(videoEditorResultListener)
@@ -139,7 +138,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         // ✅ License is active, all good
                         // You can show button that opens Video Editor or
                         // Start Video Editor right away
-                        openVideoEditorPIPInteranl(inputPromise)
+                        openVideoEditorPIPInternal(inputPromise)
                     } else {
                         // ❌ Use of Video Editor is restricted. License is revoked or expired.
                         inputPromise.reject(ERR_VIDEO_EDITOR_LICENSE_REVOKED, MainApplication.ERR_LICENSE_REVOKED)
@@ -151,7 +150,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
         )
     }
 
-    private fun openVideoEditorPIPInteranl(inputPromise: Promise) {
+    private fun openVideoEditorPIPInternal(inputPromise: Promise) {
         val hostActivity = currentActivity
         if (hostActivity == null) {
             inputPromise.reject(
@@ -233,9 +232,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
             hostActivity.startActivityForResult(intent, EXPORT_REQUEST_CODE)
         }
     }
-
-
-
+    
     /**
      * Applies selected audio on custom Audio Browser in Video Editor SDK.
      *
