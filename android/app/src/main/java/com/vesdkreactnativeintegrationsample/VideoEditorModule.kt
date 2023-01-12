@@ -26,7 +26,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
         private const val E_VIDEO_EDITOR_CANCELLED = "E_VIDEO_EDITOR_CANCELLED"
         private const val E_EXPORTED_VIDEO_NOT_FOUND = "E_EXPORTED_VIDEO_NOT_FOUND"
 
-        const val TAG = "BanubaVideoEditor"
+        const val TAG = "VideoEditorModule"
 
         private const val ERR_VIDEO_EDITOR_NOT_INITIALIZED = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
         private const val ERR_VIDEO_EDITOR_LICENSE_REVOKED = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
