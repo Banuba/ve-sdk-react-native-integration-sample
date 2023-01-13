@@ -1,22 +1,19 @@
-//
-//  VideoEditorModule.swift
-//  vesdkreactnativeintegrationsample
-//
-//  Created by Andrei Sak on 28.12.20.
-//
-
 import React
 import BanubaVideoEditorSDK
 import BanubaMusicEditorSDK
 import BanubaOverlayEditorSDK
 import VideoEditor
 import VEExportSDK
+import AVKit
 import BanubaAudioBrowserSDK
 
 typealias TimerOptionConfiguration = TimerConfiguration.TimerOptionConfiguration
 
 @objc(VideoEditorModule)
 class VideoEditorModule: NSObject, RCTBridgeModule {
+  
+  static let errEditorNotInitialized = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
+  static let errEditorLicenseRevoked = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
   
   private let customViewControllerFactory = CustomViewControllerFactory()
   
@@ -28,6 +25,8 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   
   private var currentResolve: RCTPromiseResolveBlock?
   private var currentReject: RCTPromiseRejectBlock?
+  
+  private var customAudioTrackUUID: UUID?
   
   @objc func openVideoEditor(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     self.currentResolve = resolve
@@ -52,10 +51,8 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
         musicTrack: musicTrackPreset,
         animated: true
       )
-      self.videoEditorSDK?.presentVideoEditor(
-        withLaunchConfiguration: config,
-        completion: nil
-      )
+      
+      self.checkLicenseAndStart(with: config, rejecter: reject)
     }
   }
   
@@ -83,10 +80,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
         animated: true
       )
       
-      self.videoEditorSDK?.presentVideoEditor(
-        withLaunchConfiguration: pipLaunchConfig,
-        completion: nil
-      )
+      self.checkLicenseAndStart(with: pipLaunchConfig, rejecter: reject)
     }
   }
   
@@ -106,7 +100,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
       // Please provide valid video URL to open Video Editor in Trimmer.
       let trimmerVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
       
-      let pipLaunchConfig = VideoEditorLaunchConfig(
+      let trimmerLaunchConfig = VideoEditorLaunchConfig(
         entryPoint: .trimmer,
         hostController: presentedVC,
         videoItems: [trimmerVideoURL],
@@ -114,11 +108,34 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
         animated: true
       )
       
-      self.videoEditorSDK?.presentVideoEditor(
-        withLaunchConfiguration: pipLaunchConfig,
-        completion: nil
-      )
+      self.checkLicenseAndStart(with: trimmerLaunchConfig, rejecter: reject)
     }
+  }
+  
+  func checkLicenseAndStart(with config: VideoEditorLaunchConfig, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    if videoEditorSDK == nil {
+      reject(Self.errEditorNotInitialized, nil, nil)
+      return
+    }
+    
+    // Checking the license might take around 1 sec in the worst case.
+    // Please optimize use if this method in your application for the best user experience
+    videoEditorSDK?.getLicenseState(completion: { [weak self] isValid in
+      guard let self else { return }
+      if isValid {
+        print("✅ License is active, all good")
+        DispatchQueue.main.async {
+          self.videoEditorSDK?.presentVideoEditor(
+            withLaunchConfiguration: config,
+            completion: nil
+          )
+        }
+      } else {
+        self.videoEditorSDK = nil
+        print("❌ License is either revoked or expired")
+        reject(Self.errEditorLicenseRevoked, nil, nil)
+      }
+    })
   }
   
   // Applies audio track from custom audio browser
@@ -142,11 +159,18 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     let additionTitle = "Awesome artist"
     
     DispatchQueue.main.async {
-      let customAudioTrackId: Int32 = 1000
+      self.customAudioTrackUUID = UUID()
       let audioBrowserModule = self.getAudioBrowserModule()
       
       // Apply audio in Video Editor SDK
-      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(viewController: audioBrowserModule, didSelectFile: audioURL!, isEditable: true, title: trackName, additionalTitle: additionTitle, id: customAudioTrackId)
+      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(
+        viewController: audioBrowserModule,
+        didSelectFile: audioURL!,
+        isEditable: true,
+        title: trackName,
+        additionalTitle: additionTitle,
+        uuid: self.customAudioTrackUUID!
+      )
       
       print("Audio track is applied")
       
@@ -160,11 +184,14 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentReject = reject
     
     DispatchQueue.main.async {
-      let customAudioTrackId: Int32 = 1000
       let audioBrowserModule = self.getAudioBrowserModule()
       
       // Use the same audio track id i.e. customAudioTrackId to discard previously used audio
-      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(viewController: audioBrowserModule, didStopUsingTrackWithId:customAudioTrackId)
+      guard let customAudioTrackUUID = self.customAudioTrackUUID else { return }
+      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(
+        viewController: audioBrowserModule,
+        didStopUsingTrackWith: customAudioTrackUUID
+      )
       
       print("Audio track is discarded")
       
@@ -223,46 +250,15 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     videoEditorSDK?.delegate = self
   }
   
-  private func createVideoEditorConfiguration() -> VideoEditorConfig {
-    let config = VideoEditorConfig()
-    // Do customization here
-    return config
-  }
-  // MARK: - Create music track
-  private func setupMusicTrackPresent() -> MediaTrack {
-    let documentsUrl = Bundle.main.bundleURL.appendingPathComponent("Music/long")
-    let directoryContents = try? FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
-    let wavFile = directoryContents!.first(where: { $0.pathExtension == "wav" })!
-    let urlAsset = AVURLAsset(url: wavFile)
-    let urlAssetTimeRange = CMTimeRange(start: .zero, duration: urlAsset.duration)
-    let mediaTrackTimeRange = MediaTrackTimeRange(
-      startTime: .zero, playingTimeRange: urlAssetTimeRange
-    )
-    let musicTrackPreset = MediaTrack(
-      id: 1231,
-      url: wavFile,
-      timeRange: mediaTrackTimeRange,
-      isEditable: true,
-      title: "test"
-    )
-    
-    return musicTrackPreset
-  }
-  
   // Prepares Audio Browser
-  func prepareAudioBrowser() {
+  private func prepareAudioBrowser() {
     if (!AppDelegate.useCustomAudioBrowser) {
-      BanubaAudioBrowser.setMubertPat("SET MUBERT API KEY")
+      BanubaAudioBrowser.setMubertPat(AppDelegate.mubertApiKey)
     }
   }
   
   private func getAudioBrowserModule() -> AudioBrowserModule {
     return (customViewControllerFactory.musicEditorFactory as! CustomAudioBrowserViewControllerFactory).audioBrowserModule!
-  }
-  
-  // MARK: - RCTBridgeModule
-  static func moduleName() -> String! {
-    return "VideoEditorModule"
   }
   
   /*
@@ -282,6 +278,38 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     controller.present(vc, animated: true) {
       vc.player?.play()
     }
+  }
+  
+  private func createVideoEditorConfiguration() -> VideoEditorConfig {
+    let config = VideoEditorConfig()
+    // Do customization here
+    return config
+  }
+  // MARK: - Create music track
+  private func setupMusicTrackPresent() -> MediaTrack {
+    let documentsUrl = Bundle.main.bundleURL.appendingPathComponent("Music/long")
+    let directoryContents = try? FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil)
+    let wavFile = directoryContents!.first(where: { $0.pathExtension == "wav" })!
+    let urlAsset = AVURLAsset(url: wavFile)
+    let urlAssetTimeRange = CMTimeRange(start: .zero, duration: urlAsset.duration)
+    let mediaTrackTimeRange = MediaTrackTimeRange(
+      startTime: .zero, playingTimeRange: urlAssetTimeRange
+    )
+    let musicTrackPreset = MediaTrack(
+      uuid: UUID(),
+      id: nil,
+      url: wavFile,
+      timeRange: mediaTrackTimeRange,
+      isEditable: true,
+      title: "test"
+    )
+    
+    return musicTrackPreset
+  }
+  
+  // MARK: - RCTBridgeModule
+  static func moduleName() -> String! {
+    return "VideoEditorModule"
   }
 }
 
@@ -315,29 +343,30 @@ extension VideoEditorModule {
     // Export func
     videoEditorSDK?.export(
       using: exportConfiguration,
-      exportProgress: nil,
-      completion: { success, error, exportCoverImages in
-        // Export Callback
-        DispatchQueue.main.async {
-          if success {
-            // Result urls. You could interact with your own implementation.
-            self.currentResolve!(["videoUri": firstFileURL.absoluteString])
-            // remove strong reference to video editor sdk instance
-            self.videoEditorSDK = nil
-            
-            /*
-             NOT REQUIRED FOR INTEGRATION
-             Added for playing exported video file.
-             */
-            self.demoPlayExportedVideo(videoURL: firstFileURL)
-          } else {
-            self.currentReject!("", error?.errorMessage, nil)
-            // remove strong reference to video editor sdk instance
-            self.videoEditorSDK = nil
-            print("Error: \(String(describing: error))")
-          }
+      exportProgress: nil
+    ) { [weak self] (success, error, coverImage) in
+      // Export Callback
+      DispatchQueue.main.async {
+        if success {
+          // Result urls. You could interact with your own implementation.
+          
+          self?.currentResolve?(["videoUri": firstFileURL.absoluteString])
+          // remove strong reference to video editor sdk instance
+          self?.videoEditorSDK = nil
+          
+          /*
+           NOT REQUIRED FOR INTEGRATION
+           Added for playing exported video file.
+           */
+          self?.demoPlayExportedVideo(videoURL: firstFileURL)
+        } else {
+          self?.currentReject?("", error?.errorMessage, nil)
+          // remove strong reference to video editor sdk instance
+          self?.videoEditorSDK = nil
+          print("Error: \(String(describing: error))")
         }
-      })
+      }
+    }
   }
 }
 
@@ -347,7 +376,7 @@ extension VideoEditorModule: BanubaVideoEditorDelegate {
     videoEditor.dismissVideoEditor(animated: true) { [weak self] in
       // remove strong reference to video editor sdk instance
       self?.videoEditorSDK = nil
-      self?.currentResolve!(NSNull())
+      self?.currentResolve?(NSNull())
     }
   }
   
@@ -357,3 +386,4 @@ extension VideoEditorModule: BanubaVideoEditorDelegate {
     }
   }
 }
+

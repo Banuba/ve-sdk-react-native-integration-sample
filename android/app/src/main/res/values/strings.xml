@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">ve-sdk-react-native-integration-sample</string>
-
-    <!-- VIDEO EDITOR TOKEN -->
-    <!-- Please contact Banuba https://www.banuba.com/video-editor-sdk to get this token -->
-    <string name="banuba_token">SET BANUBA VIDEO EDITOR SDK TOKEN</string>
-
     <!-- AUDIO BROWSER MUBERT -->
     <string name="mubert_api_key">SET MUBERT API KEY</string>
 </resources>
