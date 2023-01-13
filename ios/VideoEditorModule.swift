@@ -35,23 +35,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     prepareAudioBrowser()
     initVideoEditor()
     
-    guard let presentedVC = RCTPresentedViewController() else {
-      return
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      var musicTrackPreset: MediaTrack?
+      
+      // uncomment this if you want to set the music track
+      
+      //musicTrackPreset = self.setupMusicTrackPresent()
+      
+      let config = VideoEditorLaunchConfig(
+        entryPoint: .camera,
+        hostController: presentedVC,
+        musicTrack: musicTrackPreset,
+        animated: true
+      )
+      
+      self.checkLicenseAndStart(with: config, rejecter: reject)
     }
-    var musicTrackPreset: MediaTrack?
-    
-    // uncomment this if you want to set the music track
-    
-    //musicTrackPreset = self.setupMusicTrackPresent()
-    
-    let config = VideoEditorLaunchConfig(
-      entryPoint: .camera,
-      hostController: presentedVC,
-      musicTrack: musicTrackPreset,
-      animated: true
-    )
-    
-    checkLicenseAndStart(with: config, rejecter: reject)
   }
   
   @objc func openVideoEditorPIP(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
@@ -61,23 +63,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     prepareAudioBrowser()
     initVideoEditor()
     
-    guard let presentedVC = RCTPresentedViewController() else {
-      return
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      
+      // sample_pip_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
+      // Please provide valid video URL to open Video Editor in PIP.
+      let pipVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")
+      
+      let pipLaunchConfig = VideoEditorLaunchConfig(
+        entryPoint: .pip,
+        hostController: presentedVC,
+        pipVideoItem: pipVideoURL,
+        musicTrack: nil,
+        animated: true
+      )
+      
+      self.checkLicenseAndStart(with: pipLaunchConfig, rejecter: reject)
     }
-    
-    // sample_pip_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
-    // Please provide valid video URL to open Video Editor in PIP.
-    let pipVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")
-    
-    let pipLaunchConfig = VideoEditorLaunchConfig(
-      entryPoint: .pip,
-      hostController: presentedVC,
-      pipVideoItem: pipVideoURL,
-      musicTrack: nil,
-      animated: true
-    )
-    
-    checkLicenseAndStart(with: pipLaunchConfig, rejecter: reject)
   }
   
   @objc func openVideoEditorTrimmer(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
@@ -87,23 +91,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     prepareAudioBrowser()
     initVideoEditor()
     
-    guard let presentedVC = RCTPresentedViewController() else {
-      return
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      
+      // sample_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
+      // Please provide valid video URL to open Video Editor in Trimmer.
+      let trimmerVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
+      
+      let trimmerLaunchConfig = VideoEditorLaunchConfig(
+        entryPoint: .trimmer,
+        hostController: presentedVC,
+        videoItems: [trimmerVideoURL],
+        musicTrack: nil,
+        animated: true
+      )
+      
+      self.checkLicenseAndStart(with: trimmerLaunchConfig, rejecter: reject)
     }
-    
-    // sample_video.mp4 file is hardcoded for demonstrating how to open video editor sdk in the simplest case.
-    // Please provide valid video URL to open Video Editor in Trimmer.
-    let trimmerVideoURL = Bundle.main.url(forResource: "sample_video", withExtension: "mp4")!
-    
-    let trimmerLaunchConfig = VideoEditorLaunchConfig(
-      entryPoint: .trimmer,
-      hostController: presentedVC,
-      videoItems: [trimmerVideoURL],
-      musicTrack: nil,
-      animated: true
-    )
-    
-    checkLicenseAndStart(with: trimmerLaunchConfig, rejecter: reject)
   }
   
   func checkLicenseAndStart(with config: VideoEditorLaunchConfig, rejecter reject: @escaping RCTPromiseRejectBlock) {
