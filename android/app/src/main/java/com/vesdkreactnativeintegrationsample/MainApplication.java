@@ -31,7 +31,6 @@ public class MainApplication extends Application implements ReactApplication {
      */
     public static final boolean USE_CUSTOM_AUDIO_BROWSER = false;
 
-    private final String TAG = "BanubaVideoEditor";
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
             new BasePackageList().getPackageList()
     );

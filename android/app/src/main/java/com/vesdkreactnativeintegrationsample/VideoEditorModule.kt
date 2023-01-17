@@ -91,7 +91,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
 
     @ReactMethod
     fun initVideoEditor(key: String) {
-        videoEditorSDK = BanubaVideoEditor.Companion.initialize(key)
+        videoEditorSDK = BanubaVideoEditor.initialize(key)
 
         if (videoEditorSDK == null) {
             // Token you provided is not correct - empty or truncated
