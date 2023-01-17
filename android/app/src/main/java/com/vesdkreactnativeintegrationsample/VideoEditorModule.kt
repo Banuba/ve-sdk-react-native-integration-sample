@@ -90,7 +90,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
     override fun getName(): String = TAG
 
     @ReactMethod
-    fun initLicenseManager(key: String) {
+    fun initVideoEditor(key: String) {
         videoEditorSDK = BanubaVideoEditor.Companion.initialize(key)
 
         if (videoEditorSDK == null) {

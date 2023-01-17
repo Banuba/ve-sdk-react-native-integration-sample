@@ -27,13 +27,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   private var currentReject: RCTPromiseRejectBlock?
   
   private var customAudioTrackUUID: UUID?
+
+  @objc func initVideoEditor(_ token: String) {
+    let config = createVideoEditorConfiguration()
+    
+    videoEditorSDK = BanubaVideoEditor(
+      token: token,
+      configuration: config,
+      externalViewControllerFactory: customViewControllerFactory
+    )
+    
+    // Set delegate
+    videoEditorSDK?.delegate = self
+  }
   
   @objc func openVideoEditor(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     self.currentResolve = resolve
     self.currentReject = reject
     
     prepareAudioBrowser()
-    initVideoEditor()
     
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
@@ -61,7 +73,6 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentReject = reject
     
     prepareAudioBrowser()
-    initVideoEditor()
     
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
@@ -89,7 +100,6 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     self.currentReject = reject
     
     prepareAudioBrowser()
-    initVideoEditor()
     
     DispatchQueue.main.async {
       guard let presentedVC = RCTPresentedViewController() else {
@@ -215,41 +225,6 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     }
   }
   
-  private func initVideoEditor() {
-    var config = createVideoEditorConfiguration()
-    // Show mute audio button on Camera screen
-    config.featureConfiguration.isMuteCameraAudioEnabled = true
-    
-    // Sets 3, 10 seconds timer for recording on Camera
-    config.recorderConfiguration.timerConfiguration.options = [
-      TimerOptionConfiguration(
-        button: ImageButtonConfiguration(
-          imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
-        ),
-        startingTimerSeconds: 3,
-        stoppingTimerSeconds: .zero,
-        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "3")
-      ),
-      TimerOptionConfiguration(
-        button: ImageButtonConfiguration(
-          imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
-        ),
-        startingTimerSeconds: 10,
-        stoppingTimerSeconds: .zero,
-        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "10")
-      )
-    ]
-    
-    videoEditorSDK = BanubaVideoEditor(
-      token: AppDelegate.licenseToken,
-      configuration: config,
-      externalViewControllerFactory: customViewControllerFactory
-    )
-    
-    // Set delegate
-    videoEditorSDK?.delegate = self
-  }
-  
   // Prepares Audio Browser
   private func prepareAudioBrowser() {
     if (!AppDelegate.useCustomAudioBrowser) {
@@ -281,8 +256,32 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   }
   
   private func createVideoEditorConfiguration() -> VideoEditorConfig {
-    let config = VideoEditorConfig()
+    var config = VideoEditorConfig()
     // Do customization here
+
+    // Show mute audio button on Camera screen
+    config.featureConfiguration.isMuteCameraAudioEnabled = true
+    
+    // Sets 3, 10 seconds timer for recording on Camera
+    config.recorderConfiguration.timerConfiguration.options = [
+      TimerOptionConfiguration(
+        button: ImageButtonConfiguration(
+          imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
+        ),
+        startingTimerSeconds: 3,
+        stoppingTimerSeconds: .zero,
+        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "3")
+      ),
+      TimerOptionConfiguration(
+        button: ImageButtonConfiguration(
+          imageConfiguration: ImageConfiguration(imageName: "camera.time_effects_on")
+        ),
+        startingTimerSeconds: 10,
+        stoppingTimerSeconds: .zero,
+        description: String(format: NSLocalizedString("hands.free.seconds", comment: ""), "10")
+      )
+    ]
+
     return config
   }
   // MARK: - Create music track

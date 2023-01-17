@@ -10,6 +10,10 @@ import {
 } from "react-native";
 const { VideoEditorModule } = NativeModules;
 
+function initVideoEditor() {
+  VideoEditorModule.initVideoEditor(SET YOUR LICENSE TOKEN);
+}
+
 async function startIosVideoEditor() {
   return await VideoEditorModule.openVideoEditor();
 }
@@ -34,17 +38,13 @@ async function startAndroidVideoEditorTrimmer() {
   return await VideoEditorModule.openVideoEditorTrimmer();
 }
 
-function initLicenseManager() {
-    VideoEditorModule.initLicenseManager(SET YOUR LICENSE TOKEN);
-}
-
 export default class App extends Component {
   static errEditorNotInitialized = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
   static errEditorLicenseRevoked = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
 
   constructor() {
     super()
-    initLicenseManager()
+    initVideoEditor()
     this.state = {
       errorText: ''
     }
