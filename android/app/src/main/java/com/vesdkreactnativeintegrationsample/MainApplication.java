@@ -22,13 +22,6 @@ import javax.annotation.Nullable;
 import expo.modules.updates.UpdatesController;
 
 public class MainApplication extends Application implements ReactApplication {
-
-    /**
-     * true - use custom audio browser implementation in this sample
-     * false - use default implementation
-     */
-    public static final boolean USE_CUSTOM_AUDIO_BROWSER = false;
-
     private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
             new BasePackageList().getPackageList()
     );
@@ -42,7 +35,10 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected List<ReactPackage> getPackages() {
             List<ReactPackage> packages = new PackageList(this).getPackages();
+
+            // Add Banuba Video Editor SDK package
             packages.add(new VideoEditorReactPackage());
+
             packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
             return packages;
         }

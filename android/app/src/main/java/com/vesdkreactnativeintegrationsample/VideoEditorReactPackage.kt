@@ -11,6 +11,7 @@ class VideoEditorReactPackage : ReactPackage {
 
     override fun createNativeModules(reactContext: ReactApplicationContext): MutableList<NativeModule> {
         val modules = mutableListOf<NativeModule>()
+        // Specify Banuba Video Editor Module
         modules.add(VideoEditorModule(reactContext))
         return modules
     }

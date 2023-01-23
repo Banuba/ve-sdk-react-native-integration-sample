@@ -8,7 +8,7 @@ import Foundation
 class CustomViewControllerFactory: ExternalViewControllerFactory {
   
   // Override to use custom audio browser experience. Set nil to use default implementation
-  var musicEditorFactory: MusicEditorExternalViewControllerFactory? = AppDelegate.useCustomAudioBrowser ? CustomAudioBrowserViewControllerFactory() : nil
+  var musicEditorFactory: MusicEditorExternalViewControllerFactory? = AppDelegate.configEnableCustomAudioBrowser ? CustomAudioBrowserViewControllerFactory() : nil
   
   var countdownTimerViewFactory: CountdownTimerViewFactory?
   

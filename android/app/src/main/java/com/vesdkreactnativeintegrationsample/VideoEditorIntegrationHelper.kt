@@ -52,9 +52,17 @@ import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-class BanubaVideoEditorSDK {
+class VideoEditorIntegrationHelper {
 
-    fun initialize(applicationContext: Context) {
+    companion object {
+        /**
+         * true - enables custom audio browser implementation in this sample
+         * false - default implementation
+         */
+        const val CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER = false
+    }
+
+    fun initializeDependencies(applicationContext: Context) {
         startKoin {
             androidContext(applicationContext)
             allowOverride(true)
@@ -90,7 +98,6 @@ class BanubaVideoEditorSDK {
  * ExportResult is an object that holds all necessary data related
  * to the video created in VideoCreationActivity
  */
-
 class SampleExportVideoContract: ActivityResultContract<Intent?, ExportResult?>() {
 
     override fun createIntent(context: Context, input: Intent?): Intent {
@@ -161,7 +168,7 @@ private class SampleIntegrationVeKoinModule {
         single<ContentFeatureProvider<TrackData, Fragment>>(
             named("musicTrackProvider")
         ) {
-            if (MainApplication.USE_CUSTOM_AUDIO_BROWSER) {
+            if (VideoEditorIntegrationHelper.CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER) {
                 AudioBrowserContentProvider()
             } else {
                 // Default implementation that supports Mubert and Local audio stored on the device

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ve-sdk-react-native-integration-sample</string>
-    <!-- AUDIO BROWSER MUBERT -->
+    <string name="app_name">Banuba VE SDK Sample for RN Expo</string>
+    <!-- Specify Audio browser Mubert(https://mubert.com/) API key -->
     <string name="mubert_api_key">SET MUBERT API KEY</string>
 </resources>

@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    true - use custom audio browser implementation in this sample.
    false - use default default implementation.
    */
-  static let useCustomAudioBrowser = false
+  static let configEnableCustomAudioBrowser = false
   
   // Set your Mubert Api key here
   static let mubertApiKey = ""

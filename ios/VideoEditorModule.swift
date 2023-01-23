@@ -234,7 +234,7 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   
   // Prepares Audio Browser
   private func prepareAudioBrowser() {
-    if (!AppDelegate.useCustomAudioBrowser) {
+    if (!AppDelegate.configEnableCustomAudioBrowser) {
       BanubaAudioBrowser.setMubertPat(AppDelegate.mubertApiKey)
     }
   }
