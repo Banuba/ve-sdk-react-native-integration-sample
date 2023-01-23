@@ -21,8 +21,6 @@ import javax.annotation.Nullable;
 
 import expo.modules.updates.UpdatesController;
 
-import android.util.Log;
-
 public class MainApplication extends Application implements ReactApplication {
 
     /**
@@ -90,8 +88,6 @@ public class MainApplication extends Application implements ReactApplication {
         }
 
         initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
-
-        new BanubaVideoEditorSDK().initialize(this);
     }
 
     /**

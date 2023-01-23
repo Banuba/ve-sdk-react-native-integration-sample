@@ -28,18 +28,25 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   
   private var customAudioTrackUUID: UUID?
 
-  @objc func initVideoEditor(_ token: String) {
-    let config = createVideoEditorConfiguration()
-    
-    videoEditorSDK = BanubaVideoEditor(
-      token: token,
-      configuration: config,
-      externalViewControllerFactory: customViewControllerFactory
-    )
-    
-    // Set delegate
-    videoEditorSDK?.delegate = self
-  }
+  @objc (initVideoEditor:resolver:rejecter:)
+    func initVideoEditor(_ token: String, _ resolve: @escaping RCTPromiseResolveBlock, _ reject: @escaping RCTPromiseRejectBlock) {
+      let config = createVideoEditorConfiguration()
+
+
+      videoEditorSDK = BanubaVideoEditor(
+        token: token,
+        configuration: config,
+        externalViewControllerFactory: customViewControllerFactory
+      )
+
+      if videoEditorSDK == nil {
+        reject(Self.errEditorNotInitialized, nil, nil)
+        return
+      }
+
+      // Set delegate
+      videoEditorSDK?.delegate = self
+    }
   
   @objc func openVideoEditor(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     self.currentResolve = resolve

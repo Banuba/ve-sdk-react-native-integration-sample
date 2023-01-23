@@ -29,15 +29,16 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
 
         const val TAG = "VideoEditorModule"
 
-        private const val ERR_VIDEO_EDITOR_NOT_INITIALIZED = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
-        private const val ERR_VIDEO_EDITOR_LICENSE_REVOKED = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
-        private const val ERR_SDK_NOT_INITIALIZED
+        private const val ERR_SDK_NOT_INITIALIZED_CODE = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
+        private const val ERR_LICENSE_REVOKED_CODE = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
+        private const val ERR_SDK_NOT_INITIALIZED_MESSAGE
                 = "Banuba Video Editor SDK is not initialized: license token is unknown or incorrect.\nPlease check your license token or contact Banuba"
-        private const val ERR_LICENSE_REVOKED = "License is revoked or expired. Please contact Banuba https://www.banuba.com/faq/kb-tickets/new"
+        private const val ERR_LICENSE_REVOKED_MESSAGE = "License is revoked or expired. Please contact Banuba https://www.banuba.com/faq/kb-tickets/new";
     }
 
     private var exportResultPromise: Promise? = null
     private var videoEditorSDK: BanubaVideoEditor? = null
+    private var videoEditorSdkDependencies: BanubaVideoEditorSDK? = null
 
     private val videoEditorResultListener = object : ActivityEventListener {
         override fun onActivityResult(
@@ -90,12 +91,21 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
     override fun getName(): String = TAG
 
     @ReactMethod
-    fun initVideoEditor(key: String) {
-        videoEditorSDK = BanubaVideoEditor.initialize(key)
+    fun initVideoEditor(licenseToken: String, inputPromise: Promise) {
+        videoEditorSDK = BanubaVideoEditor.initialize(licenseToken)
 
         if (videoEditorSDK == null) {
             // Token you provided is not correct - empty or truncated
-            Log.e(TAG, ERR_SDK_NOT_INITIALIZED);
+            Log.e(TAG, ERR_SDK_NOT_INITIALIZED_MESSAGE)
+            inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
+        } else {
+            if (videoEditorSdkDependencies == null) {
+                // Initialize video editor sdk dependencies
+                videoEditorSdkDependencies = BanubaVideoEditorSDK().apply {
+                    initialize(reactApplicationContext.applicationContext)
+                }
+            }
+            inputPromise.resolve(null)
         }
     }
 
@@ -110,11 +120,11 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         openVideEditorInternal(inputPromise)
                     } else {
                         // ❌ Use of Video Editor is restricted. License is revoked or expired.
-                        inputPromise.reject(ERR_VIDEO_EDITOR_LICENSE_REVOKED, ERR_LICENSE_REVOKED)
+                        inputPromise.reject(ERR_LICENSE_REVOKED_CODE, ERR_LICENSE_REVOKED_MESSAGE)
                     }
                 },
                 notInitializedError = {
-                    inputPromise.reject(ERR_VIDEO_EDITOR_NOT_INITIALIZED, ERR_SDK_NOT_INITIALIZED)
+                    inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
                 }
         )
     }
@@ -156,11 +166,11 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         openVideoEditorPIPInternal(inputPromise)
                     } else {
                         // ❌ Use of Video Editor is restricted. License is revoked or expired.
-                        inputPromise.reject(ERR_VIDEO_EDITOR_LICENSE_REVOKED, ERR_LICENSE_REVOKED)
+                        inputPromise.reject(ERR_LICENSE_REVOKED_CODE, ERR_LICENSE_REVOKED_MESSAGE)
                     }
                 },
                 notInitializedError = {
-                    inputPromise.reject(ERR_VIDEO_EDITOR_NOT_INITIALIZED, ERR_SDK_NOT_INITIALIZED)
+                    inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
                 }
         )
     }
@@ -209,11 +219,11 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         openVideoEditorTrimmerInternal(inputPromise)
                     } else {
                         // ❌ Use of Video Editor is restricted. License is revoked or expired.
-                        inputPromise.reject(ERR_VIDEO_EDITOR_LICENSE_REVOKED, ERR_LICENSE_REVOKED)
+                        inputPromise.reject(ERR_LICENSE_REVOKED_CODE, ERR_LICENSE_REVOKED_MESSAGE)
                     }
                 },
                 notInitializedError = {
-                    inputPromise.reject(ERR_VIDEO_EDITOR_NOT_INITIALIZED, ERR_SDK_NOT_INITIALIZED)
+                    inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
                 }
         )
     }
