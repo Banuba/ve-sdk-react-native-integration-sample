@@ -10,34 +10,50 @@ import {
 } from "react-native";
 const { VideoEditorModule } = NativeModules;
 
+// Set Banuba license token for Video Editor SDK
+const LICENSE_TOKEN = SET LICENSE TOKEN
+
+const ERR_SDK_NOT_INITIALIZED_CODE = 'ERR_VIDEO_EDITOR_NOT_INITIALIZED';
+const ERR_SDK_NOT_INITIALIZED_MESSAGE = 'Banuba Video Editor SDK is not initialized: license token is unknown or incorrect.\nPlease check your license token or contact Banuba';
+
+const ERR_LICENSE_REVOKED_CODE = 'ERR_VIDEO_EDITOR_LICENSE_REVOKED';
+const ERR_LICENSE_REVOKED_MESSAGE = 'License is revoked or expired. Please contact Banuba https://www.banuba.com/faq/kb-tickets/new';
+
+function initVideoEditor() {
+  VideoEditorModule.initVideoEditor(LICENSE_TOKEN);
+}
+
 async function startIosVideoEditor() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditor();
 }
 
 async function startIosVideoEditorPIP() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditorPIP();
 }
 
 async function startIosVideoEditorTrimmer() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditorTrimmer();
 }
 
 async function startAndroidVideoEditor() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditor();
 }
 
 async function startAndroidVideoEditorPIP() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditorPIP();
 }
 
 async function startAndroidVideoEditorTrimmer() {
+  initVideoEditor();
   return await VideoEditorModule.openVideoEditorTrimmer();
 }
 
 export default class App extends Component {
-  static errEditorNotInitialized = "ERR_VIDEO_EDITOR_NOT_INITIALIZED"
-  static errEditorLicenseRevoked = "ERR_VIDEO_EDITOR_LICENSE_REVOKED"
-
   constructor() {
     super()
     this.state = {
@@ -48,12 +64,12 @@ export default class App extends Component {
   handleExportException(e) {
     var message = '';
     switch (e.code) {
-      case App.errEditorNotInitialized:
-        message = 'Banuba Video Editor SDK is not initialized: license token is unknown or incorrect.\nPlease check your license token or contact Banuba';
+      case ERR_SDK_NOT_INITIALIZED_CODE:
+        message = ERR_SDK_NOT_INITIALIZED_MESSAGE;
         break;
-      case App.errEditorLicenseRevoked:
-        message = 'License is revoked or expired. Please contact Banuba https://www.banuba.com/faq/kb-tickets/new';
-        break;
+        case ERR_LICENSE_REVOKED_CODE:
+          message = ERR_LICENSE_REVOKED_MESSAGE;
+          break;
       default:
         message = '';
         console.log(
