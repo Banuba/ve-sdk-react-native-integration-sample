@@ -18,10 +18,10 @@ Feel free to [contact us](https://www.banuba.com/faq/kb-tickets/new) if you have
 2. Install [Expo CLI](https://docs.expo.dev/get-started/installation/)
 3. Complete [Running On Device](https://reactnative.dev/docs/running-on-device)
 4. Run ```yarn install``` to install required project dependencies.
-5. Set Banuba license token [within the app](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L14).
+5. Set Banuba license token [within the app](App.js#L14).
 
 ### Run on Android
-1. Make sure variable ```ANDROID_SDK_ROOT``` is set in your environment or setup [sdk.dir](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/local.properties#L1).
+1. Make sure variable ```ANDROID_SDK_ROOT``` is set in your environment or setup [sdk.dir](android/local.properties#L1).
 2. Run ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE.
 3. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate Video Editor SDK into your React Native Expo project.
 

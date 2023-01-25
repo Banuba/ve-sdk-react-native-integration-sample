@@ -9,7 +9,7 @@ of your React Native Expo project using native Android development process.
 Please follow [Installation](../README.md#Installation) guide if the license token is not set.  
 
 ### Add SDK dependencies
-Add Banuba repositories in [project gradle](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/build.gradle#L41) file to get Video Editor SDK and AR Cloud dependencies.  
+Add Banuba repositories in [project gradle](../android/build.gradle#L41) file to get Video Editor SDK and AR Cloud dependencies.  
 
 ```groovy
         maven {
@@ -30,7 +30,7 @@ Add Banuba repositories in [project gradle](https://github.com/Banuba/ve-sdk-rea
         }
 ```
 
-Add Video Editor SDK dependencies in [app gradle]((https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/build.gradle#L229)) file.  
+Add Video Editor SDK dependencies in [app gradle]((../android/app/build.gradle#L229)) file.  
 ```groovy
     def banubaSdkVersion = '1.26.3'
     implementation "com.banuba.sdk:ffmpeg:4.4"
@@ -53,11 +53,11 @@ Add Video Editor SDK dependencies in [app gradle]((https://github.com/Banuba/ve-
 ```
 
 ### Add SDK integration helper
-Add [VideoEditorIntegrationHelper.kt](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt) file 
+Add [VideoEditorIntegrationHelper.kt](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt) file 
 to initialize SDK dependencies. This class also allows you to customize many Video Editor SDK features i.e. min/max video durations, export flow, order of effects and others.
 
 ### Add React Package
-First, add [VideoEditorModule](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt) for communicating 
+First, add [VideoEditorModule](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt) for communicating 
 between React Native and Video Editor SDK.  
 
 Next, create ```VideoEditorReactPackage``` and add ```VideoEditorModule``` to the list of modules.
@@ -73,7 +73,7 @@ Next, create ```VideoEditorReactPackage``` and add ```VideoEditorModule``` to th
 }
 
 ```
-Finally, add ```VideoEditorReactPackage```  to list of packages in [Application class](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/MainApplication.java#L40)
+Finally, add ```VideoEditorReactPackage```  to list of packages in [Application class](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/MainApplication.java#L40)
 ```java
         @Override
         protected List<ReactPackage> getPackages() {
@@ -85,7 +85,7 @@ Finally, add ```VideoEditorReactPackage```  to list of packages in [Application 
 ```
 
 ### Update AndroidManifest
-Add ```VideoCreationActivity``` in your [AndroidManifest.xml](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/AndroidManifest.xml#L62) file.
+Add ```VideoCreationActivity``` in your [AndroidManifest.xml](../android/app/src/main/AndroidManifest.xml#L62) file.
 The Activity is used to bring together a number of screens in a certain flow.
 
 Next, allow Network by adding permissions
@@ -93,7 +93,7 @@ Next, allow Network by adding permissions
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-and ```android:usesCleartextTraffic="true"``` in [AndroidManifest.xml](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/AndroidManifest.xml).
+and ```android:usesCleartextTraffic="true"``` in [AndroidManifest.xml](../android/app/src/main/AndroidManifest.xml).
 
 Network traffic is used for downloading AR effects from AR Cloud and stickers from [Giphy](https://giphy.com/).  
 
@@ -103,24 +103,24 @@ by following [guide](https://developer.android.com/guide/topics/manifest/applica
 ### Add resources
 Video Editor SDK uses a lot of resources required for running.  
 Please make sure all these resources are provided in your project.
-1. [bnb-resources](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/assets/bnb-resources) to use built-in Banuba AR and Lut effects.
+1. [bnb-resources](../android/app/src/main/assets/bnb-resources) to use built-in Banuba AR and Lut effects.
    Using Banuba AR ```assets/bnb-resources/effects``` requires [Face AR product](https://docs.banuba.com/face-ar-sdk-v1). Please contact Banuba Sales managers to get more AR effects.<br></br>
 
-2. [color](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/color),
-   [drawable](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable),
-   [drawable-hdpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-hdpi),
-   [drawable-ldpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-ldpi),
-   [drawable-mdpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-mdpi),
-   [drawable-xhdpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-xhdpi),
-   [drawable-xxhdpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-xxhdpi),
-   [drawable-xxxhdpi](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/drawable-xxxhdpi) are visual assets used in views and added in the sample for simplicity. You can use your specific assets.  
+2. [color](../android/app/src/main/res/color),
+   [drawable](../android/app/src/main/res/drawable),
+   [drawable-hdpi](../android/app/src/main/res/drawable-hdpi),
+   [drawable-ldpi](../android/app/src/main/res/drawable-ldpi),
+   [drawable-mdpi](../android/app/src/main/res/drawable-mdpi),
+   [drawable-xhdpi](../android/app/src/main/res/drawable-xhdpi),
+   [drawable-xxhdpi](../android/app/src/main/res/drawable-xxhdpi),
+   [drawable-xxxhdpi](../android/app/src/main/res/drawable-xxxhdpi) are visual assets used in views and added in the sample for simplicity. You can use your specific assets.  
 
-3. [values](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/android/app/src/main/res/values) to use colors and themes. Theme ```VideoCreationTheme``` and its styles use resources in **drawable** and **color** directories.  
+3. [values](../android/app/src/main/res/values) to use colors and themes. Theme ```VideoCreationTheme``` and its styles use resources in **drawable** and **color** directories.  
 
 ### Configure media export
 Video Editor SDK allows to export a number of media files to meet your requirements. 
 Implement ```ExportParamsProvider``` and provide ```List<ExportParams>``` where every ```ExportParams``` is a media file i.e. video or audio -
-[See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt#L247).
+[See example](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt#L247).
 
 Use ```ExportParams.Builder.fileName()``` method to provide custom media file name.
 
@@ -130,9 +130,9 @@ First, initialize Video Editor SDK using license token in ```VideoEditorModule``
 val videoEditor = BanubaVideoEditor.initialize(LICENSE_TOKEN)
 ```
 Please note, instance ```videoEditor``` can be **null** if the license token is incorrect.  
-[See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/app/src/main/java/com/vesdkreactnativecliintegrationsample/VideoEditorModule.kt#L95)  
+[See example](../android/app/src/main/java/com/vesdkreactnativecliintegrationsample/VideoEditorModule.kt#L95)  
 
-Next, to start Video Editor SDK from React Native use ```startAndroidVideoEditor()``` method defined in [App.js](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L99).
+Next, to start Video Editor SDK from React Native use ```startAndroidVideoEditor()``` method defined in [App.js](../App.js#L99).
 It will open Video Editor SDK from camera screen.
 ```javascript
    function initVideoEditor() {
@@ -157,15 +157,15 @@ It will open Video Editor SDK from camera screen.
    ```
 
 Since Video Editor SDK is launched within ```VideoCreationActivity``` exported video is returned from the Activity
-into [onActivityResult](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#44).  
+into [onActivityResult](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorModule.kt#44).  
 
-Export returns [videoUri](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L100) path as a ```String``` value where exported video stored to ReactNative.  
+Export returns [videoUri](../App.js#L100) path as a ```String``` value where exported video stored to ReactNative.  
 
 [Promises](https://reactnative.dev/docs/native-modules-android#promises) is used to make a bridge between Android and ReactNative.  
 
 ### Enable custom Audio Browser experience
 Video Editor SDK allows to implement your experience of providing audio tracks for your users - custom Audio Browser.  
-To check out the simplest experience on Flutter you can set ```true``` to [CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt#L62)  
+To check out the simplest experience on Flutter you can set ```true``` to [CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER](../android/app/src/main/java/com/vesdkreactnativeintegrationsample/VideoEditorIntegrationHelper.kt#L62)  
 :exclamation:<ins>Video Editor SDK can play only files stored on device.</ins>
 
 ## What is next?

@@ -9,21 +9,21 @@ of your React Native Expo project using native iOS development process.
 Please follow [Installation](../README.md#Installation) guide if the license token is not set.
 
 ### Add SDK dependencies
-Add iOS Video Editor SDK dependencies to your [Podfile](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/ios/Podfile)
+Add iOS Video Editor SDK dependencies to your [Podfile](../ios/Podfile)
 
 ### Add Bridge between React Native and iOS  
-Add [vesdkreactnativeintegrationsample-Bridging-Header.h](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/ios/vesdkreactnativeintegrationsample-Bridging-Header.h) 
-and [VideoEditorModuleBridge.m](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/ios/VideoEditorModuleBridge.m) files for communication between React Native and iOS.
+Add [vesdkreactnativeintegrationsample-Bridging-Header.h](../ios/vesdkreactnativeintegrationsample-Bridging-Header.h) 
+and [VideoEditorModuleBridge.m](../ios/VideoEditorModuleBridge.m) files for communication between React Native and iOS.
 
 ### Add SDK integration module  
-Add [VideoEditorModule.swift](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/master/ios/VideoEditorModule.swift) file
+Add [VideoEditorModule.swift](../ios/VideoEditorModule.swift) file
 to initialize SDK dependencies. This class also allows you to customize many Video Editor SDK features i.e. min/max video durations, export flow, order of effects and others.
 
 ### Add resources
 Video Editor SDK uses a lot of resources required for running.  
 Please make sure all these resources are provided in your project.
-1. [bundleEffects](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/ios/vesdkreactnativeintegrationsample/bundleEffects) to use built-in Banuba AR effects. Using Banuba AR requires [Face AR product](https://docs.banuba.com/face-ar-sdk-v1). Please contact Banuba Sales managers to get more AR effects.
-2. [luts](https://github.com/Banuba/ve-sdk-react-native-integration-sample/tree/main/ios/vesdkreactnativeintegrationsample/luts) to use Lut effects shown in the Effects tab.
+1. [bundleEffects](../ios/vesdkreactnativeintegrationsample/bundleEffects) to use built-in Banuba AR effects. Using Banuba AR requires [Face AR product](https://docs.banuba.com/face-ar-sdk-v1). Please contact Banuba Sales managers to get more AR effects.
+2. [luts](../ios/vesdkreactnativeintegrationsample/luts) to use Lut effects shown in the Effects tab.
 
 ### Start SDK
 First, initialize Video Editor SDK using license token in ```VideoEditorModule``` on iOS.
@@ -34,9 +34,9 @@ let videoEditor = BanubaVideoEditor(
       )
 ```
 Please note, instance ```videoEditor``` can be **nil** if the license token is incorrect.  
-[See example](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/VideoEditorModule.swift#L36)
+[See example](../ios/VideoEditorModule.swift#L36)
 
-Next, to start Video Editor SDK from React Native use ```startIosVideoEditor()``` method defined in [App.js](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L110).
+Next, to start Video Editor SDK from React Native use ```startIosVideoEditor()``` method defined in [App.js](../App.js#L110).
 It will open Video Editor SDK from camera screen.
 
 Use ```startIosVideoEditor()``` method defined in ```App.js``` to start Video Editor from React Native on iOS.</br>
@@ -63,11 +63,11 @@ Use ```startIosVideoEditor()``` method defined in ```App.js``` to start Video Ed
                 }
    />
  ```
-Export returns [videoUri](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/App.js#L112) path as a ```String``` value where exported video stored to ReactNative.
+Export returns [videoUri](../App.js#L112) path as a ```String``` value where exported video stored to ReactNative.
 
 ### Enable custom Audio Browser experience
 Video Editor SDK allows to implement your experience of providing audio tracks for your users - custom Audio Browser.  
-To check out the simplest experience you can set ```true``` to [useCustomAudioBrowser](https://github.com/Banuba/ve-sdk-react-native-integration-sample/blob/main/ios/AppDelegate.swift#L17)  
+To check out the simplest experience you can set ```true``` to [useCustomAudioBrowser](../ios/AppDelegate.swift#L17)  
 :exclamation:<ins>Video Editor SDK can play only files stored on device.</ins>
 
 ## What is next?
