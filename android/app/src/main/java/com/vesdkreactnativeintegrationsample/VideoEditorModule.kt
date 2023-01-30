@@ -22,7 +22,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
     ReactContextBaseJavaModule(reactContext) {
 
     companion object {
-        const val TAG = "BanubaVideoEditor"
+        const val TAG = "VideoEditorModule"
         private const val EXPORT_REQUEST_CODE = 1111
 
         private const val ERR_ACTIVITY_DOES_NOT_EXIST = "ERR_ACTIVITY_DOES_NOT_EXIST"
