@@ -43,6 +43,16 @@ async function startAndroidVideoEditor() {
   return await VideoEditorModule.openVideoEditor();
 }
 
+async function startAndroidVideoEditorVideoOnly() {
+  initVideoEditor();
+  return await VideoEditorModule.openVideoEditorVideoOnly();
+}
+
+async function startAndroidVideoEditorPhotoOnly() {
+  initVideoEditor();
+  return await VideoEditorModule.openVideoEditorPhotoOnly();
+}
+
 async function startAndroidVideoEditorPIP() {
   initVideoEditor();
   return await VideoEditorModule.openVideoEditorPIP();
@@ -182,6 +192,50 @@ export default class App extends Component {
                   .catch(e => {
                     this.handleExportException(e);
                   });
+              }
+            }} />
+        </View>
+
+        <View style={{ marginVertical: 8 }}>
+          <Button
+            title="Open Video Editor Video Only"
+            color="#a8328b"
+            onPress={async () => {
+              if (Platform.OS === 'android') {
+                startAndroidVideoEditorVideoOnly()
+                  .then((videoUri) => {
+                    console.log(
+                      "Banuba Android Video Editor export video completed successfully. Video uri = " +
+                      videoUri
+                    );
+                  })
+                  .catch((e) => {
+                    this.handleExportException(e);
+                  });
+              } else {
+
+              }
+            }} />
+        </View>
+
+        <View style={{ marginVertical: 8 }}>
+          <Button
+            title="Open Video Editor Photo Only"
+            color="#32a8a4"
+            onPress={async () => {
+              if (Platform.OS === 'android') {
+                startAndroidVideoEditorPhotoOnly()
+                  .then((videoUri) => {
+                    console.log(
+                      "Banuba Android Video Editor export video completed successfully. Video uri = " +
+                      videoUri
+                    );
+                  })
+                  .catch((e) => {
+                    this.handleExportException(e);
+                  });
+              } else {
+
               }
             }} />
         </View>
