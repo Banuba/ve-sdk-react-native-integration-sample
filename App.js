@@ -28,6 +28,16 @@ async function startIosVideoEditor() {
   return await VideoEditorModule.openVideoEditor();
 }
 
+async function startIosVideoEditorVideoOnly() {
+  initVideoEditor();
+  return await VideoEditorModule.openVideoEditorVideoOnly();
+}
+
+async function startIosVideoEditorPhotoOnly() {
+  initVideoEditor();
+  return await VideoEditorModule.openVideoEditorPhotoOnly();
+}
+
 async function startIosVideoEditorPIP() {
   initVideoEditor();
   return await VideoEditorModule.openVideoEditorPIP();
@@ -213,7 +223,17 @@ export default class App extends Component {
                     this.handleExportException(e);
                   });
               } else {
-
+                startIosVideoEditorVideoOnly()
+                  .then((response) => {
+                    const exportedVideoUri = response?.videoUri;
+                    console.log(
+                      "Banuba iOS Video Editor export video completed successfully. Video uri = " +
+                      exportedVideoUri
+                    );
+                  })
+                  .catch((e) => {
+                    this.handleExportException(e);
+                  });
               }
             }} />
         </View>
@@ -235,7 +255,17 @@ export default class App extends Component {
                     this.handleExportException(e);
                   });
               } else {
-
+                startIosVideoEditorPhotoOnly()
+                  .then((response) => {
+                    const exportedVideoUri = response?.videoUri;
+                    console.log(
+                      "Banuba iOS Video Editor export video completed successfully. Video uri = " +
+                      exportedVideoUri
+                    );
+                  })
+                  .catch((e) => {
+                    this.handleExportException(e);
+                  });
               }
             }} />
         </View>
