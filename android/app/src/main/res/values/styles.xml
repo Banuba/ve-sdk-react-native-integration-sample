@@ -755,7 +755,9 @@
 
     <style name="CustomEditorEffectTimeStyle" parent="EditorTimeEffectStyle" />
 
-    <style name="CustomEditorEffectMaskStyle" parent="EditorMaskEffectStyle" />
+    <style name="CustomEditorEffectMaskStyle" parent="EditorMaskEffectStyle" >
+        <item name="actionable_effect_download_icon">@drawable/ic_download_button</item>
+    </style>
 
     <style name="CustomEditorColorEffectsLabelStyle" parent="EditorColorEffectsLabelStyle" />
 
@@ -1034,7 +1036,9 @@
         <item name="timelineSingleTimelineStyle">@style/CustomMusicTimelineSingleViewStyle</item>
     </style>
 
-    <style name="CustomMusicTimelineVolumeStyle" parent="MusicTimelineVolumeStyle" />
+    <style name="CustomMusicTimelineVolumeStyle" parent="MusicTimelineVolumeStyle" >
+        <item name="timeline_video_volume_icon">@drawable/ic_volume_up</item>
+    </style>
 
     <style name="CustomMusicTimelinePlayerLineStyle" parent="MusicTimelinePlayerLineStyle" />
 
