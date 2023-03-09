@@ -23,13 +23,13 @@ Feel free to [contact us](https://www.banuba.com/faq/kb-tickets/new) if you have
 ### Run on Android
 1. Make sure variable ```ANDROID_SDK_ROOT``` is set in your environment or setup [sdk.dir](android/local.properties#L1).
 2. Run ```npm run android``` in terminal to launch the sample app on a device or launch the app in IDE.
-3. Follow [Android Integration Guide](mddocs/android_integration.md) to integrate Video Editor SDK into your React Native Expo project.
+3. Learn [Android quickstart](mddocs/android_integration.md) to quickly integrate Android Video Editor SDK into your React Native Expo project.
 
 ### Run on iOS  
 1. Install Cocoa Pods dependencies. Run ```cd ios``` and ```pod install``` in terminal.
 2. Open **Signing & Capabilities** tab in Target settings and select your Development Team.
 3. Run ```npm run ios``` in terminal to launch the sample on simulator (```iPhone 11``` default) or choose device in XCode to launch the sample.
-4. Follow [iOS Integration Guide](mddocs/ios_integration.md) to integrate Video Editor SDK into your React Native Expo project.
+4. Learn [iOS quickstart](mddocs/ios_integration.md) to quickly integrate iOS Video Editor SDK into your React Native Expo project.
 
 ## Dependencies
 |              | Version | 

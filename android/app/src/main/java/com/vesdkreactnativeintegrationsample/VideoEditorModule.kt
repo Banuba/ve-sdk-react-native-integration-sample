@@ -38,7 +38,7 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
 
     private var exportResultPromise: Promise? = null
     private var videoEditorSDK: BanubaVideoEditor? = null
-    private var videoEditorSdkDependencies: VideoEditorIntegrationHelper? = null
+    private var integrationModule: VideoEditorIntegrationModule? = null
 
     private val videoEditorResultListener = object : ActivityEventListener {
         override fun onActivityResult(
@@ -99,10 +99,10 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
             Log.e(TAG, ERR_SDK_NOT_INITIALIZED_MESSAGE)
             inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
         } else {
-            if (videoEditorSdkDependencies == null) {
+            if (integrationModule == null) {
                 // Initialize video editor sdk dependencies
-                videoEditorSdkDependencies = VideoEditorIntegrationHelper().apply {
-                    initializeDependencies(reactApplicationContext.applicationContext)
+                integrationModule = VideoEditorIntegrationModule().apply {
+                    initialize(reactApplicationContext.applicationContext)
                 }
             }
             inputPromise.resolve(null)

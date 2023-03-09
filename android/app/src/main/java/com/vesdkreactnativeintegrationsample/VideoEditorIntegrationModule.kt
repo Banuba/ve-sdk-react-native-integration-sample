@@ -1,14 +1,10 @@
 package com.vesdkreactnativeintegrationsample
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
-import com.banuba.android.sdk.ve.timeline.`object`.data.ObjectEditorConfig
 import com.banuba.sdk.arcloud.data.source.ArEffectsRepositoryProvider
 import com.banuba.sdk.arcloud.di.ArCloudKoinModule
 import com.banuba.sdk.audiobrowser.di.AudioBrowserKoinModule
@@ -19,19 +15,15 @@ import com.banuba.sdk.cameraui.data.TimerEntry
 import com.banuba.sdk.cameraui.domain.HandsFreeTimerActionProvider
 import com.banuba.sdk.core.AspectRatio
 import com.banuba.sdk.core.VideoResolution
-import com.banuba.sdk.core.data.OrderProvider
 import com.banuba.sdk.core.data.TrackData
 import com.banuba.sdk.core.domain.AspectRatioProvider
-import com.banuba.sdk.core.domain.BackgroundSeparationActionDataProvider
 import com.banuba.sdk.core.domain.DraftConfig
-import com.banuba.sdk.core.domain.ScannerActionDataProvider
 import com.banuba.sdk.core.ext.toPx
 import com.banuba.sdk.core.media.MediaFileNameHelper
 import com.banuba.sdk.core.ui.ContentFeatureProvider
 import com.banuba.sdk.effectplayer.adapter.BanubaEffectPlayerKoinModule
 import com.banuba.sdk.export.data.*
 import com.banuba.sdk.export.di.VeExportKoinModule
-import com.banuba.sdk.export.utils.EXTRA_EXPORTED_SUCCESS
 import com.banuba.sdk.gallery.di.GalleryKoinModule
 import com.banuba.sdk.playback.di.VePlaybackSdkKoinModule
 import com.banuba.sdk.token.storage.di.TokenStorageKoinModule
@@ -44,7 +36,6 @@ import com.banuba.sdk.ve.effects.watermark.WatermarkBuilder
 import com.banuba.sdk.ve.effects.watermark.WatermarkProvider
 import com.banuba.sdk.ve.ext.withWatermark
 import com.banuba.sdk.ve.flow.di.VeFlowKoinModule
-import com.banuba.sdk.veui.data.EditorConfig
 import com.banuba.sdk.veui.di.VeUiSdkKoinModule
 import com.banuba.sdk.veui.domain.CoverProvider
 import org.koin.android.ext.koin.androidContext
@@ -52,7 +43,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-class VideoEditorIntegrationHelper {
+class VideoEditorIntegrationModule {
 
     companion object {
         /**
@@ -62,7 +53,7 @@ class VideoEditorIntegrationHelper {
         const val CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER = false
     }
 
-    fun initializeDependencies(applicationContext: Context) {
+    fun initialize(applicationContext: Context) {
         startKoin {
             androidContext(applicationContext)
             allowOverride(true)
@@ -86,43 +77,19 @@ class VideoEditorIntegrationHelper {
                 GalleryKoinModule().module,
 
                 // Sample integration module
-                SampleIntegrationVeKoinModule().module,
+                SampleModule().module,
             )
         }
     }
 }
 
 /**
- * This class represents parsing result from VideoCreationActivity
- *
- * ExportResult is an object that holds all necessary data related
- * to the video created in VideoCreationActivity
- */
-class SampleExportVideoContract: ActivityResultContract<Intent?, ExportResult?>() {
-
-    override fun createIntent(context: Context, input: Intent?): Intent {
-        check(input != null) {
-            "Can not create Intent to create video"
-        }
-        return input
-    }
-
-    override fun parseResult(resultCode: Int, intent: Intent?): ExportResult? {
-        if (resultCode == Activity.RESULT_OK) {
-            return intent?.getParcelableExtra(EXTRA_EXPORTED_SUCCESS) as? ExportResult.Success
-        }
-        return ExportResult.Inactive
-    }
-
-}
-
-/**
  * All dependencies mentioned in this module will override default
- * implementations provided from SDK.
+ * implementations provided in the SDK.
  * Some dependencies has no default implementations. It means that
  * these classes fully depends on your requirements
  */
-private class SampleIntegrationVeKoinModule {
+private class SampleModule {
 
     val module = module {
         single<ExportFlowManager> {
@@ -143,7 +110,7 @@ private class SampleIntegrationVeKoinModule {
          * Provides params for export
          * */
         factory<ExportParamsProvider> {
-            SampleExportParamsProvider(
+            CustomExportParamsProvider(
                 exportDir = get(named("exportDir")),
                 watermarkBuilder = get()
             )
@@ -168,7 +135,7 @@ private class SampleIntegrationVeKoinModule {
         single<ContentFeatureProvider<TrackData, Fragment>>(
             named("musicTrackProvider")
         ) {
-            if (VideoEditorIntegrationHelper.CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER) {
+            if (VideoEditorIntegrationModule.CONFIG_ENABLE_CUSTOM_AUDIO_BROWSER) {
                 AudioBrowserContentProvider()
             } else {
                 // Default implementation that supports Mubert and Local audio stored on the device
@@ -184,14 +151,6 @@ private class SampleIntegrationVeKoinModule {
             HandsFreeTimerActionProvider()
         }
 
-        single<OrderProvider>(named("colorFilterOrderProvider")) {
-            SampleColorFilterOrderProvider()
-        }
-
-        single<OrderProvider>(named("maskOrderProvider")) {
-            SampleMaskOrderProvider()
-        }
-
         factory<DraftConfig> {
             DraftConfig.ENABLED_ASK_TO_SAVE
         }
@@ -201,22 +160,10 @@ private class SampleIntegrationVeKoinModule {
                 override fun provide(): AspectRatio = AspectRatio(9.0 / 16)
             }
         }
-
-        single<EditorConfig> {
-            EditorConfig(
-                minTotalVideoDurationMs = 1500
-            )
-        }
-
-        single<ObjectEditorConfig> {
-            ObjectEditorConfig(
-                objectEffectDefaultDuration = 2000
-            )
-        }
     }
 }
 
-private class SampleExportParamsProvider(
+private class CustomExportParamsProvider(
     private val exportDir: Uri,
     private val watermarkBuilder: WatermarkBuilder
 ) : ExportParamsProvider {
@@ -279,43 +226,4 @@ private class SampleWatermarkProvider : WatermarkProvider {
     override fun getWatermarkBitmap(): Bitmap? {
         return null
     }
-}
-
-class SampleMaskOrderProvider : OrderProvider {
-    override fun provide(): List<String> =
-        listOf(
-            ScannerActionDataProvider.EFFECT_NAME,
-            BackgroundSeparationActionDataProvider.EFFECT_NAME
-        )
-}
-
-class SampleColorFilterOrderProvider : OrderProvider {
-
-    override fun provide() = listOf(
-        "egypt",
-        "byers",
-        "chile",
-        "hyla",
-        "new_zeland",
-        "korben",
-        "canada",
-        "remy",
-        "england",
-        "retro",
-        "norway",
-        "neon",
-        "japan",
-        "instant",
-        "lux",
-        "sunset",
-        "bubblegum",
-        "chroma",
-        "lilac",
-        "pinkvine",
-        "spark",
-        "sunny",
-        "vinyl",
-        "glitch",
-        "grunge"
-    )
 }
