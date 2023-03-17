@@ -203,11 +203,8 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     DispatchQueue.main.async {
       let audioBrowserModule = self.getAudioBrowserModule()
       
-      // Use the same audio track id i.e. customAudioTrackId to discard previously used audio
-      guard let customAudioTrackUUID = self.customAudioTrackUUID else { return }
-      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewController(
-        viewController: audioBrowserModule,
-        didStopUsingTrackWith: customAudioTrackUUID
+      audioBrowserModule.trackSelectionDelegate?.trackSelectionViewControllerDiscardCurrentTrack(
+        viewController: audioBrowserModule
       )
       
       print("Audio track is discarded")
