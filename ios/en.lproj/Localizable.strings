@@ -326,12 +326,6 @@
 /* Transition effect name */
 "com.banuba.editor.effect.name.transition" = "Transition";
 
-/* Transition 2 effect name */
-"com.banuba.editor.effect.name.transition2" = "Transition 2";
-
-/* Transition 3 effect name */
-"com.banuba.editor.effect.name.transition3" = "Transition 3";
-
 /* Transition 4 */
 "com.banuba.editor.effect.name.transition4" = "Transition 4";
 
@@ -458,6 +452,12 @@
 
 /* Video volume title */
 "MusicEditor.VideoVolume" = "Volume";
+
+/* Original sound title */
+"MusicEditor.OriginalSound" = "Original sound";
+
+/* Added sound title */
+"MusicEditor.AddedSound" = "Added sound";
 
 /* Audio duration title */
 "MusicEditor.Duration" = "Duration";
