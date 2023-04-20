@@ -232,7 +232,10 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
   // Prepares Audio Browser
   private func prepareAudioBrowser() {
     if (!AppDelegate.configEnableCustomAudioBrowser) {
-      BanubaAudioBrowser.setMubertPat(AppDelegate.mubertApiKey)
+      BanubaAudioBrowser.setMubertKeys(
+        license: AppDelegate.mubertApiLicense,
+        token: AppDelegate.mubertApiKey
+      )
     }
   }
   
@@ -347,7 +350,8 @@ extension VideoEditorModule {
     videoEditorSDK?.export(
       using: exportConfiguration,
       exportProgress: nil
-    ) { [weak self] (success, error, coverImage) in
+    ) { [weak self] (error, coverImage) in
+      let success = error == nil
       // Export Callback
       DispatchQueue.main.async {
         if success {

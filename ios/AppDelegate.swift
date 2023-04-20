@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   static let configEnableCustomAudioBrowser = false
   
   // Set your Mubert Api key here
+  static let mubertApiLicense = ""
   static let mubertApiKey = ""
 
   // Specify name of your project module
