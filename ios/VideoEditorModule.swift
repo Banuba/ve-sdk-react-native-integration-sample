@@ -1,7 +1,6 @@
 import React
 import BanubaVideoEditorSDK
 import BanubaMusicEditorSDK
-import BanubaOverlayEditorSDK
 import VideoEditor
 import VEExportSDK
 import AVKit
