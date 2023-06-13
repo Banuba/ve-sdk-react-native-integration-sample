@@ -1,14 +1,13 @@
 
 import Foundation
 import BanubaVideoEditorSDK
-import BanubaMusicEditorSDK
 import BanubaUtilities
 import React
 
 class AudioBrowserModule: UIViewController, TrackSelectionViewController, RCTBridgeModule {
       
   // MARK: - TrackSelectionViewController
-  var trackSelectionDelegate: BanubaMusicEditorSDK.TrackSelectionViewControllerDelegate?
+  var trackSelectionDelegate: BanubaUtilities.TrackSelectionViewControllerDelegate?
   
   static func moduleName() -> String! {
     return "audio_browser"

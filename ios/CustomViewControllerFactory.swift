@@ -1,6 +1,5 @@
 
 import BanubaVideoEditorSDK
-import BanubaMusicEditorSDK
 import BanubaUtilities
 import Foundation
 
@@ -27,12 +26,12 @@ class CustomAudioBrowserViewControllerFactory: MusicEditorExternalViewController
   }
   
   // Effects selection view controller. Used at Music editor screen
-  func makeEffectSelectionViewController(selectedAudioItem: BanubaUtilities.AudioItem?) -> BanubaMusicEditorSDK.EffectSelectionViewController? {
+  func makeEffectSelectionViewController(selectedAudioItem: BanubaUtilities.AudioItem?) -> BanubaUtilities.EffectSelectionViewController? {
     return nil
   }
   
   // Returns recorder countdown view for voice recorder screen
-  func makeRecorderCountdownAnimatableView() -> BanubaMusicEditorSDK.MusicEditorCountdownAnimatableView? {
+  func makeRecorderCountdownAnimatableView() -> BanubaVideoEditorSDK.MusicEditorCountdownAnimatableView? {
     return nil
   }
 }
