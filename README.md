@@ -34,8 +34,7 @@ Feel free to [contact us](https://www.banuba.com/faq/kb-tickets/new) if you have
 ## Dependencies
 |              | Version | 
 |--------------|:-------:|
-| node         | 8.18.0  |
-| react native | ~0.63.4 | 
-| expo         | ~40.0.0 |
+| react native | 0.72.4  | 
+| expo         | 49.0.9  |
 | Android      |  6.0+   |
-| iOS          |  12.0+  |
+| iOS          |  13.0+  |
