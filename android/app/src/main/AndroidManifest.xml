@@ -49,16 +49,12 @@
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.App.SplashScreen"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.facebook.react.devsupport.DevSettingsActivity"
-            android:exported="true" />
 
         <activity
             android:name="com.banuba.sdk.ve.flow.VideoCreationActivity"
