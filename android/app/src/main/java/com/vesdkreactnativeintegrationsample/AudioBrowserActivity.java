@@ -1,6 +1,9 @@
 package com.vesdkreactnativeintegrationsample;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
+import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -80,5 +83,14 @@ public class AudioBrowserActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "audio_browser";
+    }
+
+    @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return new DefaultReactActivityDelegate(
+                this,
+                getMainComponentName(),
+                // If you opted-in for the New Architecture, we enable the Fabric Renderer.
+                DefaultNewArchitectureEntryPoint.getFabricEnabled());
     }
 }

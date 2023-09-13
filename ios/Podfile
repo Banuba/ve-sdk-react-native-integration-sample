@@ -1,6 +1,19 @@
-require_relative '../node_modules/react-native/scripts/react_native_pods'
-require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
-require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+# Expo integration
+require File.join(File.dirname(`node --print "require.resolve('expo/package.json')"`), "scripts/autolinking")
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+prepare_react_native_project!
+
+linkage = ENV['USE_FRAMEWORKS']
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
 
 source 'https://github.com/Banuba/specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
@@ -8,11 +21,29 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '13.0'
 
 target 'vesdkreactnativeintegrationsample' do
-  use_unimodules!
+  use_expo_modules!
+  post_integrate do |installer|
+    begin
+      expo_patch_react_imports!(installer)
+    rescue => e
+      Pod::UI.warn e
+    end
+  end
   config = use_native_modules!
 
-  use_react_native!(:path => config["reactNativePath"])
-  sdk_version = '1.30.0'
+  # Flags change depending on the env values.
+  flags = get_default_flags()
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # Hermes is now enabled by default. Disable by setting this flag to false.
+    :hermes_enabled => flags[:hermes_enabled],
+    :fabric_enabled => flags[:fabric_enabled],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  sdk_version = '1.29.2'
 
   pod 'BanubaAudioBrowserSDK', sdk_version #optional
   pod 'BanubaUtilities', sdk_version
@@ -32,15 +63,13 @@ target 'vesdkreactnativeintegrationsample' do
   pod 'VEEffectsSDK', sdk_version
   pod 'VEPlaybackSDK', sdk_version
 
-  # Uncomment the code below to enable Flipper.
-  #
-  # You should not install Flipper in CI environments when creating release
-  # builds, this will lead to significantly slower build times.
-  #
-  # Note that if you have use_frameworks! enabled, Flipper will not work.
-  #
-  #  use_flipper!
-  #  post_install do |installer|
-  #    flipper_post_install(installer)
-  #  end
+  post_install do |installer|
+    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false
+    )
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  end
 end
