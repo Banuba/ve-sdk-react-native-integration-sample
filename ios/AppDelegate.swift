@@ -21,7 +21,7 @@ class AppDelegate: RCTAppDelegate {
   static let mubertApiKey = ""
 
   override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    moduleName = "main"
+    moduleName = "vesdkreactnativeintegrationsample"
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
   

@@ -43,7 +43,7 @@ target 'vesdkreactnativeintegrationsample' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  sdk_version = '1.29.2'
+  sdk_version = '1.30.0'
 
   pod 'BanubaAudioBrowserSDK', sdk_version #optional
   pod 'BanubaUtilities', sdk_version
