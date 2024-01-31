@@ -17,9 +17,14 @@ import java.util.*
 import androidx.core.content.FileProvider
 import com.banuba.sdk.token.storage.license.LicenseStateCallback
 import com.banuba.sdk.token.storage.license.BanubaVideoEditor
+import com.banuba.sdk.cameraui.data.CameraRecordingModesProvider
+import com.banuba.sdk.cameraui.ui.RecordMode
+import com.banuba.sdk.veui.data.EditorConfig
+import org.koin.core.component.inject
+import org.koin.core.component.KoinComponent
 
 class VideoEditorModule(reactContext: ReactApplicationContext) :
-    ReactContextBaseJavaModule(reactContext) {
+    ReactContextBaseJavaModule(reactContext), KoinComponent {
 
     companion object {
         const val TAG = "VideoEditorModule"
@@ -117,6 +122,54 @@ class VideoEditorModule(reactContext: ReactApplicationContext) :
                         // ✅ License is active, all good
                         // You can show button that opens Video Editor or
                         // Start Video Editor right away
+                        openVideEditorInternal(inputPromise)
+                    } else {
+                        // ❌ Use of Video Editor is restricted. License is revoked or expired.
+                        inputPromise.reject(ERR_LICENSE_REVOKED_CODE, ERR_LICENSE_REVOKED_MESSAGE)
+                    }
+                },
+                notInitializedError = {
+                    inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
+                }
+        )
+    }
+
+    val cameraRecordingModesProvider: CameraRecordingModesProvider by inject()
+    val editorConfig: EditorConfig by inject()
+    @ReactMethod
+    fun openVideoEditorVideoOnly(inputPromise: Promise) {
+        checkVideoEditorLicense(
+                licenseStateCallback = { isValid ->
+                    if (isValid) {
+                        // ✅ License is active, all good
+                        // You can show button that opens Video Editor or
+                        // Start Video Editor right away
+                        cameraRecordingModesProvider.availableModes = setOf(RecordMode.Video)
+                        editorConfig.gallerySupportsVideo = true
+                        editorConfig.gallerySupportsImage = false
+                        openVideEditorInternal(inputPromise)
+                    } else {
+                        // ❌ Use of Video Editor is restricted. License is revoked or expired.
+                        inputPromise.reject(ERR_LICENSE_REVOKED_CODE, ERR_LICENSE_REVOKED_MESSAGE)
+                    }
+                },
+                notInitializedError = {
+                    inputPromise.reject(ERR_SDK_NOT_INITIALIZED_CODE, ERR_SDK_NOT_INITIALIZED_MESSAGE)
+                }
+        )
+    }
+
+    @ReactMethod
+    fun openVideoEditorPhotoOnly(inputPromise: Promise) {
+        checkVideoEditorLicense(
+                licenseStateCallback = { isValid ->
+                    if (isValid) {
+                        // ✅ License is active, all good
+                        // You can show button that opens Video Editor or
+                        // Start Video Editor right away
+                        cameraRecordingModesProvider.availableModes = setOf(RecordMode.Photo)
+                        editorConfig.gallerySupportsVideo = false
+                        editorConfig.gallerySupportsImage = true
                         openVideEditorInternal(inputPromise)
                     } else {
                         // ❌ Use of Video Editor is restricted. License is revoked or expired.

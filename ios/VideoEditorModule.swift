@@ -73,6 +73,70 @@ class VideoEditorModule: NSObject, RCTBridgeModule {
     }
   }
   
+  @objc func openVideoEditorVideoOnly(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    self.currentResolve = resolve
+    self.currentReject = reject
+    
+    prepareAudioBrowser()
+    
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      var musicTrackPreset: MediaTrack?
+      
+      // uncomment this if you want to set the music track
+      
+      //musicTrackPreset = self.setupMusicTrackPresent()
+      
+      let config = VideoEditorLaunchConfig(
+        entryPoint: .camera,
+        hostController: presentedVC,
+        musicTrack: musicTrackPreset,
+        animated: true
+      )
+      
+      var videoEditorConfig = VideoEditorConfig()
+      videoEditorConfig.recorderConfiguration.captureButtonModes = [.video]
+      videoEditorConfig.combinedGalleryConfiguration.visibleTabsInGallery = [.video]
+      self.videoEditorSDK?.updateVideoEditorConfig(videoEditorConfig)
+      
+      self.checkLicenseAndStart(with: config, rejecter: reject)
+    }
+  }
+  
+  @objc func openVideoEditorPhotoOnly(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    self.currentResolve = resolve
+    self.currentReject = reject
+    
+    prepareAudioBrowser()
+    
+    DispatchQueue.main.async {
+      guard let presentedVC = RCTPresentedViewController() else {
+        return
+      }
+      var musicTrackPreset: MediaTrack?
+      
+      // uncomment this if you want to set the music track
+      
+      //musicTrackPreset = self.setupMusicTrackPresent()
+      
+      let config = VideoEditorLaunchConfig(
+        entryPoint: .camera,
+        hostController: presentedVC,
+        musicTrack: musicTrackPreset,
+        animated: true
+      )
+      
+      var videoEditorConfig = VideoEditorConfig()
+      videoEditorConfig.recorderConfiguration.captureButtonModes = [.photo]
+      videoEditorConfig.combinedGalleryConfiguration.visibleTabsInGallery = [.photo]
+      self.videoEditorSDK?.updateVideoEditorConfig(videoEditorConfig)
+      
+      self.checkLicenseAndStart(with: config, rejecter: reject)
+    }
+  }
+  
   @objc func openVideoEditorPIP(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
     self.currentResolve = resolve
     self.currentReject = reject
